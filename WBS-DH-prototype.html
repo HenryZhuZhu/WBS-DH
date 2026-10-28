@@ -1011,7 +1011,8 @@ function requireCompletionFields(state,kind,item){
 }
 function recordDeliveryChange(state,item,text,actor,before,after){
   const record=logEvent(state,item,text,actor);
-  Object.assign(record,{action:'delivery-change',timestamp:new Date().toISOString(),before:clone(before),after:clone(after)});
+  const snapshot=value=>value&&Object.hasOwn(value,'requirementFiles')?{...clone(value),requirementFiles:(value.requirementFiles||[]).map(({data,...metadata})=>metadata)}:clone(value);
+  Object.assign(record,{action:'delivery-change',timestamp:new Date().toISOString(),before:snapshot(before),after:snapshot(after)});
   Object.assign(item.history[0],clone(record));
 }
 function canEditCaseEquipment(state,instance,actor){
@@ -1158,11 +1159,15 @@ function taskAssignedBy(state,task,actor){
   return task.assignedBy===actor&&PEOPLE.includes(task.owner)&&task.owner!==actor;
 }
 function requireAssignmentTarget(state,actor,kind,item,person,initial=false){
+  if(kind==='task'&&!initial){
+    const reason=assignmentBlockReason(state,actor,kind,item);check(!reason,reason);
+    check(PEOPLE.includes(person),'请选择有效的负责人');check(!isAssignmentExempt(state,person),'老板不能设为负责人');
+    return;
+  }
   requirePermission(state,actor,'assign');check(PEOPLE.includes(person),'请选择有效的负责人');check(!isAssignmentExempt(state,person),'老板不能设为负责人');
   check(initial||canAssignObject(state,actor,kind,item),'没有该工作的责任权限');
   if(!initial){
-    if(kind==='task'){check((item.status==='ready'||PROTOTYPE_FEATURES.taskDependencies&&item.status==='waiting')&&!taskHasWork(item),'已接受、已执行或已结束的Task不能改派');check(taskCase(state,item)?.status==='active','当前Case不允许改派Task');}
-    else{check(item.status==='active','当前工作状态不允许改派');if(kind==='case')requireCaseOwnerEdit(state,item.id,actor);}
+    check(item.status==='active','当前工作状态不允许改派');if(kind==='case')requireCaseOwnerEdit(state,item.id,actor);
   }
 }
 function assignmentSnapshot(state,kind,item){
@@ -1208,6 +1213,7 @@ function recordAssignment(state,kind,item,actor,previousOwner,reason,source='rea
   linkResponsibilityEvent(item,event,record);
   const title=source==='create'?(kind==='case'?'Case已创建':kind==='task'&&item.status==='ready'?'Task待接受':'工作创建'):'责任变更';
   notify(state,kind,item,title+' · '+item.name,[item.owner],'assignment:'+record.id);
+  if(kind==='task'&&previousOwner&&previousOwner!==item.owner&&taskCase(state,item).owner!==actor&&taskCase(state,item).owner!==item.owner)notify(state,kind,item,'Task负责人已变更 · '+item.name,[taskCase(state,item).owner],'assignment-coordinator:'+record.id);
   if(kind==='case'&&previousOwner&&previousOwner!==item.owner)updateCaseOwnerNotices(state,item,previousOwner,record);
   return record;
 }
@@ -1239,8 +1245,12 @@ function assignmentRecordsFor(state,actor,all=false){
 
 
 function assignmentBlockReason(state,actor,kind,item){
+  if(kind==='task'){
+    if(!item||!['ready','active',...(PROTOTYPE_FEATURES.taskDependencies?['waiting']:[])].includes(item.status))return 'Task已结束，不能改派';
+    if(taskCase(state,item)?.status!=='active')return 'Case已关闭';
+    return !taskEditBlockReason(state,item,actor)||canAssignObject(state,actor,kind,item)?'':'没有责任权限';
+  }
   if(!canAssignObject(state,actor,kind,item))return '没有责任权限';
-  if(kind==='task')return !(item.status==='ready'||PROTOTYPE_FEATURES.taskDependencies&&item.status==='waiting')||taskHasWork(item)?'Task已接受、已执行或已结束，不能改派':taskCase(state,item)?.status!=='active'?'Case已关闭':'';
   if(kind==='case')return caseEditBlockReason(state,item,actor);
   return item.status==='active'?'':'当前状态不可变更负责人';
 }
@@ -1561,13 +1571,12 @@ function createTemplate(state,values,tasks,actor){
   state.templates.push(template);logEvent(state,null,'创建公共模版 '+templateCaseName(template)+' v1',actor);return template;
 }
 function taskEditBlockReason(state,task,actor){
-  if(!state.permissions[state.userRoles[actor]]?.caseEdit)return '没有 Task 编辑权限';
   if(!task)return 'Task 不存在或无权查看';
   const instance=taskCase(state,task);
   if(!instance||!visibleTo(state,actor,'task',task))return 'Task 不存在或无权查看';
-  if(!(task.status==='ready'||PROTOTYPE_FEATURES.taskDependencies&&task.status==='waiting')||task.claimedAt||task.startedAt||task.completedAt||task.files?.length)return 'Task已接受、已执行或已结束，基础信息只读';
+  if(!['ready','active',...(PROTOTYPE_FEATURES.taskDependencies?['waiting']:[])].includes(task.status))return 'Task已结束，基础信息只读';
   if(instance.status!=='active')return 'Case 已锁定，Task 不可编辑';
-  if(instance.owner!==actor&&state.userRoles[actor]!=='leader')return '仅Case负责人或超级管理员可维护Task清单';
+  if(task.owner!==actor&&instance.owner!==actor&&state.userRoles[actor]!=='leader')return '仅Task负责人、Case负责人或超级管理员可编辑Task';
   return '';
 }
 function requireTaskEdit(state,id,actor){const task=objectRef(state,'task',id),reason=taskEditBlockReason(state,task,actor);check(!reason,reason);return task;}
@@ -1577,8 +1586,10 @@ function editPendingTask(state,id,values,actor,dueReason='') {
   const allowed=['name','owner','contactPerson','contactNote','start','due','background','goal','completionStandard','evidence','requirementFiles','assignmentReason','criticalDelivery',...(PROTOTYPE_FEATURES.taskDependencies?['predecessorIds']:[])];
   check(Object.keys(values).every(key=>allowed.includes(key)),'只能修改Task基础配置，不能修改状态、身份或完成记录');
   check(validDate(values.start)&&validDate(values.due)&&values.due>=values.start,'起止日期无效');
-  const {criticalDelivery,...updates}=values;
-  const changed={...task,...updates,contactPerson:contactPersonName(values.contactPerson??task.contactPerson),contactNote:String(values.contactNote??task.contactNote??'').trim(),duration:dayNumber(values.due)-dayNumber(values.start)+1};
+  const {criticalDelivery,assignmentReason,...updates}=values;
+  const changed={...task,...updates,contactPerson:contactPersonName(values.contactPerson??task.contactPerson),contactNote:String(values.contactNote??task.contactNote??'').trim(),duration:values.start===task.start&&values.due===task.due?task.duration:dayNumber(values.due)-dayNumber(values.start)+1};
+  changed.name=String(changed.name||'').trim();
+  validateRequirementFiles(changed.requirementFiles);
   const parent=taskCase(state,task);check(parent&&changed.start>=parent.start&&changed.due<=parent.due,'Task日期须在Case开始日期和完成日期范围内');
   const dateReason=dueDateChangeReason(task,changed.due,dueReason),previousDue=task.due;
   for(const key of ['id','caseId','status','claimedAt','claimedBy','startedAt','completedAt','completedBy','completionNote','files','history'])check(!Object.hasOwn(values,key),'不能通过基础信息编辑修改工作状态或完成记录');
@@ -1586,7 +1597,7 @@ function editPendingTask(state,id,values,actor,dueReason='') {
     check(visibleTo(state,actor,'task',task),'无权调整此 Task');
     changed.background=String(values.background??task.background??'').trim();
     changed.goal=String(values.goal??task.goal??'').trim();
-    changed.completionStandard=String(values.completionStandard||'').trim();changed.completionStandardPolicy=1;
+    changed.completionStandard=String(values.completionStandard??task.completionStandard??'').trim();changed.completionStandardPolicy=1;
     validateDeliveryStandard(changed);
   }
   const definitions=caseTasks(state,task.caseId).map(item=>item.id===id?changed:item);validateDefinitions(definitions);
@@ -1600,14 +1611,16 @@ function editPendingTask(state,id,values,actor,dueReason='') {
       check(predecessorIds(task).includes(predecessor)||!['terminated','rejected'].includes(item.status),'不能新增已结束且未完成的前置 Task');
     }
   }
-  const previous=task.owner,before=assignmentSnapshot(state,'task',task);if(changed.owner!==previous)requireAssignmentTarget(state,actor,'task',changed,changed.owner);
-  const deliveryBefore={contactPerson:task.contactPerson||'',contactNote:task.contactNote||'',background:task.background||'',goal:task.goal||'',completionStandard:task.completionStandard||'',evidence:task.evidence||''};
+  const previous=task.owner,before=assignmentSnapshot(state,'task',task);if(changed.owner!==previous)requireAssignmentTarget(state,actor,'task',task,changed.owner);
+  const deliveryBefore=taskConfiguration(task);
+  if(JSON.stringify(deliveryBefore)===JSON.stringify(taskConfiguration(changed)))return task;
   const originalStatus=task.status;
   Object.assign(task,changed);task.status=originalStatus;const adjustment=logEvent(state,task,'调整Task清单',actor);adjustment.action='configuration';task.history[0].action='configuration';
   recordDueDateChange(state,task,previousDue,task.due,dateReason,actor);
-  const deliveryAfter={contactPerson:task.contactPerson||'',contactNote:task.contactNote||'',background:task.background||'',goal:task.goal||'',completionStandard:task.completionStandard||'',evidence:task.evidence||''};
-  if(JSON.stringify(deliveryBefore)!==JSON.stringify(deliveryAfter))recordDeliveryChange(state,task,'更新Task对接信息或交付要求',actor,deliveryBefore,deliveryAfter);
+  const deliveryAfter=taskConfiguration(task);
+  if(JSON.stringify(deliveryBefore)!==JSON.stringify(deliveryAfter))recordDeliveryChange(state,task,'更新Task信息',actor,deliveryBefore,deliveryAfter);
   if(previous!==task.owner){closeWorkMessages(state,'task',task);dispatchTask(state,task,actor);const record=recordAssignment(state,'task',task,actor,previous,values.assignmentReason||'调整Task负责人','edit',before);linkResponsibilityEvent(task,adjustment,record);}
+  else if(JSON.stringify(deliveryBefore)!==JSON.stringify(deliveryAfter))notify(state,'task',task,'Task配置已更新 · '+task.name,unique([task.owner,parent.owner]).filter(person=>person!==actor),'configuration:'+task.id+':'+adjustment.id);
   notifyReadyWork(state);
 }
 function taskHasWork(task){return !!(task.claimedAt||task.startedAt||task.completedAt||task.files?.length||['active','done','terminated','rejected'].includes(task.status));}
@@ -1656,6 +1669,7 @@ function saveCaseTaskList(state,caseId,rows,actor,expectedTasks=null,dueReasons=
       mapping.set(row.id,makeId('task'));
     }else mapping.set(row.id,row.id);
     const next={...taskConfiguration(row),...plans.get(row.id)};
+    if(!original||next.start!==original.start||next.due!==original.due)next.duration=dayNumber(next.due)-dayNumber(next.start)+1;
     if(original&&JSON.stringify(next)===JSON.stringify(taskConfiguration(original)))continue;
     if(original){
       requireTaskEdit(draft,original.id,actor);
@@ -1895,7 +1909,7 @@ initializeSuperAdminSession(db);
 
 
 const ui={page:'cases',projectId:null,caseId:null,taskId:null,drawer:null,query:'',filter:'',caseOwner:'',caseBlocked:false,caseMetricFromCard:false,caseOverdue:false,caseExpanded:[],taskCaseId:'',taskQuery:'',taskStatus:'',taskOwner:'',workTab:'mine',workNavExpanded:true,workProjectId:'',workFilter:'',workStatus:null,workKind:'',workQuery:'',notificationTab:'all',templateId:null,templateVersion:null,ganttScale:'day',ganttCaseId:'',caseView:'list',taskOverdue:false,collapsed:false,reportId:'',reportTab:'cases',reportMetric:'all',reportCaseId:'',summaryQuery:'',summaryOwner:'',summaryStatus:'',summaryExpanded:[],summaryProjectIds:null};
-let templateDraft=[],templateEditingId=null,caseCreationDraft=null,caseDraftChoiceState=null,caseEditorDraft=null,caseAssociationState=null,templateLibraryState=null,templateDetailState=null,pendingFiles=[],modalReturnFocus=null,taskRequirementEditorState=null,workspaceFilterState=null,notificationPopoverState=null;
+let templateDraft=[],templateEditingId=null,caseCreationDraft=null,caseDraftChoiceState=null,caseEditorDraft=null,taskEditorDraft=null,caseAssociationState=null,templateLibraryState=null,templateDetailState=null,pendingFiles=[],modalReturnFocus=null,taskRequirementEditorState=null,workspaceFilterState=null,notificationPopoverState=null;
 let equipmentCatalog=[],equipmentCatalogStatus=PROTOTYPE_FEATURES.equipmentWbs?'loading':'paused',equipmentCatalogError='',equipmentOpenPending='',equipmentLoadVersion=0;
 function persist(){localStorage.setItem(STORAGE_KEY,JSON.stringify(db));}
 try{transact(()=>{migrateAcceptanceWorkflow(db);migrateTaskDependenciesToPhaseTwo(db);migrateTaskRequirements(db);migrateContactPersonNames(db);migrateSingleCaseDraft(db);ensureWorkDemoCoverage(db);ensureGanttDemoCoverage(db);migrateDeliveryFollowups(db);syncEquipmentAssociationHistory(db);scanNotifications(db,false);if(PROTOTYPE_FEATURES.reports)runScheduledReports(db);});}catch(error){storageNotice='历史记录转换或初始化保存失败：'+error.message+'。请勿关闭页面。';}
@@ -2626,7 +2640,14 @@ function assignmentPermissionsModal(){
   const editable=can('settings');
   modal('责任权限',`<div class="table-scroll"><table class="assignment-config"><thead><tr><th>角色</th><th>责任设置</th><th>设置范围</th><th>责任记录</th></tr></thead><tbody>${Object.entries(db.permissions).map(([role,policy])=>`<tr><td>${escapeHtml(roleLabel(role))}</td><td><input type="checkbox" name="${role}-assign" aria-label="${escapeHtml(roleLabel(role))} 责任设置" ${policy.assign?'checked':''} ${editable?'':'disabled'}></td><td><select name="${role}-assignScope" ${editable?'':'disabled'}><option value="visible" ${policy.assignScope!=='all'?'selected':''}>可见工作</option><option value="all" ${policy.assignScope==='all'?'selected':''}>跨全部 Project</option></select></td><td><select name="${role}-assignmentAudit" ${editable?'':'disabled'}>${[['none','不可查看'],['own','本人操作'],['all','全部责任记录']].map(([value,label])=>`<option value="${value}" ${(policy.assignmentAudit||'none')===value?'selected':''}>${label}</option>`).join('')}</select></td></tr>`).join('')}</tbody></table></div><section style="margin-top:16px"><h3>不可设为负责人的人员</h3><div class="checklist">${PEOPLE.map(person=>`<label><input type="checkbox" name="exempt" value="${escapeHtml(person)}" ${isAssignmentExempt(db,person)?'checked':''} ${!editable||db.userRoles[person]==='boss'?'disabled':''}>${escapeHtml(person)}${db.userRoles[person]==='boss'?' · 老板':''}</label>`).join('')}</div></section>`,editable?'保存权限':'关闭',(data,form)=>{if(!editable)return closeModal();handleOperation(()=>{requirePermission(db,CURRENT_USER,'settings');for(const role of Object.keys(db.permissions)){const scope=data[role+'-assignScope'],audit=data[role+'-assignmentAudit'];check(['all','visible'].includes(scope)&&['none','own','all'].includes(audit),'权限配置无效');db.permissions[role]={...db.permissions[role],assign:!!data[role+'-assign'],assignScope:scope,assignmentAudit:audit};}db.assignmentExempt=unique([...new FormData(form).getAll('exempt'),...PEOPLE.filter(person=>db.userRoles[person]==='boss')]);logEvent(db,null,'更新责任权限及人员限制');},'责任权限已更新');},true);
 }
-function historyHtml(history){return history.length?history.map(record=>`<div class="history-item"><small>${escapeHtml(record.at)} · ${escapeHtml(record.actor||'系统')}</small>${Object.hasOwn(responsibilityCategoryLabels,record.responsibilityCategory)?`<span class="tag">${responsibilityCategoryLabels[record.responsibilityCategory]}</span> `:''}${escapeHtml(responsibilityHistoryText(record))}${record.files?.length?`<div class="small muted">交付材料：${record.files.map(file=>escapeHtml(file.name)).join('、')}</div>`:''}</div>`).join(''):'<span class="small muted">暂无记录</span>';}
+function configurationHistoryDetails(record){
+  if(record.action!=='delivery-change'||!record.before||!record.after)return '';
+  const labels={name:'Task名称',owner:'负责人',contactPerson:'对接人',contactNote:'对接说明',start:'开始日期',due:'完成日期',background:'背景',goal:'交付目标',completionStandard:'完成标准',evidence:'补充说明',requirementFiles:'参考附件'};
+  const format=(key,value)=>key==='requirementFiles'?(value||[]).map(file=>`${file.name}（${file.size} B）`).join('、')||'无':String(value??'')||'未填写';
+  const changes=Object.entries(labels).filter(([key])=>JSON.stringify(record.before[key])!==JSON.stringify(record.after[key]));
+  return changes.length?`<details class="assignment-history-entry"><summary>查看修改前后 · ${changes.length}项</summary><dl class="detail-grid">${changes.map(([key,label])=>`<div class="wide"><dt>${label}</dt><dd>修改前：${escapeHtml(format(key,record.before[key]))}<br>修改后：${escapeHtml(format(key,record.after[key]))}</dd></div>`).join('')}</dl></details>`:'';
+}
+function historyHtml(history){return history.length?history.map(record=>`<div class="history-item"><small>${escapeHtml(record.at)} · ${escapeHtml(record.actor||'系统')}</small>${Object.hasOwn(responsibilityCategoryLabels,record.responsibilityCategory)?`<span class="tag">${responsibilityCategoryLabels[record.responsibilityCategory]}</span> `:''}${escapeHtml(responsibilityHistoryText(record))}${configurationHistoryDetails(record)}${record.files?.length?`<div class="small muted">交付材料：${record.files.map(file=>escapeHtml(file.name)).join('、')}</div>`:''}</div>`).join(''):'<span class="small muted">暂无记录</span>';}
 function openObject(kind,id){return openWorkDetail(kind,id);}
 function closeDrawer(){ui.drawer=null;document.getElementById('drawerRoot').innerHTML='';}
 function taskDetailHeader(task,instance){
@@ -2673,12 +2694,13 @@ function taskCompletionBlockReason(task){
 function taskPageActions(task){
   const instance=taskCase(db,task);
   if(!instance||instance.status!=='active')return '';
+  const editAction=!taskEditBlockReason(db,task,CURRENT_USER)?`<button onclick="editTaskModal('${task.id}')">编辑Task</button>`:'';
   if(task.status==='ready'&&task.requiresAcceptance!==false&&task.owner===CURRENT_USER){
     const acceptReason=PROTOTYPE_FEATURES.taskDependencies&&waitingPredecessors(db,task).length?'等待前置Task完成或终止':'';
-    return `<button ${acceptReason?`disabled title="${acceptReason}"`:''} onclick="claimTaskModal('${task.id}')">接受</button><button onclick="rejectTaskModal('${task.id}')">拒绝</button>`;
+    return editAction+`<button ${acceptReason?`disabled title="${acceptReason}"`:''} onclick="claimTaskModal('${task.id}')">接受</button><button onclick="rejectTaskModal('${task.id}')">拒绝</button>`;
   }
-  if(task.status!=='active')return '';
-  let actions='';
+  if(task.status!=='active')return editAction;
+  let actions=editAction;
   if(canTerminateTask(db,task,CURRENT_USER))actions+=`<button class="danger" onclick="terminateTaskModal('${task.id}')">终止</button>`;
   if(task.owner===CURRENT_USER)actions+=`<button class="primary" onclick="completeTaskModal('${task.id}')">完成</button>`;
   return actions;
@@ -2718,13 +2740,14 @@ function closeModal(returnToLibrary=true){
   closeWorkspaceFilter(false);
   closeNotificationPopover(false);
   closeTaskRequirementEditor(false);
-  document.getElementById('modalRoot').innerHTML='';document.getElementById('caseDraftPromptRoot').innerHTML='';caseCreationDraft=null;caseDraftChoiceState=null;caseEditorDraft=null;caseAssociationState=null;
+  if(taskEditorDraft)templateDraft=[];
+  document.getElementById('modalRoot').innerHTML='';document.getElementById('caseDraftPromptRoot').innerHTML='';caseCreationDraft=null;caseDraftChoiceState=null;caseEditorDraft=null;taskEditorDraft=null;caseAssociationState=null;
   if(hadCreation&&ui.page==='template'&&templateDetailState?.mode==='view')renderTemplatePageFlow();
   if(modalReturnFocus?.isConnected)modalReturnFocus.focus({preventScroll:true});
 }
 function requiredMark(){return '<span class="required-mark" aria-hidden="true">*</span>';}
 function inputField(label,name,value='',type='text',full=false,attrs=''){const required=/\brequired\b/.test(attrs);return `<div class="field ${full?'full':''}"><label for="field-${name}">${label}${required?requiredMark():''}</label><input id="field-${name}" name="${name}" type="${type}" value="${escapeHtml(value)}" ${attrs}></div>`;}
-function peopleSelect(name,value,label,optional=false,emptyLabel='无'){return `<div class="field"><label for="field-${name}">${label}${optional?'':requiredMark()}</label><select id="field-${name}" name="${name}" ${optional?'':'required'}>${optional?`<option value="" ${!value?'selected':''}>${escapeHtml(emptyLabel)}</option>`:''}${PEOPLE.map(person=>`<option ${value===person?'selected':''}>${person}</option>`).join('')}</select></div>`;}
+function peopleSelect(name,value,label,optional=false,emptyLabel='无',people=PEOPLE){return `<div class="field"><label for="field-${name}">${label}${optional?'':requiredMark()}</label><select id="field-${name}" name="${name}" ${optional?'':'required'}>${optional?`<option value="" ${!value?'selected':''}>${escapeHtml(emptyLabel)}</option>`:''}${people.map(person=>`<option ${value===person?'selected':''}>${escapeHtml(person)}</option>`).join('')}</select></div>`;}
 function responsibilityOwnerField(kind,item,label){
   const field=peopleSelect('owner',item.owner,label);
   return assignmentBlockReason(db,CURRENT_USER,kind,item)?field.replace('<select ','<select disabled ')+`<input type="hidden" name="owner" value="${escapeHtml(item.owner)}">`:field;
@@ -2748,7 +2771,7 @@ function editCaseModal(id){
   const tasks=caseTasks(db,id);
   caseEditorDraft={caseId:id,caseSnapshot:JSON.stringify(item),tasksSnapshot:JSON.stringify(tasks),tasks:clone(tasks)};
   templateDraft=clone(tasks);
-  modal('编辑Case',`<div class="case-create case-editor" oninput="updateCaseEditorPreview()" onchange="updateCaseEditorPreview()"><section><h3>基本信息</h3><div class="fields case-create-fields">${inputField('Case名称','name',item.name,'text',false,'required maxlength="80"')}${caseProjectField(item.project,createAllowed,true).replace('class="field full"','class="field"')}${responsibilityOwnerField('case',item,'Case负责人').replace('class="field"','class="field full"')}${inputField('开始日期','start',item.start,'date',false,'required')}${inputField('完成日期','due',item.due,'date',false,'required')}<div class="field full"><label for="field-background">背景${requiredMark()}</label><textarea name="background" id="field-background" required maxlength="1000" placeholder="说明为什么要开展这个Case，以及需要解决的问题">${escapeHtml(item.background||'')}</textarea></div><div class="field full"><label for="field-goal">交付目标${requiredMark()}</label><textarea name="goal" id="field-goal" required maxlength="1000" placeholder="最终要交付什么">${escapeHtml(item.goal)}</textarea></div><div class="field full"><label for="field-completionStandard">完成标准${requiredMark()}</label><textarea name="completionStandard" id="field-completionStandard" required maxlength="1000" placeholder="满足什么条件才算Case完成">${escapeHtml(item.completionStandard||'')}</textarea></div></div>${createAllowed?`<fieldset id="caseEditNewProject" hidden disabled>${projectForm({start:item.start,due:item.due},'newProject-')}</fieldset>`:''}</section><section><div class="task-list-toolbar-row"><h3>Task清单</h3><button type="button" class="icon" aria-label="添加一行" title="添加一行" ${createAllowed?'':'disabled'} onclick="addDraftTask()">${icon('plus')}</button></div><p class="small muted">待接受且从未开始的Task可以删除；进行中或已结束Task只读。新加的行统一保存后派发，本人安排无需接受。</p><div id="caseEditTasks" class="table-scroll"></div><div id="caseEditScheduleError" class="error" role="alert"></div></section></div>`,'保存',data=>{
+  modal('编辑Case',`<div class="case-create case-editor" oninput="updateCaseEditorPreview()" onchange="updateCaseEditorPreview()"><section><h3>基本信息</h3><div class="fields case-create-fields">${inputField('Case名称','name',item.name,'text',false,'required maxlength="80"')}${caseProjectField(item.project,createAllowed,true).replace('class="field full"','class="field"')}${responsibilityOwnerField('case',item,'Case负责人').replace('class="field"','class="field full"')}${inputField('开始日期','start',item.start,'date',false,'required')}${inputField('完成日期','due',item.due,'date',false,'required')}<div class="field full"><label for="field-background">背景${requiredMark()}</label><textarea name="background" id="field-background" required maxlength="1000" placeholder="说明为什么要开展这个Case，以及需要解决的问题">${escapeHtml(item.background||'')}</textarea></div><div class="field full"><label for="field-goal">交付目标${requiredMark()}</label><textarea name="goal" id="field-goal" required maxlength="1000" placeholder="最终要交付什么">${escapeHtml(item.goal)}</textarea></div><div class="field full"><label for="field-completionStandard">完成标准${requiredMark()}</label><textarea name="completionStandard" id="field-completionStandard" required maxlength="1000" placeholder="满足什么条件才算Case完成">${escapeHtml(item.completionStandard||'')}</textarea></div></div>${createAllowed?`<fieldset id="caseEditNewProject" hidden disabled>${projectForm({start:item.start,due:item.due},'newProject-')}</fieldset>`:''}</section><section><div class="task-list-toolbar-row"><h3>Task清单</h3><button type="button" class="icon" aria-label="添加一行" title="添加一行" ${createAllowed?'':'disabled'} onclick="addDraftTask()">${icon('plus')}</button></div><p class="small muted">待接受或进行中的Task可按权限编辑，已结束Task只读；只有待接受且从未开始的Task可以删除。新加的行统一保存后派发，本人安排无需接受。</p><div id="caseEditTasks" class="table-scroll"></div><div id="caseEditScheduleError" class="error" role="alert"></div></section></div>`,'保存',data=>{
     check(!taskRequirementEditorState,'请先保存或取消交付目标编辑');collectTemplateDraft();
     const rows=clone(templateDraft),entries=dueDateChangeEntries(item,data,rows);
     requestDueDateChangeReasons(entries,reasons=>{templateDraft=rows;handleOperation(()=>applyCaseEditorChanges(id,data,reasons),'Case与Task清单已保存');});
@@ -3195,9 +3218,21 @@ function requestDueDateChangeReasons(entries,handler){
 
 function editTaskModal(id){
   let task;try{task=requireTaskEdit(db,id,CURRENT_USER);}catch(error){return toast(error.message);}
-  if(!editCaseModal(task.caseId))return;
-  const row=[...draftTaskTable()?.querySelectorAll?.('[data-step]')||[]].find(node=>node.dataset.step===id);
-  row?.scrollIntoView({block:'center'});row?.querySelector('[data-name]')?.focus();
+  const editor={id,snapshot:JSON.stringify(task)};
+  taskEditorDraft=editor;templateDraft=[clone(task)];
+  const ownerField=peopleSelect('owner',task.owner,'Task负责人',false,'无',PEOPLE.filter(person=>person===task.owner||!isAssignmentExempt(db,person)));
+  modal('编辑Task',`<div id="taskEditTasks" class="stack"><p class="small muted">所属Case：${escapeHtml(taskCase(db,task).name)}。仅修改当前Task，不影响其他Task；变更保留在流转记录中。</p><div class="fields">${inputField('Task名称','name',task.name,'text',true,'required maxlength="80"')}${ownerField}${inputField('对接人','contactPerson',task.contactPerson||'','text',false,'maxlength="100"')}${inputField('对接说明','contactNote',task.contactNote||'','text',true,'maxlength="500"')}${inputField('开始日期','start',task.start,'date',false,'required')}${inputField('完成日期','due',task.due,'date',false,'required')}</div>${taskDeliveryEditor(task,0,false)}<div><button type="button" data-task-attachments="${task.id}" onclick="openTaskAttachmentsEditor(this.dataset.taskAttachments)">参考附件 ${taskAttachmentShortcutContent(task)}</button></div><p class="small muted">变更负责人沿用通知及接受／拒绝流程；日期须在所属Case范围内，修改完成日期须填写理由。</p></div>`,'保存',data=>{
+    check(taskEditorDraft===editor,'Task编辑上下文已变化，请重新打开');
+    check(!taskRequirementEditorState,'请先保存或取消参考附件编辑');
+    const values={...data,goal:document.getElementById('requirementEditorGoal').value,completionStandard:document.getElementById('requirementEditorStandard').value,evidence:document.getElementById('requirementEditorEvidence').value,requirementFiles:clone(templateDraft[0].requirementFiles||[])};
+    const entries=task.due===values.due?[]:[{key:'task:'+id,kind:'Task',name:task.name,from:task.due,to:values.due}];
+    requestDueDateChangeReasons(entries,reasons=>handleOperation(()=>{
+      const current=requireTaskEdit(db,id,CURRENT_USER);
+      check(JSON.stringify(current)===editor.snapshot,'Task状态或配置已变化，请重新打开编辑Task');
+      editPendingTask(db,id,values,CURRENT_USER,reasons['task:'+id]);
+    },'Task已保存'));
+  },true);
+  return true;
 }
 function suggestEditedTaskDates(id){
   try{
@@ -3524,7 +3559,7 @@ function openTaskRequirementEditor(id,readOnly=false,focusStandard=false,anchorT
   if(!caseTaskDraftMode()&&ui.page==='template'&&templateDetailState?.mode==='view')readOnly=true;
   const draftTask=templateDraft.find(item=>item.id===id),task=draftTask||(readOnly?objectRef(db,'task',id):null);if(!task)return toast(readOnly?'该Task当前不存在':'Task 草稿已变化，请重新打开');
   if(draftTask&&caseEditorDraft&&!editableCaseTaskRow(task))readOnly=true;
-  if(!readOnly&&!(caseTaskDraftMode()?can('caseEdit'):can('template')))return toast('无'+label+'编辑权限');
+  if(!readOnly&&!canEditTaskDraft(id))return toast('无'+label+'编辑权限');
   if(draftTask)collectTemplateDraft();closeTaskRequirementEditor(false);
   const selector=anchorType==='attachments'?'[data-task-attachments]':'[data-task-requirements]';
   const anchor=[...(draftTask?draftTaskTable():document.querySelector('.detail-task-list'))?.querySelectorAll?.(selector)||[]].find(button=>(button.dataset.taskAttachments||button.dataset.taskRequirements)===id);
@@ -3539,7 +3574,7 @@ function openTaskAttachmentsEditor(id,readOnly=false){
   if(!caseTaskDraftMode()&&ui.page==='template'&&templateDetailState?.mode==='view')readOnly=true;
   const draftTask=templateDraft.find(item=>item.id===id),task=draftTask||(readOnly?objectRef(db,'task',id):null);if(!task)return toast(readOnly?'该Task当前不存在':'Task 草稿已变化，请重新打开');
   if(draftTask&&caseEditorDraft&&!editableCaseTaskRow(task))readOnly=true;
-  if(!readOnly&&!(caseTaskDraftMode()?can('caseEdit'):can('template')))return toast('无参考附件编辑权限');
+  if(!readOnly&&!canEditTaskDraft(id))return toast('无参考附件编辑权限');
   if(draftTask)collectTemplateDraft();closeTaskRequirementEditor(false);
   const anchor=[...(draftTask?draftTaskTable():document.querySelector('.detail-task-list'))?.querySelectorAll?.('[data-task-attachments]')||[]].find(button=>button.dataset.taskAttachments===id);
   const initial={goal:task.goal||'',completionStandard:task.completionStandard||'',evidence:task.evidence||'',requirementFiles:clone(task.requirementFiles||[])};
@@ -3574,7 +3609,7 @@ function saveTaskRequirementEditor(){
     const editor=taskRequirementEditorState;check(editor&&!editor.readOnly&&editor.mode!=='attachments','要求编辑器不可保存');
     check(!editor.filesLoading,'请等待参考附件读取完成');
     check(editor.tasks===templateDraft&&editor.creation===caseCreationDraft&&editor.caseEditor===caseEditorDraft,'Task 编辑上下文已变化，请重新打开');
-    check(caseTaskDraftMode()?can('caseEdit'):can('template'),'无要求编辑权限');
+    check(canEditTaskDraft(editor.id),'无要求编辑权限');
     const task=templateDraft.find(item=>item.id===editor.id);check(task,'Task 已不存在');
     const values=taskRequirementValues();validateDeliveryStandard(values,false);validateRequirementFiles(values.requirementFiles);
     task.goal=values.goal.trim();
@@ -3591,7 +3626,7 @@ function saveTaskAttachmentEditor(){
     const editor=taskRequirementEditorState;check(editor?.mode==='attachments'&&!editor.readOnly,'参考附件不可保存');
     check(!editor.filesLoading,'请等待参考附件读取完成');
     check(editor.tasks===templateDraft&&editor.creation===caseCreationDraft&&editor.caseEditor===caseEditorDraft,'Task 编辑上下文已变化，请重新打开');
-    check(caseTaskDraftMode()?can('caseEdit'):can('template'),'无参考附件编辑权限');
+    check(canEditTaskDraft(editor.id),'无参考附件编辑权限');
     const task=templateDraft.find(item=>item.id===editor.id);check(task,'Task 已不存在');
     validateRequirementFiles(editor.files);
     task.requirementFiles=clone(editor.files);
@@ -3612,7 +3647,7 @@ function editTaskRequirements(state,id,values,actor){
 function openLiveTaskRequirementEditor(id){
   const task=objectRef(db,'task',id),reason=taskEditBlockReason(db,task,CURRENT_USER);
   if(reason)return toast(reason);
-  if(editCaseModal(task.caseId))openTaskRequirementEditor(id);
+  return editTaskModal(id);
 }
 function taskRequirementSummary(task){
   return task.goal?.trim()&&task.completionStandard?.trim()?'要求已填写':'要求待补全';
@@ -3673,9 +3708,14 @@ function updateDraftDependencyLabels(){
   }
   for(const node of target?.querySelectorAll?.('[data-predecessor-name]')||[]){const task=templateDraft.find(item=>item.id===node.dataset.predecessorName);if(task)node.textContent=task.name;}
 }
-function caseTaskDraftMode(){return !!(caseCreationDraft||caseEditorDraft);}
+function caseTaskDraftMode(){return !!(caseCreationDraft||caseEditorDraft||taskEditorDraft);}
+function canEditTaskDraft(id){
+  if(taskEditorDraft)return taskEditorDraft.id===id&&!taskEditBlockReason(db,objectRef(db,'task',id),CURRENT_USER);
+  if(caseEditorDraft&&objectRef(db,'task',id))return !taskEditBlockReason(db,objectRef(db,'task',id),CURRENT_USER);
+  return caseTaskDraftMode()?can('caseEdit'):can('template');
+}
 function editableCaseTaskRow(task){const existing=caseEditorDraft&&objectRef(db,'task',task.id);return !existing||!taskEditBlockReason(db,existing,CURRENT_USER);}
-function draftTaskTable(){return document.getElementById(caseCreationDraft?'caseDraftTasks':caseEditorDraft?'caseEditTasks':'templateDraftTable');}
+function draftTaskTable(){return document.getElementById(caseCreationDraft?'caseDraftTasks':caseEditorDraft?'caseEditTasks':taskEditorDraft?'taskEditTasks':'templateDraftTable');}
 function renderTemplateDraft(readOnly=false){
   closeTaskRequirementEditor(false);
   const creating=caseTaskDraftMode(),editing=!!caseEditorDraft,dependencies=PROTOTYPE_FEATURES.taskDependencies,target=draftTaskTable();
