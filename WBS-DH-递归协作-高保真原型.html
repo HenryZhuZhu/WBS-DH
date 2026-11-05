@@ -846,6 +846,22 @@ body.my-work-view{min-width:0}
 .discussion-heading{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap}
 .discussion-heading h2{margin:0}.discussion-heading-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}
 .discussion-heading-action{margin-left:auto}.discussion-comments-entry .small{margin:10px 0 0}
+.comment-preview{padding-top:12px;min-width:0}
+.comment-preview .discussion-meta{overflow-wrap:anywhere}.comment-preview .discussion-meta>strong{min-width:0;max-width:100%;color:var(--ink);overflow-wrap:anywhere}
+.comment-preview-text{margin:4px 0 0;font-size:13px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.work-attachment-heading{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:2px solid #e8edf5;padding-bottom:10px}
+.work-attachment-heading h2{display:flex;align-items:center;gap:7px;margin:0}.work-attachment-heading h2>svg{width:15px;height:15px;color:#607b9f}
+.work-attachment-upload{margin-left:auto;display:inline-flex;align-items:center;gap:5px;border:0;background:transparent;color:#4b6c9d;font-size:12px;padding:4px 0}
+.work-attachment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}
+.work-attachment-file{min-width:0;display:grid;grid-template-columns:28px minmax(0,1fr);align-items:center;gap:7px 10px;padding:12px 0;border-bottom:1px solid #edf0f5}
+.work-attachment-type{display:grid;place-items:center;width:26px;height:32px;border-radius:4px;background:#eaf1fb;color:#5a7fab;font-size:8px;font-weight:700;overflow:hidden}
+.work-attachment-type.pdf{background:#fbeceb;color:#bc625c}.work-attachment-type.xlsx,.work-attachment-type.xls,.work-attachment-type.csv{background:#e9f4ed;color:#508369}.work-attachment-type.png,.work-attachment-type.jpg,.work-attachment-type.jpeg{background:#f0ebfb;color:#8b6caf}
+.work-attachment-info{min-width:0}.work-attachment-name{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;max-width:100%;padding:0;border:0;border-radius:2px;background:transparent!important;color:#344761;font-size:12px;font-weight:600;line-height:1.55;text-align:left}
+.work-attachment-meta{margin-top:5px;font-size:10px;color:#7d8ba1;overflow-wrap:anywhere}.work-attachment-meta time{display:block;margin-top:1px}
+.work-attachment-actions{grid-column:1/-1;min-width:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.work-attachment-actions>.link{font-size:11px;padding:0}
+.work-attachment-menu{position:relative;margin-left:auto}.work-attachment-menu summary{cursor:pointer;list-style:none;padding:0 3px;color:#7d8ba1;line-height:18px;font-size:16px;letter-spacing:1px}.work-attachment-menu summary::-webkit-details-marker{display:none}.work-attachment-menu button{position:absolute;z-index:3;right:0;top:24px;width:100px;background:#fff;color:#ad5361;font-size:11px;box-shadow:0 4px 14px #25395218}
+.work-attachment-expand{display:block;width:100%;padding:8px 0;margin-top:8px;border:0;background:transparent;color:#4b6c9d;font-size:11px}
+.work-attachment-empty,.work-attachment-note{color:#7d8ba1;font-size:12px;margin:12px 0 0}.work-attachment-preview{max-height:60vh;overflow:auto}.work-attachment-preview pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}.work-attachment-preview img{display:block;max-width:100%;max-height:55vh;margin:auto}.work-attachment-preview iframe{width:100%;height:55vh;border:0}
 .discussion-compose-panel{margin:16px 0;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
 .discussion-compose-panel>summary{padding:12px 14px;cursor:pointer;color:var(--muted);font-size:13px}
 .discussion-compose-panel .discussion-composer{margin:0;padding:0 14px 14px;border:0;background:transparent}
@@ -857,15 +873,35 @@ body.my-work-view{min-width:0}
 .discussion-reply-quote{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .discussion-feed .discussion-reply>.link{flex:none;font-size:12px}
 .discussion-feed{display:grid;gap:14px;margin-top:16px}
-.discussion-feed .discussion-blocker{margin:0;padding:20px;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--surface);font-size:13px}
-.discussion-feed .discussion-blocker.is-resolved{border-left-color:var(--green)}
-.blocker-card-header{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
-.blocker-card-header .tag{font-size:11px}.blocker-card-header .blocker-marker{margin:0}
-.discussion-blocker .blocker-card-problem{margin:14px 0 0;font-size:14px;font-weight:600;line-height:1.75}
-.blocker-card-section{margin-top:16px}.blocker-card-section h3{margin:0;font-size:12px;font-weight:500;line-height:1.5;color:var(--muted)}
-.blocker-card-section p{margin:6px 0 0;line-height:1.75}
-.blocker-card-meta{display:flex;align-items:center;gap:4px 8px;flex-wrap:wrap;margin-top:18px;font-size:12px;line-height:1.7;color:var(--muted)}
-.blocker-card-meta time{white-space:nowrap}.discussion-blocker .discussion-entry-actions{margin-top:12px}
+.discussion-feed.blocker-feed{gap:15px;padding:16px;border-radius:17px;background:#eaf0f6}
+.discussion-feed .discussion-blocker{margin:0;padding:18px;border:0;border-radius:13px;background:#fff;box-shadow:0 3px 12px #3048650a,0 1px 2px #30486508;font-size:14px;overflow-wrap:anywhere;min-width:0}
+.blocker-card-main{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:min-content minmax(0,1fr);column-gap:14px;align-items:start}
+.blocker-card-main>h3{grid-column:1;grid-row:1;justify-self:start}
+.blocker-card-main>h3,.blocker-card-section h3{margin:0;width:max-content;max-width:100%;padding:0;border:0;border-radius:0;background:transparent;color:#64748b;font-size:12px;font-weight:600;line-height:1.6;letter-spacing:.25px;white-space:nowrap}
+.blocker-card-header{grid-column:2;grid-row:1 / span 2;display:grid;justify-items:end;gap:16px;min-width:0}
+.blocker-card-tools{display:flex;align-items:center;gap:10px}.blocker-card-header .tag{font-size:11px;padding:0;background:transparent}.blocker-card-header .blocker-marker{margin:0}
+.blocker-card-header .tag.bad{color:var(--red);background:transparent}.blocker-card-header .tag.good{color:var(--green);background:transparent}
+.blocker-card-pin{display:inline-flex;align-items:center;gap:3px;border:0!important;border-radius:0;padding:1px 0;font-size:11px;line-height:1.8;background:transparent!important;color:#516d94;text-decoration:none!important}
+.blocker-card-pin[aria-pressed=true]{color:#355b91}.blocker-card-pin:hover{color:var(--blue)}.blocker-card-pin svg{width:11px;height:11px}
+.blocker-card-resolve{padding:8px 14px;border:0;border-radius:8px;font-size:12px;line-height:1.7;min-height:38px;background:var(--blue);color:#fff}.blocker-card-resolve:hover{background:#0044b8;color:#fff}
+.discussion-blocker .blocker-card-problem{grid-column:1;grid-row:2;margin:5px 0 0;font-size:17px;font-weight:700;line-height:1.5;white-space:pre-wrap;color:#202e43}
+.blocker-card-section{display:grid;grid-template-columns:60px minmax(0,1fr);gap:14px;align-items:start;margin-top:13px}.blocker-card-section+.blocker-card-section{margin-top:11px}.blocker-card-section h3{margin-top:2px}
+.blocker-card-section p{margin:0;font-size:14px;line-height:1.7;white-space:pre-wrap;color:#33445c}.blocker-card-next h3{color:#526e91}
+.blocker-card-meta{display:flex;align-items:center;gap:4px 12px;flex-wrap:wrap;margin-top:13px;font-size:11px;line-height:1.8;color:var(--muted)}
+.blocker-card-meta time{white-space:nowrap}
+.blocker-effect,.blocker-effect-option{--effect-color:#606c79;--effect-bg:#f0f3f6;--effect-border:#bdc9d3;--effect-selected-bg:#e8edf2;--effect-marker:#8796a5}
+.blocker-effect[data-effect="有效"],.blocker-effect-option[data-effect="有效"]{--effect-color:#207653;--effect-bg:#e7f5ed;--effect-border:#a0d2b8;--effect-selected-bg:#d9eee2;--effect-marker:#2f946b}
+.blocker-effect[data-effect="部分有效"],.blocker-effect-option[data-effect="部分有效"]{--effect-color:#a45107;--effect-bg:#fff3e5;--effect-border:#f2bd86;--effect-selected-bg:#ffe9d2;--effect-marker:#d4721b}
+.blocker-effect{display:inline-flex;align-items:center;font-size:11px;line-height:1.8;padding:2px 9px;border:0;border-radius:999px;color:var(--effect-color);background:var(--effect-bg)}
+.blocker-conclusion{margin-top:13px;padding:11px 13px;background:#f1f5fa;border-radius:9px;min-width:0}.blocker-conclusion-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:6px}.blocker-conclusion h3{margin:0;font-size:12px;font-weight:650;color:#53657d}.blocker-conclusion p,.blocker-flow-conclusion{margin:0;font-size:13px;line-height:1.7;color:#4d5e74;white-space:pre-wrap;overflow-wrap:anywhere}
+.blocker-effect-field{border:0;padding:0;margin:0 0 15px;min-width:0}.blocker-effect-field legend{font-size:12px;color:var(--muted);padding:0;margin-bottom:8px}.blocker-effect-options{display:flex;gap:9px;flex-wrap:wrap}
+.blocker-effect-option{display:flex!important;align-items:center;gap:7px;padding:8px 14px;border:1px solid transparent;border-radius:999px;font-size:12px;font-weight:500;background:var(--effect-bg);color:var(--effect-color);cursor:pointer}
+.blocker-effect-option:has(input:checked){border-color:var(--effect-border);background:var(--effect-selected-bg);box-shadow:0 2px 8px #24324708}.blocker-effect-option:has(input:focus-visible){outline:2px solid var(--effect-marker);outline-offset:3px}
+.blocker-effect-option input{appearance:none;-webkit-appearance:none;display:grid;place-content:center;flex:none;width:15px!important;height:15px;margin:0!important;padding:0;border:1.5px solid var(--effect-marker);border-radius:50%;background:#fff;cursor:pointer;transition:none}.blocker-effect-option input:checked{border-color:var(--effect-marker);background:var(--effect-marker)}
+.blocker-effect-option input:after{content:"";width:4px;height:7px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-1px) rotate(45deg);opacity:0}.blocker-effect-option input:checked:after{opacity:1}.blocker-effect-option input:focus-visible{outline:none}
+.blocker-flow-details{margin-top:6px}.legacy-blocker-flow{margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
+@media(max-width:600px){.discussion-feed.blocker-feed{padding:12px}.discussion-feed .discussion-blocker{padding:15px}.blocker-card-main{grid-template-rows:auto auto auto;row-gap:5px}.blocker-card-header{grid-column:1 / -1;grid-row:1;justify-self:end}.blocker-card-main>h3{grid-column:1 / -1;grid-row:2}.discussion-blocker .blocker-card-problem{grid-column:1 / -1;grid-row:3;margin-top:0}}
+@media(max-width:380px){.discussion-feed.blocker-feed{padding:9px}.discussion-feed .discussion-blocker{padding:13px}}
 .discussion-entry-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:8px}
 .key-update-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.discussion-assignment-history{margin-top:14px;padding-top:10px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.discussion-assignment-history p{margin:8px 0;line-height:1.7}
 .discussion-more{position:relative;font-size:12px}.discussion-more>summary{list-style:none;cursor:pointer;color:var(--muted);padding:2px 6px}
@@ -919,6 +955,9 @@ body.my-work-view{min-width:0}
 .work-detail-page .key-updates>.between{flex-wrap:wrap;gap:6px 16px}
 .work-detail-page .key-update-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .work-detail-page .key-update{padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.key-update-header{display:flex;align-items:flex-start;gap:10px}
+.key-update-header>.discussion-meta{flex:1;min-width:0;overflow-wrap:anywhere}
+.key-update-unpin{flex:none;margin-left:auto;white-space:nowrap}
 .work-detail-page .key-update.is-blocked{border-left:3px solid var(--red)}
 .work-detail-page .key-update.is-blocked .tag{color:var(--red);background:#fff1ed}
 .work-detail-page .key-update.is-resolved{border-left:3px solid var(--green)}
@@ -926,6 +965,12 @@ body.my-work-view{min-width:0}
 .work-detail-page .key-update p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:13px;line-height:1.6;margin:6px 0 0}
 .work-detail-page .key-update .key-update-next{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
 .work-detail-page .key-update-source{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+.inherited-reference-group{margin-top:12px}
+.inherited-reference-heading{display:flex;flex-wrap:wrap;gap:4px 8px;font-size:12px;color:var(--muted)}
+.inherited-reference-heading>.link,.inherited-work-context .link{max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:left}
+.inherited-work-context p{white-space:pre-wrap;overflow-wrap:anywhere}
+.work-editor>section{min-width:0}
+.requirement-file-row .requirement-file-open{display:block;white-space:normal}
 .work-detail-page .detail-inline-note{margin:16px 0 0;color:var(--muted);font-size:12px;line-height:1.7}
 .work-detail-page .detail-inline-note>summary{cursor:pointer;width:fit-content;color:var(--ea-color-label)}
 .work-detail-page .detail-inline-note>p{max-width:760px;margin:8px 0 0}
@@ -936,13 +981,25 @@ body.my-work-view{min-width:0}
 .work-detail-page .case-progress-help>summary{cursor:pointer;white-space:nowrap}
 .work-detail-page .case-progress-help>p{max-width:440px;margin:8px 0 0;white-space:normal;line-height:1.7}
 .work-detail-page .case-work-section h3{margin:0;font-size:14px;font-weight:600}
-.work-detail-page .case-task-heading{margin-top:22px}
 .work-detail-page .case-work-empty{margin:14px 0 0;color:var(--muted);font-size:13px;line-height:1.8}
-.work-detail-page .case-child-list col:first-child{width:36%}
-.work-detail-page .case-child-list col:nth-child(2){width:14%}
-.work-detail-page .case-child-list col:nth-child(3){width:20%}
-.work-detail-page .case-child-list col:nth-child(4),.work-detail-page .case-child-list col:nth-child(5){width:15%}
-.work-detail-page .case-child-list td:first-child{width:auto}
+.work-detail-page .child-work-table{margin-top:12px;margin-left:-32px;width:calc(100% + 32px)}
+.work-detail-page .child-work-table+.child-work-table{margin-top:22px}
+@media(max-width:900px){.work-detail-page .child-work-table{margin-left:-8px;width:calc(100% + 8px)}}
+.work-detail-page .child-work-list{min-width:860px}
+.work-detail-page .child-work-list th,.work-detail-page .child-work-list td{text-align:center;vertical-align:middle;overflow-wrap:anywhere}
+.work-detail-page .child-work-list th:first-child,.work-detail-page .child-work-list td:first-child{padding-left:6px}
+.work-detail-page .child-work-list td:first-child{width:auto}
+.work-detail-page .child-work-list .title-cell>.link{max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:center;justify-content:center}
+.work-detail-page .child-work-list .workspace-child-progress{align-items:center}
+.work-detail-page .child-work-list .child-work-contact{text-align:center}
+.work-detail-page .child-work-list .task-requirement-actions{align-content:center}
+.work-detail-page .child-work-list .task-requirements-cell,.work-detail-page .child-work-list .task-cell-file{text-align:center;justify-content:center}
+.child-work-status,.child-work-date{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.child-work-date{gap:0}
+.child-work-status .blocker-marker,.child-work-status .dependency-wait{margin:0}
+.child-work-contact{display:grid;gap:4px;width:100%;min-width:0;min-height:36px;height:auto;padding:0;border:0;background:transparent;text-align:left;white-space:normal}
+.child-work-contact>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.child-work-contact .task-contact-note{font-size:12px;color:var(--muted)}
 .work-detail-page .task-blocker-shortcut{border:0;background:transparent;padding:0;min-height:0;margin:0;font-size:12px}
 .work-detail-page :is(#caseHistory,#taskHistory) .history-item{font-size:13px;line-height:1.75;overflow-wrap:anywhere}
 .work-detail-page :is(#caseHistory,#taskHistory) .history-item small{font-size:12px}
@@ -1046,9 +1103,12 @@ body.my-work-view{min-width:0}
 .workspace-status-metrics .metric[aria-pressed=true]{background:#f2f6ff;border-color:var(--blue);box-shadow:0 0 0 1px #0052d911}.workspace-status-metrics .number{font-size:28px}.workspace-status-metrics small{font-size:12px;margin-left:5px;font-weight:400}
 .workspace-create{position:relative;flex:none}.workspace-create .suggestions-menu{position:fixed;right:auto;left:auto;min-width:230px;max-width:calc(100vw - 32px)}.workspace-create .suggestions-menu button{display:block;width:100%;text-align:left}.workspace-create .suggestions-menu small{display:block;color:var(--muted);margin-top:3px}
 .case-create-batch{border:1px solid var(--line);border-radius:8px;padding:14px;margin-top:16px}.case-create-batch>summary{cursor:pointer;font-weight:550}.case-create-batch[open]>summary{margin-bottom:16px}.nested-create section{margin-top:20px}.nested-parent-context{padding:14px;background:#f8fafc;border:1px solid var(--line);border-radius:8px;margin:12px 0;overflow-wrap:anywhere}.nested-reference-list{display:grid;gap:8px}.nested-reference-list .row{justify-content:space-between}
-.batch-work-row{border:1px solid var(--line);border-radius:8px;padding:16px;margin:12px 0}.batch-work-row>.fields{grid-template-columns:100px minmax(0,2fr) minmax(100px,1fr) minmax(135px,1fr) minmax(135px,1fr)}.batch-work-row>details{margin-top:12px}.batch-work-row summary{cursor:pointer}.batch-work-row .module-title-actions{margin-bottom:12px}.batch-work-review{background:#f0f5ff;border-radius:8px;padding:14px;margin-top:16px}.batch-work-row [data-batch-field=name]{min-width:0}.batch-work-row textarea{min-height:72px}.workspace-create .suggestions-menu button{height:auto;min-height:44px;padding:8px 12px}
-@media(max-width:900px){.batch-work-row>.fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:700px){.batch-work-row>.fields{grid-template-columns:1fr}}
+.nested-create>section:first-of-type{margin-top:0}.nested-create .nested-basic-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.nested-basic-fields>.field{min-width:0}.nested-basic-fields input,.nested-basic-fields select{width:100%;min-width:0}
+@media(max-width:380px){.nested-basic-fields input[type=date]{font-size:11px;padding:0 4px}}
+.modal:has(.batch-work) .modal-head{justify-content:flex-end}
+.modal:has(.batch-work) .modal-head h2{display:none}
+.batch-work-row{border:1px solid var(--line);border-radius:8px;padding:16px;margin:12px 0;min-width:0}.batch-work-fields-scroll{overflow-x:auto;overscroll-behavior-x:contain}.batch-work-row .batch-work-heading{grid-template-columns:80px minmax(140px,1fr) 96px 136px 136px 52px;gap:8px;min-width:680px;align-items:end}.batch-work-heading>.field{min-width:0}.batch-work-heading input,.batch-work-heading select{width:100%;min-width:0;padding-inline:8px}.batch-work-heading>button{padding-inline:8px}.batch-work-row>details{margin-top:12px}.batch-work-row summary{cursor:pointer}.batch-work-row textarea{min-height:72px}.workspace-create .suggestions-menu button{height:auto;min-height:44px;padding:8px 12px}
+@media(max-width:400px){.batch-work-row{padding:10px}}
 @media(max-width:700px){.my-work-page .work-toolbar .search{min-width:0}.my-work-page #workDueSort{max-width:100%;height:auto;min-height:36px;white-space:normal}}
 .my-work-page #workDueSort{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex-shrink:0}
 .my-work-page #workDueSort>svg{width:16px;height:16px;flex:none}
@@ -1288,6 +1348,9 @@ function caseAncestors(state,id){
   while(item){check(!seen.has(item.id),'Case层级存在循环');seen.add(item.id);result.push(item);if(!item.parentCaseId)break;item=findCase(state,item.parentCaseId);check(item,'父Case不存在');}
   return result;
 }
+function caseBackgroundSource(state,id){
+  return caseAncestors(state,id).find(item=>String(item.background||'').trim());
+}
 function caseBranch(state,id){return state.cases.filter(item=>caseAncestors(state,item.id).some(parent=>parent.id===id));}
 function effectiveCaseChildren(state,id){return [...childCases(state,id).filter(item=>item.status!=='terminated'),...effectiveCaseTasks(state,id)];}
 function caseLocked(state,item){return !item||caseAncestors(state,item.id).some(parent=>parent.status!=='active')||findProject(state,item.project)?.status==='done';}
@@ -1322,41 +1385,33 @@ function publishDiscussion(state,kind,id,values,actor){
   const replyTo=values.replyTo||'';
   check(!replyTo||(state.discussions||[]).some(entry=>entry.id===replyTo&&entry.kind===kind&&entry.object===id),'回复的交流不存在');
   const entry={id:makeId('discussion'),kind,object:id,actor,text,type:values.type,week,important,blocker,nextStep:blocker?String(values.nextStep).trim():'',...(blocker?{approach:String(values.approach||'').trim()}:{}),replyTo,at:new Date().toISOString()};
-  (state.discussions||(state.discussions=[])).push(entry);logEvent(state,item,blocker?'登记阻塞':important?'发布重要评论':'发布'+(values.type==='progress'?'周进展':'评论'),actor);
+  (state.discussions||(state.discussions=[])).push(entry);logEvent(state,item,blocker?'登记阻塞：'+entry.text:important?'发布重要评论':'发布'+(values.type==='progress'?'周进展':'评论'),actor,blocker?{action:'blocker-create',blockerId:entry.id,timestamp:entry.at}:undefined);
   const recipients=[item.owner,...PEOPLE.filter(person=>text.includes('@'+person))];
   if(important||blocker){const instance=kind==='case'?item:taskCase(state,item);recipients.push(...caseAncestors(state,instance.id).map(parent=>parent.owner));}
   notify(state,kind,item,(blocker?'工作阻塞':important?'重要更新':'交流更新')+' · '+item.name,recipients.filter(person=>person!==actor),'discussion:'+entry.id);
   return entry;
 }
+const BLOCKER_EFFECTS=['有效','部分有效','无效'];
 function createWorkBlocker(state,kind,id,values,actor){
   const item=requireDiscussionWrite(state,kind,id,actor);
   const text=String(values.text||'').trim(),approach=String(values.approach||'').trim(),nextStep=String(values.nextStep||'').trim();
-  check(text&&text.length<=2000,'请填写2000字以内的阻塞问题');
-  check(approach&&approach.length<=1000,'请填写1000字以内的解决思路');
-  check(nextStep&&nextStep.length<=1000,'请填写1000字以内的下一步方案');
-  const followUpOwner=values.followUpOwner===undefined?item.owner:values.followUpOwner;
-  check(blockerFollowUpCandidates(state,kind,item).includes(followUpOwner),'请选择有效的处理人');
+  check(text&&text.length<=2000,'请填写2000字以内的问题描述');
+  check(approach&&approach.length<=1000,'请填写1000字以内的思路');
+  check(nextStep&&nextStep.length<=1000,'请填写1000字以内的解决方案');
   const pins=keyUpdateSelection(state,kind,item).map(entry=>entry.id);
   const entry=publishDiscussion(state,kind,id,{text,approach,nextStep,type:'comment',blocker:true},actor);
-  Object.assign(entry,{followUpOwner,followUpHistory:[]});item.keyUpdatePins=pins;
-  notify(state,kind,item,'阻塞待跟进 · '+item.name,[followUpOwner].filter(person=>person!==actor),'blocker-follow-up:'+entry.id);
+  item.keyUpdatePins=pins;
+  notify(state,kind,item,'阻塞待处理 · '+item.name,[item.owner].filter(person=>person!==actor),'blocker-follow-up:'+entry.id);
   return entry;
 }
-function blockerFollowUpOwner(entry,item){return entry.followUpOwner||item.owner;}
+function blockerFollowUpOwner(entry,item){return item.owner;}
 function blockerFollowUpCandidates(state,kind,item){
   const project=projectOf(state,kind,item);
   return PEOPLE.filter(person=>!isAssignmentExempt(state,person)&&visibleTo(state,person,project?'project':kind,project||item));
 }
 function canResolveWorkBlocker(state,entry,item,actor){return canPromoteDiscussion(state,entry.kind,item,actor)||blockerFollowUpOwner(entry,item)===actor;}
 function reassignWorkBlocker(state,id,person,actor){
-  const entry=(state.discussions||[]).find(record=>record.id===id);check(entry?.blocker&&!entry.resolvedAt,'阻塞不存在或已解决');
-  const item=requireDiscussionWrite(state,entry.kind,entry.object,actor);
-  check(canPromoteDiscussion(state,entry.kind,item,actor),'仅当前或上级负责人可更换处理人');
-  check(blockerFollowUpCandidates(state,entry.kind,item).includes(person),'请选择有效的处理人');
-  const from=blockerFollowUpOwner(entry,item);check(from!==person,'请选择不同的处理人');
-  entry.followUpOwner=person;(entry.followUpHistory||(entry.followUpHistory=[])).push({from,to:person,actor,at:new Date().toISOString()});
-  logEvent(state,item,`更换阻塞处理人：${from} → ${person}`,actor);
-  notify(state,entry.kind,item,'阻塞处理人已调整 · '+item.name,[from,person].filter(target=>target!==actor),'blocker-follow-up:'+entry.id+':'+entry.followUpHistory.length);
+  check(false,'阻塞由工作Owner统一处理，不再单独更换处理人');
 }
 function publishComment(state,kind,id,values,actor){
   const replyTo=values.replyTo||'';
@@ -1390,23 +1445,26 @@ function promoteDiscussion(state,id,actor,replaceId='',viewKind='',viewId=''){
   item.keyUpdatePins=next.map(record=>record.id);
   logEvent(state,item,(pinned?'取消置顶':'置顶到关键信息')+'：'+entry.text+(replaceId?'（替换：'+selected.find(record=>record.id===replaceId).text+'）':''),actor);
 }
-function resolveDiscussionBlocker(state,id,resolution,actor){
+function resolveDiscussionBlocker(state,id,values,actor){
   const entry=(state.discussions||[]).find(record=>record.id===id);check(entry?.blocker&&!entry.resolvedAt,'阻塞不存在或已解决');
-  const item=requireDiscussionWrite(state,entry.kind,entry.object,actor);check(canResolveWorkBlocker(state,entry,item,actor),'仅处理人、当前或上级负责人可解决阻塞');
-  const note=String(resolution||'').trim();check(note&&note.length<=1000,'请填写解决说明（1000字以内）');
-  Object.assign(entry,{resolvedAt:new Date().toISOString(),resolvedBy:actor,resolution:note});logEvent(state,item,'解决阻塞：'+note,actor);notifyReadyWork(state);
+  const item=requireDiscussionWrite(state,entry.kind,entry.object,actor);check(canResolveWorkBlocker(state,entry,item,actor),'仅当前Owner或上级负责人可解决阻塞');
+  check(BLOCKER_EFFECTS.includes(values?.effect),'请选择方案效果');
+  const note=String(values?.conclusion||'').trim();check(note&&note.length<=1000,'请填写1000字以内的结论');
+  Object.assign(entry,{resolvedAt:new Date().toISOString(),resolvedBy:actor,resolution:note,effect:values.effect});
+  logEvent(state,item,'解决阻塞：'+entry.text,actor,{action:'blocker-resolve',blockerId:entry.id,timestamp:entry.resolvedAt,effect:entry.effect,resolution:note});notifyReadyWork(state);
 }
 function createNestedWork(state,parentId,kind,values,actor){
   const parent=requireCaseOwnerEdit(state,parentId,actor);check(['case','task'].includes(kind),'工作类型无效');
   const name=String(values.name||'').trim(),goal=String(values.goal||'').trim(),standard=String(values.completionStandard||'').trim(),background=String(values.background||'').trim();
-  check(name&&name.length<=80&&goal&&goal.length<=1000&&standard&&standard.length<=1000&&background.length<=1000&&(kind==='task'||background),'请填写'+(kind==='case'?'subCase名称、背景、交付目标和完成标准':'Task名称、交付目标和完成标准'));
+  check(name&&name.length<=80&&goal&&goal.length<=1000&&standard&&standard.length<=1000&&background.length<=1000,'请填写'+(kind==='case'?'subCase名称、交付目标和完成标准':'Task名称、交付目标和完成标准')+'（名称80字以内，要求1000字以内）');
   const contactPerson=contactPersonName(values.contactPerson),contactNote=String(values.contactNote||'').trim(),requirementFiles=values.requirementFiles===undefined?[]:clone(values.requirementFiles);
+  validateRequirementFiles(requirementFiles);
   if(kind==='task'){check(contactPerson.length<=100&&contactNote.length<=500,'对接人不能超过100字，对接说明不能超过500字');validateDeliveryStandard({goal,completionStandard:standard,requirementFiles});}
   check(validDate(values.start)&&validDate(values.due)&&values.start<=values.due&&values.start>=parent.start&&values.due<=parent.due,'下属工作的日期须在父Case范围内');
   requireAssignmentTarget(state,actor,kind,kind==='case'?{parentCaseId:parentId}:{caseId:parentId},values.owner,true);
   const item={id:makeId(kind),name,goal,background,completionStandard:standard,owner:values.owner,start:values.start,due:values.due,status:'active',history:[]};
   if(kind==='case'){
-    Object.assign(item,{parentCaseId:parentId,project:parent.project,createdBy:actor,initialOwner:values.owner,templateId:'',templateVersion:null});
+    Object.assign(item,{parentCaseId:parentId,project:parent.project,createdBy:actor,initialOwner:values.owner,templateId:'',templateVersion:null,requirementFiles});
     state.cases.push(item);
     dispatchCase(state,item,actor);
   }else{
@@ -1424,6 +1482,46 @@ function appendTaskMaterials(state,id,files,actor,expectedFiles){
   check(all.reduce((sum,file)=>sum+file.size,0)<=2*1024*1024,'每Task交付材料合计不能超过2MB');
   task.files.push(...files.map(file=>({...clone(file),uploadedBy:actor,uploadedAt:new Date().toISOString()})));
   logEvent(state,task,'上传交付材料：'+files.map(file=>file.name).join('、'),actor);return task;
+}
+function attachmentKey(file){return JSON.stringify([String(file.name||'').trim().toLowerCase(),file.size,file.data]);}
+function workAttachments(item){
+  const files=new Map();
+  for(const file of [...(item.requirementFiles||[]),...(item.files||[])]){
+    const key=attachmentKey(file),previous=files.get(key);
+    files.set(key,previous?{...previous,...file,uploadedBy:file.uploadedBy||previous.uploadedBy,uploadedAt:file.uploadedAt||previous.uploadedAt}:file);
+  }
+  return [...files.values()];
+}
+function partitionTaskAttachments(task,files){
+  const referenceKeys=new Set((task.requirementFiles||[]).map(attachmentKey)),materialKeys=new Set((task.files||[]).map(attachmentKey));
+  const requirementFiles=[],materials=[];
+  for(const file of files)(referenceKeys.has(attachmentKey(file))&&!materialKeys.has(attachmentKey(file))?requirementFiles:materials).push(clone(file));
+  return {requirementFiles,files:materials};
+}
+function validateWorkAttachmentFiles(files){
+  check(Array.isArray(files)&&files.every(file=>file&&typeof file.name==='string'&&file.name.trim()&&typeof file.data==='string'&&/^data:[^,]*,/.test(file.data)&&Number.isInteger(file.size)&&file.size>=0&&file.size<=750*1024),'附件无效，单份不能超过750 KB');
+  check(files.reduce((sum,file)=>sum+file.size,0)<=2*1024*1024,'附件合计不能超过2 MB');
+}
+function workAttachmentEditReason(state,kind,item,actor){
+  return kind==='task'?taskEditBlockReason(state,item,actor):kind==='case'?caseEditBlockReason(state,item,actor):'此页面不支持管理附件';
+}
+function appendWorkAttachments(state,kind,id,files,actor,expectedFiles){
+  const item=objectRef(state,kind,id),reason=workAttachmentEditReason(state,kind,item,actor);check(!reason,reason);
+  const current=workAttachments(item);check(JSON.stringify(current)===expectedFiles,'附件列表已变化，请重新上传');
+  check(Array.isArray(files)&&files.length&&files.every(file=>file&&isRequirementFileName(file.name)&&typeof file.data==='string'&&/^data:[^,]*;base64,/.test(file.data)&&Number.isInteger(file.size)&&file.size>=0&&file.size<=750*1024),'附件无效，请使用PPT、Word、Excel、CSV、PDF、文本或图片，单份不能超过750KB');
+  const names=new Set(current.map(file=>file.name.trim().toLowerCase()));
+  for(const file of files){const name=file.name.trim().toLowerCase();check(!names.has(name),'存在同名附件，请重命名后再上传，不会覆盖原文件');names.add(name);}
+  check([...current,...files].reduce((sum,file)=>sum+file.size,0)<=2*1024*1024,'当前工作附件合计不能超过2MB');
+  const added=files.map(file=>({...clone(file),uploadedBy:actor,uploadedAt:new Date().toISOString()})),field=kind==='task'?'files':'requirementFiles';
+  item[field]=[...(item[field]||[]),...added];
+  logEvent(state,item,'上传附件：'+files.map(file=>file.name).join('、'),actor);
+  return item;
+}
+function removeWorkAttachment(state,kind,id,key,actor){
+  const item=objectRef(state,kind,id),reason=workAttachmentEditReason(state,kind,item,actor);check(!reason,reason);
+  const file=workAttachments(item).find(file=>attachmentKey(file)===key);check(file,'附件不存在或已被移除');
+  for(const field of ['requirementFiles','files'])if(Array.isArray(item[field]))item[field]=item[field].filter(file=>attachmentKey(file)!==key);
+  logEvent(state,item,'移除附件：'+file.name,actor);return item;
 }
 function closeDiscussionBlockers(state,kind,item,note,actor){
   for(const entry of state.discussions||[])if(entry.kind===kind&&entry.object===item.id&&entry.blocker&&!entry.resolvedAt)Object.assign(entry,{resolvedAt:new Date().toISOString(),resolvedBy:actor,resolution:note});
@@ -1453,13 +1551,13 @@ function visibleTo(state,actor,kind,item){
   if(kind==='task'||kind==='case'){
     const instance=kind==='case'?item:taskCase(state,item);if(!instance)return false;
     const root=caseAncestors(state,instance.id).at(-1),branch=caseBranch(state,root.id),ids=new Set(branch.map(parent=>parent.id));
-    return branch.some(parent=>parent.owner===actor||parent.createdBy===actor)||(state.assignments||[]).some(record=>ids.has(record.object)&&(record.actor===actor||record.to===actor))||state.tasks.some(task=>ids.has(task.caseId)&&(task.owner===actor||taskAssignedBy(state,task,actor)))||(state.discussions||[]).some(entry=>entry.blocker&&entry.followUpOwner===actor&&ids.has(entry.kind==='case'?entry.object:taskCase(state,objectRef(state,'task',entry.object)||{})?.id));
+    return branch.some(parent=>parent.owner===actor||parent.createdBy===actor)||(state.assignments||[]).some(record=>ids.has(record.object)&&(record.actor===actor||record.to===actor))||state.tasks.some(task=>ids.has(task.caseId)&&(task.owner===actor||taskAssignedBy(state,task,actor)));
   }
   return state.cases.filter(child=>child.project===item.id).some(child=>visibleTo(state,actor,'case',child));
 }
 function requirePermission(state,actor,permission) {check(state.permissions[state.userRoles[actor]]?.[permission], '当前人员没有此操作权限');}
-function logEvent(state,item,text,actor=CURRENT_USER) {
-  const record={id:makeId('ev'),at:state.today,actor,object:item?.id||'',text};state.events.unshift(record);
+function logEvent(state,item,text,actor=CURRENT_USER,details) {
+  const record={...details,id:makeId('ev'),at:state.today,actor,object:item?.id||'',text};state.events.unshift(record);
   if(item?.history){item.history.unshift(clone(record));item.updatedAt=new Date().toISOString();}return record;
 }
 function validateCaseProjectDates(state,values,projectId=values.project||''){
@@ -1490,7 +1588,8 @@ function missingCompletionFields(state,kind,item){
   if(!validDate(item?.start))fields.push('开始日期');
   if(!validDate(item?.due))fields.push('完成日期');
   if(kind==='case'){
-    requireText('背景',item?.background);requireText('交付目标',item?.goal);requireText('完成标准',item?.completionStandard);
+    if(!item?.parentCaseId)requireText('背景',item?.background);
+    requireText('交付目标',item?.goal);requireText('完成标准',item?.completionStandard);
     if(!item?.project)fields.push('所属Project');
   }else if(kind==='task'){
     requireText('交付目标',item?.goal);requireText('完成标准',item?.completionStandard);
@@ -1506,6 +1605,7 @@ function recordDeliveryChange(state,item,text,actor,before,after){
   const snapshot=value=>value&&Object.hasOwn(value,'requirementFiles')?{...clone(value),requirementFiles:(value.requirementFiles||[]).map(({data,...metadata})=>metadata)}:clone(value);
   Object.assign(record,{action:'delivery-change',timestamp:new Date().toISOString(),before:snapshot(before),after:snapshot(after)});
   Object.assign(item.history[0],clone(record));
+  return record;
 }
 function canEditCaseEquipment(state,instance,actor){
   return PROTOTYPE_FEATURES.equipmentWbs&&!!(instance&&state.permissions[state.userRoles[actor]]?.caseEdit&&visibleTo(state,actor,'case',instance)&&!caseLocked(state,instance));
@@ -2132,16 +2232,19 @@ function readyForCompletion(state,kind,item){
   const children=kind==='case'?effectiveCaseChildren(state,item.id):state.cases.filter(child=>!child.parentCaseId&&child.project===item.id&&child.status!=='terminated');
   return (children.length>0||kind==='case')&&children.every(child=>child.status==='done')&&!hasOpenBlocker(item)&&!((state.discussions||[]).some(entry=>entry.blocker&&!entry.resolvedAt&&branchContains(state,kind,item,entry.kind,entry.object)));
 }
-function completeParent(state,kind,id,actor,note){
+function completeParent(state,kind,id,actor,note,files=undefined){
   check(['case','project'].includes(kind),'对象类型无效');const item=objectRef(state,kind,id);check(item&&item.owner===actor,'仅本对象负责人可确认完成');
+  check(kind==='case'||files===undefined,'Project不支持独立附件');
   check(readyForCompletion(state,kind,item),'需先完成全部下属工作，且不能重复完成');
   requireCompletionFields(state,kind,item);
   if(kind==='case')validateCaseProjectDates(state,item,item.project);
   else validateProjectCasesDates(state,item.id,item.start,item.due);
   const noteLabel=kind==='case'?'完成结果说明':'整体完成说明';
   check(typeof note==='string','请填写'+noteLabel);const completionNote=note.trim();check(completionNote&&completionNote.length<=1000,'请填写'+noteLabel+'（1000字以内）');
+  if(kind==='case'&&files!==undefined)validateRequirementFiles(files);
+  if(kind==='case'&&files!==undefined){item.requirementFiles=clone(files);if(Array.isArray(item.files))item.files=[];}
   closeWorkMessages(state,kind,item);Object.assign(item,{status:'done',completedAt:state.today,completedBy:actor,completionNote});
-  const record=logEvent(state,item,'负责人确认整体完成：'+completionNote,actor);Object.assign(record,{action:'completion',completionNote});Object.assign(item.history[0],clone(record));notifyReadyWork(state);
+  const record=logEvent(state,item,'负责人确认整体完成：'+completionNote,actor);Object.assign(record,{action:'completion',completionNote,...(kind==='case'&&files!==undefined?{files:files.map(({data,...metadata})=>metadata)}:{})});Object.assign(item.history[0],clone(record));notifyReadyWork(state);
 }
 
 
@@ -2365,15 +2468,21 @@ function editCase(state,id,values,actor,dueReason='',projectId=undefined){
     const outside=caseTasks(state,id).filter(task=>task.start<values.start||task.due>values.due);
     check(!outside.length,'请先调整超出新日期范围的Task：'+outside.map(task=>task.name).join('、'));
   }
-  const name=String(values.name||'').trim(),background=String(Object.hasOwn(values,'background')?values.background:item.background||'').trim(),goal=String(values.goal||'').trim(),completionStandard=String(Object.hasOwn(values,'completionStandard')?values.completionStandard:item.completionStandard||'').trim();
-  check(name&&name.length<=80,'请填写80字以内的Case名称');check(!Object.hasOwn(values,'background')||background&&background.length<=1000,'请填写1000字以内的背景');check(goal&&goal.length<=1000,'请填写1000字以内的交付目标');check(!Object.hasOwn(values,'completionStandard')||completionStandard&&completionStandard.length<=1000,'请填写1000字以内的完成标准');check(PEOPLE.includes(values.owner),'请选择有效的负责人');check(validDate(values.start)&&validDate(values.due)&&values.due>=values.start,'请填写有效的起止日期');
+  const name=String(values.name||'').trim(),background=Object.hasOwn(values,'background')?String(values.background||'').trim():String(item.background||''),goal=String(values.goal||'').trim(),completionStandard=String(Object.hasOwn(values,'completionStandard')?values.completionStandard:item.completionStandard||'').trim();
+  check(name&&name.length<=80,'请填写80字以内的Case名称');check(!Object.hasOwn(values,'background')||(item.parentCaseId||background)&&background.length<=1000,'请填写1000字以内的背景');check(goal&&goal.length<=1000,'请填写1000字以内的交付目标');check(!Object.hasOwn(values,'completionStandard')||completionStandard&&completionStandard.length<=1000,'请填写1000字以内的完成标准');check(PEOPLE.includes(values.owner),'请选择有效的负责人');check(validDate(values.start)&&validDate(values.due)&&values.due>=values.start,'请填写有效的起止日期');
+  const references=Object.hasOwn(values,'requirementFiles')?clone(values.requirementFiles):item.requirementFiles;
+  validateRequirementFiles(references);
+  const referencesChanged=Object.hasOwn(values,'requirementFiles')&&JSON.stringify(references)!==JSON.stringify(item.requirementFiles||[]);
+  const previousDefinition={name:item.name,owner:item.owner,start:item.start,due:item.due,background:item.background||'',goal:item.goal,completionStandard:item.completionStandard||'',requirementFiles:clone(item.requirementFiles||[])};
   validateCaseProjectDates(state,values,projectId===undefined?item.project:projectId);
   validateNestedDates(state,item,values,projectId===undefined?item.project:projectId);
   const dateReason=dueDateChangeReason(item,values.due,dueReason),previousDue=item.due;
   const old=item.owner,before=assignmentSnapshot(state,'case',item),adminEdit=old!==actor&&state.userRoles[actor]==='leader';if(old!==values.owner)requireAssignmentTarget(state,actor,'case',item,values.owner);
   preserveRejectionHistory(state,'case',item,actor);
   Object.assign(item,{name,background,goal,completionStandard,owner:values.owner,start:values.start,due:values.due});
-  const event=logEvent(state,item,(adminEdit?'超级管理员代编辑':'修改')+'Case基础信息与日期',actor);
+  if(Object.hasOwn(values,'requirementFiles')){item.requirementFiles=references;if(Array.isArray(item.files))item.files=[];}
+  const event=referencesChanged?recordDeliveryChange(state,item,(adminEdit?'超级管理员代编辑':'修改')+'Case要求与附件',actor,previousDefinition,{name,owner:item.owner,start:item.start,due:item.due,background,goal,completionStandard,requirementFiles:references}):logEvent(state,item,(adminEdit?'超级管理员代编辑':'修改')+'Case基础信息与日期',actor);
+  if(referencesChanged){event.kind='case';item.history[0].kind='case';}
   recordDueDateChange(state,item,previousDue,item.due,dateReason,actor);
   if(adminEdit&&!(old!==item.owner&&before.status==='active'))notify(state,'case',item,'Case由超级管理员更新 · '+item.name,[old],'admin-edit:case:'+item.id+':'+event.id);
   if(old!==item.owner){dispatchOwnerChange(state,'case',item,actor);recordAssignment(state,'case',item,actor,old,values.assignmentReason||'调整Case负责人','edit',before);if(before.status!=='active')notifyReadyWork(state);}
@@ -2524,6 +2633,7 @@ const iconPaths={grid:'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z',fo
 iconPaths.tree='M4 4h6v5H4ZM14 3h6v5h-6ZM14 16h6v5h-6ZM10 6h2v13h2M12 5h2';
 iconPaths.sort='M8 20V4 M4 8l4-4 4 4 M16 4v16 M12 16l4 4 4-4';
 iconPaths.sortAscending='M7 20V4 M3 8l4-4 4 4 M14 6h7 M14 12h5 M14 18h3';
+iconPaths.pin='m16 3 5 5-4 1-3 5-4-4 5-3 1-4M3 21l7-7';
 const icon=name=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${iconPaths[name]||iconPaths.task}"/></svg>`;
 const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const statusLabels={ready:'待接受',active:'进行中',done:'已完成',terminated:'已终止',rejected:'已拒绝'};
@@ -2999,8 +3109,9 @@ function setListCenterTab(value){if(!['cases','gantt'].includes(value)||ui.page=
 function listCenterTabs(active){return `<div class="tabs workspace-tabs" role="group" aria-label="Case中心视图"><button class="${active==='cases'?'active':''}" aria-pressed="${active==='cases'}" onclick="setListCenterTab('cases')">Case总览</button><button class="${active==='gantt'?'active':''}" aria-pressed="${active==='gantt'}" onclick="setListCenterTab('gantt')">Task清单</button></div>`;}
 function caseViewSwitch(){return `<div class="case-view-switch" role="group" aria-label="工作展示方式">${[['list','folder','列表'],['gantt','gantt','甘特图'],['tree','tree','树结构']].map(([key,glyph,label])=>`<button class="${ui.caseView===key?'active':''}" aria-pressed="${ui.caseView===key}" data-case-view="${key}" onclick="setCaseView('${key}')">${icon(glyph)} ${label}</button>`).join('')}</div>`;}
 function workspaceCreateControl(parentId=''){
-  const choices=[...(!parentId?[['case','新建 Case','仅创建顶层 Case']]:[]),['subCase','新建 subCase','归属 Case 或 subCase'],['task','新建 Task','执行任务'],['batch','批量新增下属工作','同一上级，混合新增 subCase 与 Task'],...(!parentId?[['template','从模板创建','复用模板，一次配置 Case 与 Task']]:[])];
-  return `<div class="workspace-create" onfocusout="if(!this.contains(event.relatedTarget))closeWorkspaceCreateMenu()"><button id="workspaceCreateButton" type="button" class="${parentId?'':'primary'}" ${can('caseEdit')?'':'disabled'} aria-expanded="false" aria-controls="workspaceCreateMenu" onclick="workspaceCreateModal('${parentId}')">${icon('plus')} ${parentId?'新增下级':'新建'}</button><div class="suggestions-menu" id="workspaceCreateMenu" role="group" aria-label="${parentId?'新增下级方式':'新建对象'}" hidden>${choices.map(([kind,label,hint])=>`<button type="button" onclick="startWorkspaceCreate('${kind}'${parentId?`,'${parentId}'`:''})">${label}<small>${hint}</small></button>`).join('')}</div></div>`;
+  if(parentId)return `<div class="workspace-create"><button id="workspaceCreateButton" type="button" ${can('caseEdit')?'':'disabled'} onclick="workspaceCreateModal('${parentId}')">${icon('plus')} 新增下级</button></div>`;
+  const choices=[['case','新建 Case','仅创建顶层 Case'],['subCase','新建 subCase','归属 Case 或 subCase'],['task','新建 Task','执行任务'],['batch','批量新增下属工作','同一上级，混合新增 subCase 与 Task'],['template','从模板创建','复用模板，一次配置 Case 与 Task']];
+  return `<div class="workspace-create" onfocusout="if(!this.contains(event.relatedTarget))closeWorkspaceCreateMenu()"><button id="workspaceCreateButton" type="button" class="primary" ${can('caseEdit')?'':'disabled'} aria-expanded="false" aria-controls="workspaceCreateMenu" onclick="workspaceCreateModal()">${icon('plus')} 新建</button><div class="suggestions-menu" id="workspaceCreateMenu" role="group" aria-label="新建对象" hidden>${choices.map(([kind,label,hint])=>`<button type="button" onclick="startWorkspaceCreate('${kind}')">${label}<small>${hint}</small></button>`).join('')}</div></div>`;
 }
 function caseWorkspaceHead(){return pageHead('Case中心','',`<button onclick="openTemplates()">${icon('template')} Case模版库</button>${PROTOTYPE_FEATURES.caseHistory?`<button onclick="openCaseHistory()">${icon('clock')} Case历史</button>`:''}`,'','','',workspaceCreateControl());}
 const caseMetricLabels={all:'Case 总数',ready:'待接受 Case',active:'进行中 Case',done:'已完成 Case',rejected:'已拒绝 Case',overdue:'超期 Case',terminated:'已终止 Case'};
@@ -3392,7 +3503,7 @@ function setCaseTree(id){
 }
 function workspaceCreateModal(parentId=''){
   if(!can('caseEdit'))return toast('没有新增工作权限');
-  if(parentId){try{requireCaseOwnerEdit(db,parentId,CURRENT_USER);}catch(error){return toast(error.message);}}
+  if(parentId)return newBatchWorkModal(parentId,false);
   const menu=document.getElementById('workspaceCreateMenu');
   menu.hidden=menu.hidden===false;document.getElementById('workspaceCreateButton')?.setAttribute('aria-expanded',String(!menu.hidden));
   if(!menu.hidden)positionAnchoredPopover(menu,document.getElementById('workspaceCreateButton'));
@@ -3477,9 +3588,6 @@ function setCaseGraphDirection(direction){if(!['horizontal','vertical'].includes
 function toggleCaseGraphFullscreen(){if(ui.caseGraph.fullscreen)return exitCaseGraphFullscreen();const workspace=document.querySelector('#caseGraphWorkspace');if(!workspace)return toast('请先打开树结构');const dialog=document.getElementById('caseGraphFullscreen');ui.caseGraph.fullscreen=true;dialog.appendChild(workspace);dialog.appendChild(document.getElementById('modalRoot'));dialog.showModal();syncCaseGraphFullscreenButton();}
 function syncCaseGraphFullscreenButton(){const button=document.getElementById('workspaceGraphFullscreenButton');if(!button)return;const label=ui.caseGraph.fullscreen?'退出全屏':'全屏查看树结构';button.title=label;button.setAttribute('aria-label',label);button.innerHTML=caseGraphFullscreenIcon();}
 function exitCaseGraphFullscreen(restoreFocus=true){const dialog=document.getElementById('caseGraphFullscreen'),workspace=document.querySelector('#caseGraphWorkspace'),host=document.querySelector('.case-workspace>.panel');if(workspace&&host)host.appendChild(workspace);document.body.appendChild(document.getElementById('modalRoot'));ui.caseGraph.fullscreen=false;if(dialog.open)dialog.close();syncCaseGraphFullscreenButton();if(restoreFocus)document.getElementById('workspaceGraphFullscreenButton')?.focus({preventScroll:true});}
-function caseCompletionStrip(item,tasks){
-  return `<div class="case-task-progress" id="caseCompletion"><details class="case-progress-help" id="caseProgressHelp"><summary>${caseDetailProgressText(item)}</summary><p>分类展示有效直属subCase与Task的完成数量，不代表工作量，不重复累计后代；已终止Case、已拒绝或已终止Task不计入。没有下属工作不会自动完成，仍需Owner填写结果或结论。</p></details></div>`;
-}
 function caseDetailProgressText(item){
   const groups=caseDirectCompletionGroups(item);
   return groups.length?groups.map(group=>`${group.label} ${group.done}/${group.total} 已完成`).join(' · '):childCases(db,item.id).length||caseTasks(db,item.id).length?'暂无有效下属工作':'暂无下属工作';
@@ -3487,7 +3595,19 @@ function caseDetailProgressText(item){
 function caseWorkSection(item,tasks){
   const children=childCases(db,item.id),actions=canManageBranch(db,item,CURRENT_USER)?`<div class="case-child-actions">${workspaceCreateControl(item.id)}</div>`:'';
   const emptyCase=actions?'可以先推进，再按需要新增subCase或Task。':'当前Case没有下属工作。',emptyTask=actions?'暂无直属Task，可按需要在当前Case或subCase中继续拆解。':'暂无直属Task。';
-  return `<section class="detail-sheet-section case-work-section" id="caseWork"><div class="between detail-task-list-head case-work-heading"><h2>下属工作</h2>${caseCompletionStrip(item,tasks)}${actions}</div>${nestedCaseSection(item)}${tasks.length||children.length?`<div class="between detail-task-list-head case-task-heading"><h3>Task清单 <span class="small muted">${tasks.length}</span></h3></div>${tasks.length?taskTable(tasks,true):`<p class="case-work-empty">${emptyTask}</p>`}`:`<p class="case-work-empty">${emptyCase}</p>`}</section>`;
+  return `<section class="detail-sheet-section case-work-section" id="caseWork"><div class="between detail-task-list-head case-work-heading"><h2>直属下级</h2>${actions}</div>${nestedCaseSection(item)}${tasks.length?taskTable(tasks,true):`<p class="case-work-empty">${children.length?emptyTask:emptyCase}</p>`}</section>`;
+}
+function childWorkColumns(){return `<colgroup>${[26,10,18,11,11,14,10].map(width=>`<col style="width:${width}%">`).join('')}</colgroup>`;}
+function childWorkRequirementsCell(kind,item){
+  return `<div class="task-requirement-actions"><button type="button" class="task-requirements-cell" data-child-kind="${kind}" data-child-id="${escapeHtml(item.id)}" aria-label="${escapeHtml(item.name)} 查看要求" onclick="openChildWorkInfo(this.dataset.childKind,this.dataset.childId,'requirements')"><span class="requirement-excerpt">查看要求</span></button>${kind==='task'?`<div class="task-cell-files">${taskRequirementFilesContent(item)}</div>`:''}</div>`;
+}
+function openChildWorkInfo(kind,id,section){
+  if(!['case','task'].includes(kind)||!['requirements','contact'].includes(section)||(section==='contact'&&kind!=='task'))return toast('查看内容无效');
+  const item=objectRef(db,kind,id);if(!item||!visibleTo(db,CURRENT_USER,kind,item))return toast('工作不存在或无权查看');
+  if(!closeModal(false))return false;
+  const contact=section==='contact',title=contact?'对接信息':'要求';
+  const content=contact?deliveryTextRow('对接人',item.contactPerson||'未填写')+deliveryTextRow('对接说明',item.contactNote||'未填写'):deliveryTextRow('交付目标',item.goal||'未填写')+deliveryTextRow('完成标准',item.completionStandard||'未填写');
+  modal(title,`<p class="detail-section-text">${escapeHtml(item.name)}</p><dl class="delivery-summary">${content}</dl>`,'关闭',()=>closeModal(false),false,'',false);
 }
 function rejectionTimeText(value){
   if(typeof value!=='string'||!value.trim())return '时间未记录';
@@ -3554,7 +3674,7 @@ function casePage(){
   return `<div class="work-detail-page">${recursiveBreadcrumb(item)}<article class="detail-sheet"><header class="detail-sheet-header">${pageHead(escapeHtml(item.name),'',actions,'case',state)}${meta}</header><div class="detail-sheet-body">${keyUpdates('case',item)}${allocationPanel('case',item)}
     ${workBackgroundSection('case',item)}
     <div class="detail-section-pair case-definition-pair"><section class="detail-sheet-section case-goal-section"><h2>交付目标</h2><p class="detail-delivery-goal">${escapeHtml(item.goal)}</p></section><section class="detail-sheet-section case-standard-section"><h2>完成标准</h2><p class="detail-section-text">${escapeHtml(item.completionStandard||'未填写')}</p>${item.status==='terminated'?`<p class="bad">终止原因：${escapeHtml(item.terminationReason)}</p>`:''}</section></div>
-    ${caseReferenceSection(item)}${caseWorkSection(item,tasks)}${completionSummary(item)}${discussionSection('case',item)}
+    ${caseReferenceSection(item)}${caseWorkSection(item,tasks)}${completionSummary(item)}${workAttachmentSection('case',item)}${discussionSection('case',item)}
     ${PROTOTYPE_FEATURES.equipmentWbs?`<section class="detail-sheet-section">${caseEquipmentSection(item)}</section>`:''}<details class="panel" id="caseHistory"><summary class="panel-head">流转记录</summary><div class="panel-body">${objectHistoryHtml('case',item)||historyHtml([])}</div></details></div></article></div>`;
 }
 function caseReferenceSection(instance){
@@ -3618,7 +3738,10 @@ function resolveDeliveryBlockerModal(kind,id){
 }
 function taskTable(tasks,editing=false,casePreview=false){
   if(!tasks.length)return empty('暂无Task');
-  if(editing)return `<div class="table-scroll"><table class="task-list detail-task-list"><colgroup>${[17,9,9,18,11,11,15,10].map(width=>`<col style="width:${width}%">`).join('')}</colgroup><thead><tr><th>Task名称</th><th>负责人</th><th>对接人</th><th>对接说明</th><th>开始日期</th><th>完成日期</th><th>要求</th><th>状态</th></tr></thead><tbody>${tasks.map(task=>`<tr data-task-id="${task.id}"><td class="title-cell">${workTypeTag('task',task)} <button class="link" onclick="openTask('${task.id}')">${escapeHtml(task.name)}</button></td><td>${escapeHtml(task.owner)}</td><td>${escapeHtml(task.contactPerson||'—')}</td><td><span class="task-contact-note" title="${escapeHtml(task.contactNote||'未填写')}">${escapeHtml(task.contactNote||'—')}</span></td><td>${task.start}</td><td>${dateCell(task)}</td><td>${taskRequirementCell(task,true)}</td><td>${badge(task)}</td></tr>`).join('')}</tbody></table></div>`;
+  if(editing)return `<div class="table-scroll child-work-table"><table class="task-list detail-task-list child-work-list" aria-label="直属Task">${childWorkColumns()}<thead><tr><th>Task名称</th><th>负责人</th><th>对接信息</th><th>开始日期</th><th>完成日期</th><th>要求</th><th>状态</th></tr></thead><tbody>${tasks.map(task=>{
+    const contact=task.contactPerson||task.contactNote?`<button type="button" class="link child-work-contact" data-contact-task="${escapeHtml(task.id)}" aria-label="查看 ${escapeHtml(task.name)} 的完整对接信息" onclick="openChildWorkInfo('task',this.dataset.contactTask,'contact')"><span>${escapeHtml(task.contactPerson||'未填写对接人')}</span><span class="task-contact-note" title="${escapeHtml(task.contactNote||'未填写对接说明')}">${escapeHtml(task.contactNote||'—')}</span></button>`:'<span class="muted">—</span>';
+    return `<tr data-task-id="${task.id}"><td class="title-cell"><button class="link" onclick="openTask('${task.id}')">${escapeHtml(task.name)}</button></td><td>${escapeHtml(task.owner)}</td><td>${contact}</td><td class="mono">${escapeHtml(task.start||'待确定')}</td><td><div class="child-work-date">${dateCell(task)}</div></td><td>${childWorkRequirementsCell('task',task)}</td><td><div class="child-work-status">${badge(task)}</div></td></tr>`;
+  }).join('')}</tbody></table></div>`;
   return `<div class="table-scroll"><table class="task-list${casePreview?' case-task-table':''}"><thead><tr><th>Task名称</th><th>负责人</th><th>状态</th><th>开始日期</th><th>完成日期</th></tr></thead><tbody>${tasks.map(task=>`<tr data-task-id="${task.id}"><td class="title-cell">${workTypeTag('task',task)} <button class="link" onclick="openTask('${task.id}')">${escapeHtml(task.name)}</button></td><td>${escapeHtml(task.owner)}</td><td>${badge(task)}</td><td>${task.start}</td><td>${dateCell(task)}</td></tr>`).join('')}</tbody></table></div>`;
 }
 function myScopeCases(){return db.cases.filter(instance=>(!ui.workProjectId||instance.project===ui.workProjectId)&&visibleTo(db,CURRENT_USER,'case',instance));}
@@ -3717,7 +3840,7 @@ function workCardContext(kind,projectName,item){
 }
 function workCardSignals(kind,item){
   const updates=keyUpdateSelection(db,kind,item).filter(entry=>!entry.blocker),latest=updates[0];
-  return `<div class="work-card-signals">${kind==='case'?`<span class="small muted">${escapeHtml(caseStructureText(item))}</span>`:''}${latest?`<button class="link small" onclick="openDiscussionSource('${latest.kind}','${latest.object}','${latest.id}')">重要更新 ${updates.length}</button>`:''}${kind==='case'&&item.owner===CURRENT_USER&&readyForCompletion(db,kind,item)?'<span class="small good">待我填写结论</span>':''}${kind==='task'&&item.files.length?`<button class="link small" onclick="openTaskMaterials('${item.id}')">交付材料 ${item.files.length} 份</button>`:''}</div>`;
+  return `<div class="work-card-signals">${kind==='case'?`<span class="small muted">${escapeHtml(caseStructureText(item))}</span>`:''}${latest?`<button class="link small" onclick="openDiscussionSource('${latest.kind}','${latest.object}','${latest.id}')">重要更新 ${updates.length}</button>`:''}${kind==='case'&&item.owner===CURRENT_USER&&readyForCompletion(db,kind,item)?'<span class="small good">待我填写结论</span>':''}${kind==='task'&&workAttachments(item).length?`<button class="link small" onclick="openTaskMaterials('${item.id}')">附件 ${workAttachments(item).length} 份</button>`:''}</div>`;
 }
 function openTaskMaterials(id){if(openTask(id))document.getElementById('taskMaterials')?.scrollIntoView({block:'center'});}
 function workCard({kind,item}){
@@ -3741,41 +3864,95 @@ function responsibilityRecordTag(record){
   const category=responsibilityCategory(record);
   return category==='initial'&&record.source==='create'?'创建 · 初始指定':responsibilityCategoryLabels[category];
 }
-function assignmentSnapshotDetails(record){
-  const snapshot=record.snapshot||{};
-  const role='负责人';
-  return `<dl class="assignment-snapshot"><div class="wide"><dt>当时${escapeHtml(workTypeName(record.kind,snapshot))}名称</dt><dd>${escapeHtml(snapshot.name)}</dd></div><div><dt>类型</dt><dd>${['case','task'].includes(record.kind)?workTypeTag(record.kind,snapshot):escapeHtml(kindLabels[record.kind])}</dd></div><div><dt>操作人</dt><dd>${escapeHtml(record.actor)}</dd></div><div class="wide"><dt>操作时间（UTC）</dt><dd>${escapeHtml(record.at)}</dd></div><div><dt>原${role}</dt><dd>${escapeHtml(record.from||'未指定')}</dd></div><div><dt>新${role}</dt><dd>${escapeHtml(record.to)}</dd></div><div><dt>当时 Project</dt><dd>${escapeHtml(snapshot.projectName||'未记录')}</dd></div><div><dt>当时 Case</dt><dd>${escapeHtml(snapshot.caseName||(record.kind==='project'?'不适用':'未记录'))}</dd></div><div><dt>当时开始日期</dt><dd>${escapeHtml(snapshot.start||'未记录')}</dd></div><div><dt>当时完成日期</dt><dd>${escapeHtml(snapshot.due||'未记录')}</dd></div><div class="wide"><dt>当时要求</dt><dd>${escapeHtml(snapshot.requirement||'未记录')}</dd></div><div class="wide"><dt>操作说明</dt><dd>${escapeHtml(record.reason==null?'未记录':responsibilityReasonText(record.reason)||'未填写')}</dd></div></dl>`;
+function historyRecordTime(record){
+  const value=record.timestamp||record.at||record.date||'';
+  if(validDate(value))return {value,day:value,instant:null};
+  const instant=value?Date.parse(value):NaN;
+  return Number.isFinite(instant)?{value,day:new Date(instant).toLocaleDateString('sv-SE',{timeZone:'Asia/Shanghai'}),instant}:{value,day:'',instant:null};
+}
+function blockerHistoryKey(record){
+  return record.blockerId&&['blocker-create','blocker-resolve'].includes(record.action)?record.blockerId+':'+record.action:'';
+}
+function legacyBlockerRecords(kind,item){
+  if(!['case','task'].includes(kind))return [];
+  const records=[];
+  for(const entry of ownDiscussions(kind,item.id).filter(record=>record.blocker)){
+    records.push({blockerId:entry.id,action:'blocker-create',timestamp:entry.at,actor:entry.actor||'操作人未记录',text:'登记阻塞：'+entry.text});
+    for(const [index,record] of (entry.followUpHistory||[]).entries())records.push({id:'legacy-followup-'+entry.id+'-'+(record.id||index),timestamp:record.at,actor:record.actor||'操作人未记录',text:'历史处理人变更：'+entry.text+'（'+record.from+' → '+record.to+'）'});
+    if(entry.resolvedAt)records.push({blockerId:entry.id,action:'blocker-resolve',timestamp:entry.resolvedAt,actor:entry.resolvedBy||'操作人未记录',text:'解决阻塞：'+entry.text,effect:entry.effect,resolution:entry.resolution});
+  }
+  return records;
+}
+function matchesLegacyBlockerEvent(event,legacy){
+  if(event.responsibilityRecordId||event.blockerId||!event.actor||event.actor!==legacy.actor)return false;
+  const generic=legacy.action==='blocker-create'?['登记阻塞','新增阻塞']:legacy.action==='blocker-resolve'?['解决阻塞','标记阻塞已解决']:[];
+  if(event.text!==legacy.text&&!generic.includes(event.text))return false;
+  const a=historyRecordTime(event),b=historyRecordTime(legacy);
+  return !!a.day&&a.day===b.day&&(a.instant===null||b.instant===null||a.instant===b.instant);
+}
+function assignmentChangeDetails(record,event){
+  const nameLabel=record.kind==='project'?'Project名称':record.kind==='case'?workTypeName('case',objectRef(db,'case',record.object))+'名称':'Task名称';
+  if(event?.action==='delivery-change')return configurationHistoryDetails(event,nameLabel);
+  if(!record.before||!record.snapshot)return '';
+  const before={},after={};
+  for(const [key,snapshotKey] of [['name','name'],['start','start'],['due','due'],['goal','requirement']]){
+    if(Object.hasOwn(record.before,key)&&Object.hasOwn(record.snapshot,snapshotKey)){before[key]=record.before[key];after[key]=record.snapshot[snapshotKey];}
+  }
+  return configurationHistoryDetails({action:'delivery-change',before,after},nameLabel);
 }
 function objectHistoryHtml(kind,item){
   if(!visibleTo(db,CURRENT_USER,kind,item))return '';
   const rejectionTime=item.status==='rejected'&&validDate(item.rejectedAt)?rejectionTimeValue(item):item.rejectedAt;
   const records=assignmentRecordsFor(db,CURRENT_USER).filter(record=>record.kind===kind&&record.object===item.id).slice().reverse();
-  const byId=new Map(records.map(record=>[record.id,record])),rendered=new Set();
-  const renderRecord=record=>{
-    if(kind!=='case'&&kind!=='task')return `<details class="assignment-history-entry" id="assignment-history-${escapeHtml(record.id)}" data-assignment-history-id="${escapeHtml(record.id)}"><summary><span class="tag">${responsibilityRecordTag(record)}</span>${escapeHtml(record.at||record.date||'时间未记录')}${record.at?' UTC':''} · ${escapeHtml(responsibilitySummary(record))}</summary>${assignmentSnapshotDetails(record)}</details>`;
+  const byId=new Map(records.map(record=>[record.id,record])),seenEvents=new Set(),seenAssignments=new Set(),blockers=new Map(),merged=[];
+  for(const event of item.history||[]){
+    if(event.id&&seenEvents.has(event.id)||event.responsibilityRecordId&&seenAssignments.has(event.responsibilityRecordId))continue;
+    if(event.id)seenEvents.add(event.id);
+    if(event.responsibilityRecordId)seenAssignments.add(event.responsibilityRecordId);
+    const key=blockerHistoryKey(event);
+    if(key&&blockers.has(key))continue;
+    const copy={...event,...(event===item.history[0]&&rejectionTime!==item.rejectedAt?{timestamp:rejectionTime}:{})};
+    const entry={event:copy,assignment:byId.get(event.responsibilityRecordId),order:merged.length};
+    merged.push(entry);if(key)blockers.set(key,entry);
+  }
+  for(const record of records){
+    if(seenAssignments.has(record.id))continue;
+    seenAssignments.add(record.id);merged.push({assignment:record,order:merged.length});
+  }
+  const legacy=legacyBlockerRecords(kind,item);
+  for(const record of legacy){
+    if(record.id&&seenEvents.has(record.id))continue;
+    const key=blockerHistoryKey(record),existing=key&&blockers.get(key);
+    const candidates=existing?[]:merged.filter(entry=>entry.event&&!entry.assignment&&matchesLegacyBlockerEvent(entry.event,record));
+    const match=existing||(candidates.length===1&&legacy.filter(other=>matchesLegacyBlockerEvent(candidates[0].event,other)).length===1?candidates[0]:null);
+    if(match){
+      const event=match.event,time=historyRecordTime(event);
+      const generic=['登记阻塞','新增阻塞','解决阻塞','标记阻塞已解决'].includes(event.text);
+      match.event={...record,...event,blockerId:record.blockerId,action:record.action,actor:event.actor||record.actor,text:generic?record.text:event.text,effect:event.effect??record.effect,resolution:event.resolution||record.resolution,timestamp:!event.timestamp||!time.day||time.instant===null&&historyRecordTime(record).instant!==null?record.timestamp:event.timestamp};
+      if(key)blockers.set(key,match);
+    }else{
+      const entry={event:record,order:merged.length};merged.push(entry);if(key)blockers.set(key,entry);
+    }
+    if(record.id)seenEvents.add(record.id);
+  }
+  for(const entry of merged)entry.time=historyRecordTime(entry.assignment||entry.event);
+  merged.sort((a,b)=>b.time.day.localeCompare(a.time.day)||(a.time.instant!==null&&b.time.instant!==null?b.time.instant-a.time.instant:(b.time.instant!==null?1:0)-(a.time.instant!==null?1:0))||a.order-b.order);
+  return merged.map(entry=>{
+    const record=entry.assignment;
+    if(!record)return historyHtml([{...entry.event,at:entry.time.value||'时间未记录',timestamp:entry.time.value}]);
     const category=responsibilityCategory(record),created=record.source==='create';
     const summary=category==='legacy'?responsibilitySummary(record):created?`${workTypeName(kind,item)} · 负责人：${record.to}`:record.from?`负责人：${record.from} → ${record.to}`:`指定负责人：${record.to}`;
     const reason=!created&&record.reason?responsibilityReasonText(record.reason):'';
-    const time=record.at&&Number.isFinite(Date.parse(record.at))?new Date(record.at).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai'}):record.at||record.date||'时间未记录';
-    return `<div class="history-item" id="assignment-history-${escapeHtml(record.id)}" data-assignment-history-id="${escapeHtml(record.id)}"><small title="${escapeHtml(record.at||record.date||'')}">${escapeHtml(time)} · ${escapeHtml(record.actor||'系统')}</small><span class="tag">${responsibilityRecordTag(record)}</span> ${escapeHtml(summary)}${reason?`<p class="history-reason">说明：${escapeHtml(reason)}</p>`:''}</div>`;
-  };
-  const history=(item.history||[]).map(event=>{
-    if(event.responsibilityRecordId&&rendered.has(event.responsibilityRecordId))return '';
-    if(event.responsibilityRecordId)rendered.add(event.responsibilityRecordId);
-    const record=byId.get(event.responsibilityRecordId);
-    if(!record)return historyHtml([event===item.history[0]&&rejectionTime!==item.rejectedAt?{...event,timestamp:rejectionTime}:event]);
-    return renderRecord(record);
+    const detailsEvent=entry.event?.action==='delivery-change'?entry.event:(item.history||[]).find(event=>event.responsibilityRecordId===record.id&&event.action==='delivery-change')||entry.event;
+    return `<div class="history-item" id="assignment-history-${escapeHtml(record.id)}" data-assignment-history-id="${escapeHtml(record.id)}"><small title="${escapeHtml(entry.time.value)}">${escapeHtml(rejectionTimeText(entry.time.value))} · ${escapeHtml(record.actor||'系统')}</small><span class="tag">${responsibilityRecordTag(record)}</span> ${escapeHtml(summary)}${reason?`<p class="history-reason">说明：${escapeHtml(reason)}</p>`:''}${assignmentChangeDetails(record,detailsEvent)}</div>`;
   }).join('');
-  const unlinked=records.filter(record=>!rendered.has(record.id));
-  const snapshots=records.length&&(kind==='case'||kind==='task')?`<p><button class="link small" onclick="showObjectHistorySnapshots('${kind}','${item.id}')">查看历史快照</button></p>`:'';
-  return history+(unlinked.length?`<section class="assignment-history"><h3>责任记录（本人操作） · ${unlinked.length}</h3><p class="small muted">原始记录未关联到日志事件，保留当时信息。</p>${unlinked.map(renderRecord).join('')}</section>`:'')+snapshots;
 }
-function showObjectHistorySnapshots(kind,id){
-  const item=objectRef(db,kind,id);
-  if(!['case','task'].includes(kind)||!item||!visibleTo(db,CURRENT_USER,kind,item))return toast('工作不存在或无权查看历史快照');
-  const records=assignmentRecordsFor(db,CURRENT_USER).filter(record=>record.kind===kind&&record.object===id).slice().reverse();
-  if(!records.length)return toast('暂无有权查看的历史快照');
-  modal('历史快照',`<p class="small muted">仅用于追溯操作当时的信息，不代表当前状态。记录只读，显示范围沿用责任记录权限。</p>${records.map(record=>`<section class="section"><h3>${escapeHtml(record.actor)} · ${escapeHtml(responsibilitySummary(record))}</h3>${assignmentSnapshotDetails(record)}</section>`).join('')}`,'关闭',closeModal,true,'',false);
+function blockerEffectHtml(entry){
+  const valid=BLOCKER_EFFECTS.includes(entry.effect),label=valid?'方案'+entry.effect:entry.effect?'效果待核对：'+entry.effect:'未评估（历史记录）';
+  return `<span class="blocker-effect" data-effect="${valid?entry.effect:''}" aria-label="${escapeHtml(valid?'方案效果：'+entry.effect:label)}">${escapeHtml(label)}</span>`;
+}
+function blockerFlowDetails(record){
+  return record.action==='blocker-resolve'?`<div class="blocker-flow-details">${blockerEffectHtml(record)}<p class="blocker-flow-conclusion">结论：${escapeHtml(record.resolution||'历史记录未填写结论')}</p></div>`:'';
 }
 function changeResponsibilityModal(kind,id){
   const item=objectRef(db,kind,id),role=kind==='task'?'Task负责人':'负责人';
@@ -3790,14 +3967,14 @@ function assignmentPermissionsModal(){
   const editable=can('settings');
   modal('责任权限',`<div class="table-scroll"><table class="assignment-config"><thead><tr><th>角色</th><th>责任设置</th><th>设置范围</th><th>责任记录</th></tr></thead><tbody>${Object.entries(db.permissions).map(([role,policy])=>`<tr><td>${escapeHtml(roleLabel(role))}</td><td><input type="checkbox" name="${role}-assign" aria-label="${escapeHtml(roleLabel(role))} 责任设置" ${policy.assign?'checked':''} ${editable?'':'disabled'}></td><td><select name="${role}-assignScope" ${editable?'':'disabled'}><option value="visible" ${policy.assignScope!=='all'?'selected':''}>可见工作</option><option value="all" ${policy.assignScope==='all'?'selected':''}>跨全部 Project</option></select></td><td><select name="${role}-assignmentAudit" ${editable?'':'disabled'}>${[['none','不可查看'],['own','本人操作'],['all','全部责任记录']].map(([value,label])=>`<option value="${value}" ${(policy.assignmentAudit||'none')===value?'selected':''}>${label}</option>`).join('')}</select></td></tr>`).join('')}</tbody></table></div><section style="margin-top:16px"><h3>不可设为负责人的人员</h3><div class="checklist">${PEOPLE.map(person=>`<label><input type="checkbox" name="exempt" value="${escapeHtml(person)}" ${isAssignmentExempt(db,person)?'checked':''} ${!editable||db.userRoles[person]==='boss'?'disabled':''}>${escapeHtml(person)}${db.userRoles[person]==='boss'?' · 老板':''}</label>`).join('')}</div></section>`,editable?'保存权限':'关闭',(data,form)=>{if(!editable)return closeModal();handleOperation(()=>{requirePermission(db,CURRENT_USER,'settings');for(const role of Object.keys(db.permissions)){const scope=data[role+'-assignScope'],audit=data[role+'-assignmentAudit'];check(['all','visible'].includes(scope)&&['none','own','all'].includes(audit),'权限配置无效');db.permissions[role]={...db.permissions[role],assign:!!data[role+'-assign'],assignScope:scope,assignmentAudit:audit};}db.assignmentExempt=unique([...new FormData(form).getAll('exempt'),...PEOPLE.filter(person=>db.userRoles[person]==='boss')]);logEvent(db,null,'更新责任权限及人员限制');},'责任权限已更新');},true);
 }
-function configurationHistoryDetails(record){
+function configurationHistoryDetails(record,nameLabel=record.kind==='case'?workTypeName('case',objectRef(db,'case',record.object))+'名称':'Task名称'){
   if(record.action!=='delivery-change'||!record.before||!record.after)return '';
-  const labels={name:'Task名称',owner:'负责人',contactPerson:'对接人',contactNote:'对接说明',start:'开始日期',due:'完成日期',background:'背景',goal:'交付目标',completionStandard:'完成标准',requirementFiles:'参考附件'};
+  const labels={name:nameLabel,owner:'负责人',contactPerson:'对接人',contactNote:'对接说明',start:'开始日期',due:'完成日期',background:'背景',goal:'交付目标',completionStandard:'完成标准',requirementFiles:'参考附件'};
   const format=(key,value)=>key==='requirementFiles'?(value||[]).map(file=>`${file.name}（${file.size} B）`).join('、')||'无':String(value??'')||'未填写';
   const changes=Object.entries(labels).filter(([key])=>JSON.stringify(record.before[key])!==JSON.stringify(record.after[key]));
   return changes.length?`<details class="assignment-history-entry"><summary>查看修改前后 · ${changes.length}项</summary><dl class="detail-grid">${changes.map(([key,label])=>`<div class="wide"><dt>${label}</dt><dd>修改前：${escapeHtml(format(key,record.before[key]))}<br>修改后：${escapeHtml(format(key,record.after[key]))}</dd></div>`).join('')}</dl></details>`:'';
 }
-function historyHtml(history){return history.length?history.map(record=>`<div class="history-item"><small>${escapeHtml(record.timestamp?rejectionTimeText(record.timestamp):record.at)} · ${escapeHtml(record.actor||'系统')}</small>${Object.hasOwn(responsibilityCategoryLabels,record.responsibilityCategory)?`<span class="tag">${responsibilityCategoryLabels[record.responsibilityCategory]}</span> `:''}${escapeHtml(responsibilityHistoryText(record))}${configurationHistoryDetails(record)}${record.files?.length?`<div class="small muted">交付材料：${record.files.map(file=>escapeHtml(file.name)).join('、')}</div>`:''}</div>`).join(''):'<span class="small muted">暂无记录</span>';}
+function historyHtml(history){return history.length?history.map(record=>`<div class="history-item"><small>${escapeHtml(record.timestamp?rejectionTimeText(record.timestamp):record.at)} · ${escapeHtml(record.actor||'系统')}</small>${Object.hasOwn(responsibilityCategoryLabels,record.responsibilityCategory)?`<span class="tag">${responsibilityCategoryLabels[record.responsibilityCategory]}</span> `:''}${escapeHtml(responsibilityHistoryText(record))}${configurationHistoryDetails(record)}${blockerFlowDetails(record)}${record.files?.length?`<div class="small muted">交付材料：${record.files.map(file=>escapeHtml(file.name)).join('、')}</div>`:''}</div>`).join(''):'<span class="small muted">暂无记录</span>';}
 function openObject(kind,id){return openWorkDetail(kind,id);}
 function closeDrawer(restoreFocus=true){const returnId=ui.drawer?.kind==='discussion'?ui.drawer.returnFocusId:'';ui.drawer=null;document.getElementById('drawerRoot').innerHTML='';if(restoreFocus&&returnId)document.getElementById(returnId)?.focus?.({preventScroll:true});}
 function taskDetailHeader(task,instance){
@@ -3807,15 +3984,76 @@ function taskCaseBackgroundSection(task){
   return workBackgroundSection('task',task);
 }
 function workBackgroundSection(kind,item){
-  const instance=kind==='task'?taskCase(db,item):item,text=instance?.background||'未填写';
+  const inherited=kind==='task'||!!item.parentCaseId;
+  const instance=inherited?caseBackgroundSource(db,kind==='task'?item.caseId:item.parentCaseId):item;
+  const text=instance&&(!inherited||visibleTo(db,CURRENT_USER,'case',instance))?instance.background||'未填写':instance?'暂无权查看背景':'未填写';
+  if(inherited)return `<section class="detail-sheet-section detail-background ${kind==='task'?'task-detail-section task-case-background-section':'case-background-section'}"><h2>所属Case背景</h2><p class="detail-section-text">${escapeHtml(text)}</p></section>`;
   const long=text.length>180||text.split('\n').length>3;
   const content=long?`<details class="detail-background-disclosure" id="${kind}Background"><summary><span class="background-preview">${escapeHtml(text.split('\n').slice(0,3).join('\n').slice(0,160))}…</span><span class="background-expand">展开全文</span><span class="background-collapse">收起背景</span></summary><p class="detail-section-text">${escapeHtml(text)}</p></details>`:`<p class="detail-section-text">${escapeHtml(text)}</p>`;
-  return `<section class="detail-sheet-section detail-background ${kind==='task'?'task-detail-section task-case-background-section':'case-background-section'}"><h2>${kind==='task'?'所属Case背景':'背景'}</h2>${content}</section>`;
+  return `<section class="detail-sheet-section detail-background case-background-section"><h2>背景</h2>${content}</section>`;
+}
+function caseBackgroundContextHtml(parent,label='所属Case背景'){
+  if(!parent)return '<p class="small muted">选择上级后可查看背景，无需重复填写。</p>';
+  const source=caseBackgroundSource(db,parent.id),readable=source&&visibleTo(db,CURRENT_USER,'case',source);
+  return `<div class="inherited-work-context"><details><summary>${escapeHtml(label)}${readable?' · '+escapeHtml(source.name):''}</summary>${readable?`<p>${escapeHtml(source.background)}</p><p class="small muted">来源：${escapeHtml(workTypeName('case',source))} · <button type="button" class="link" data-source-case="${escapeHtml(source.id)}" onclick="openCase(this.dataset.sourceCase)">${escapeHtml(source.name)}</button>（只读，不复制到本层）</p>`:'<p class="small muted">上级背景尚未填写或暂无权查看。</p>'}</details></div>`;
 }
 function taskDetailSections(task){
   return `<div class="detail-section-pair task-definition-pair"><section class="detail-sheet-section task-detail-section task-goal-section"><h2>交付目标</h2><p class="detail-delivery-goal">${escapeHtml(task.goal||'未填写')}</p></section><section class="detail-sheet-section task-detail-section task-standard-section"><h2>完成标准</h2><p class="detail-section-text">${escapeHtml(task.completionStandard||'未填写')}</p></section></div>`;
 }
-function taskReferenceSection(task){return task.requirementFiles?.length?`<section class="detail-sheet-section task-detail-section task-reference-section"><h2>参考附件</h2>${requirementFilesHtml(task.requirementFiles,task.id)}</section>`:'';}
+function inheritedReferenceFilesHtml(parents){
+  return parents.filter(parent=>visibleTo(db,CURRENT_USER,'case',parent)&&parent.requirementFiles?.length).map(parent=>`<div class="inherited-reference-group" data-reference-source="${escapeHtml(parent.id)}"><div class="inherited-reference-heading"><span>来自上级${escapeHtml(workTypeName('case',parent))}：</span><button type="button" class="link" data-source-case="${escapeHtml(parent.id)}" onclick="openCase(this.dataset.sourceCase)">${escapeHtml(parent.name)}</button><span>只读 · 请在来源工作中修改</span></div>${requirementFilesHtml(parent.requirementFiles,parent.id,false,'case')}</div>`).join('');
+}
+function workReferenceSection(kind,item){
+  return workAttachmentSection(kind,item);
+}
+function taskReferenceSection(task){return workReferenceSection('task',task);}
+function workAttachmentSection(kind,item){
+  if(!['case','task'].includes(kind)||!visibleTo(db,CURRENT_USER,kind,item))return '';
+  return `<section class="detail-sheet-section work-attachments-section" id="${kind==='task'?'taskMaterials':'caseAttachments'}">${workAttachmentContent(kind,item)}</section>`;
+}
+function workAttachmentContent(kind,item){
+  const files=workAttachments(item),key=kind+':'+item.id,expanded=!!ui.attachmentExpanded?.[key],reason=workAttachmentEditReason(db,kind,item,CURRENT_USER),loading=materialUploads.has(kind==='task'?item.id:key);
+  const attributes=`data-work-kind="${kind}" data-work-id="${escapeHtml(item.id)}"`;
+  const list=files.slice(0,expanded?files.length:4).map((file,index)=>{
+    const extension=String(file.name).split('.').pop().toLowerCase(),type=/^[a-z0-9]{1,5}$/.test(extension)?extension:'file';
+    const open=`openWorkAttachment(this.dataset.workKind,this.dataset.workId,${index})`,download=`openWorkAttachment(this.dataset.workKind,this.dataset.workId,${index},true)`;
+    return `<article class="work-attachment-file"><span class="work-attachment-type ${type}" aria-hidden="true">${escapeHtml(type.toUpperCase())}</span><div class="work-attachment-info"><button type="button" class="work-attachment-name" title="${escapeHtml(file.name)}" ${attributes} onclick="${open}">${escapeHtml(file.name)}</button><div class="work-attachment-meta">${Math.ceil(file.size/1024)||1} KB · ${escapeHtml(file.uploadedBy||'上传人未记录')}<time${file.uploadedAt?` datetime="${escapeHtml(file.uploadedAt)}"`:''}>${file.uploadedAt?escapeHtml(rejectionTimeText(file.uploadedAt)):'时间未记录'}</time></div></div><div class="work-attachment-actions"><button type="button" class="link" ${attributes} onclick="${open}">查看</button><button type="button" class="link" ${attributes} onclick="${download}" aria-label="下载附件 ${escapeHtml(file.name)}">下载</button>${!reason?`<details class="work-attachment-menu"><summary aria-label="更多操作：${escapeHtml(file.name)}">···</summary><button type="button" ${attributes} ${loading?'disabled ':''}onclick="removeWorkAttachmentModal(this.dataset.workKind,this.dataset.workId,${index})">移除附件</button></details>`:''}</div></article>`;
+  }).join('');
+  return `<div class="work-attachment-heading"><h2>${icon('attachment')}附件 <span class="small muted">${files.length} 份</span></h2><input type="file" id="work-attachments-${kind}-${escapeHtml(item.id)}" hidden multiple ${attributes} onchange="uploadWorkAttachments(this,this.dataset.workKind,this.dataset.workId)"><button type="button" class="work-attachment-upload" ${attributes} ${reason||loading?'disabled ':''}${reason?`title="${escapeHtml(reason)}" `:''}onclick="document.getElementById('work-attachments-'+this.dataset.workKind+'-'+this.dataset.workId).click()">${icon('plus')}${loading?'正在上传…':'上传附件'}</button></div>${files.length?`<div class="work-attachment-grid">${list}</div>`:'<p class="work-attachment-empty">暂无附件</p>'}${files.length>4?`<button type="button" class="work-attachment-expand" ${attributes} aria-expanded="${expanded}" onclick="toggleWorkAttachments(this.dataset.workKind,this.dataset.workId)">${expanded?'收起附件':'展开其余 '+(files.length-4)+' 份'}</button>`:''}${reason?`<p class="work-attachment-note">${escapeHtml(reason)} · 附件仍可查看、下载</p>`:''}`;
+}
+function toggleWorkAttachments(kind,id){
+  ui.attachmentExpanded=ui.attachmentExpanded||{};const key=kind+':'+id;ui.attachmentExpanded[key]=!ui.attachmentExpanded[key];renderKeepingPosition();
+}
+function openWorkAttachment(kind,id,index,download=false){
+  const item=objectRef(db,kind,id);if(!item||!visibleTo(db,CURRENT_USER,kind,item))return toast('附件不存在或无权查看');
+  if(!Number.isInteger(index)||index<0)return toast('附件不存在');
+  const file=workAttachments(item)[index];if(!file)return toast('附件不存在或已被移除');
+  return download?downloadEvidenceFile(file):previewAttachment(file);
+}
+function removeWorkAttachmentModal(kind,id,index){
+  const item=objectRef(db,kind,id),reason=workAttachmentEditReason(db,kind,item,CURRENT_USER);if(reason)return toast(reason);
+  if(materialUploads.has(kind==='task'?id:kind+':'+id))return toast('请等待附件上传完成');
+  const file=workAttachments(item)[index];if(!file)return toast('附件不存在或已被移除');
+  const key=attachmentKey(file);
+  modal('移除附件',`<p>确认移除“${escapeHtml(file.name)}”？此操作只影响当前工作。</p>`,'确认移除',()=>handleOperation(()=>removeWorkAttachment(db,kind,id,key,CURRENT_USER),'附件已移除'));
+}
+function previewAttachment(file){
+  try{
+    check(file&&typeof file.data==='string'&&/^data:[^,]*,/.test(file.data),'附件内容无效，无法预览');
+    const extension=String(file.name).split('.').pop().toLowerCase();
+    let body='<p class="small muted">此格式暂不支持在线预览，请下载查看。</p>';
+    if(['txt','csv'].includes(extension)){
+      const comma=file.data.indexOf(','),header=file.data.slice(0,comma),content=file.data.slice(comma+1);
+      const text=/;base64$/i.test(header)?new TextDecoder('utf-8',{fatal:true}).decode(Uint8Array.from(atob(content),char=>char.charCodeAt(0))):decodeURIComponent(content);
+      body=`<pre>${escapeHtml(text)}</pre>`;
+    }else if(['png','jpg','jpeg'].includes(extension)&&/^data:image\/(?:png|jpeg)[;,]/i.test(file.data)){
+      body=`<img src="${escapeHtml(file.data)}" alt="${escapeHtml(file.name)}">`;
+    }else if(extension==='pdf'&&/^data:application\/pdf[;,]/i.test(file.data)){
+      body=`<p class="small muted">PDF预览依赖浏览器支持；若未显示，请下载查看。</p><iframe src="${escapeHtml(file.data)}" title="${escapeHtml(file.name)}"></iframe>`;
+    }
+    modal('查看附件 · '+file.name,`<div class="work-attachment-preview">${body}</div>`,'下载',()=>downloadEvidenceFile(file),true);
+  }catch(error){toast('无法预览附件：'+error.message+'；请使用下载查看');}
+}
 function detailSectionPair(first,second,className){return first&&second?`<div class="detail-section-pair ${className}">${first}${second}</div>`:first||second;}
 
 function taskAcceptBlockReason(task){
@@ -3861,17 +4099,16 @@ function taskPageActions(task){
   return actions;
 }
 function taskEvidenceSection(task){
-  const reason=taskEditBlockReason(db,task,CURRENT_USER),loading=materialUploads.has(task.id);
-  return `<div class="module-title-actions"><h2>交付材料 <span class="small muted">${task.files.length} 份</span></h2><input type="file" id="direct-materials-${task.id}" hidden multiple onchange="uploadTaskMaterials(this,'${task.id}')"><button ${reason||loading?'disabled':''} ${reason?`title="${escapeHtml(reason)}"`:''} onclick="document.getElementById('direct-materials-${task.id}').click()">${icon('plus')} ${loading?'正在上传…':'上传交付材料'}</button></div>${task.files.length?task.files.map((file,index)=>`<div class="file-row">${icon('file')}<div class="spacer"><div>${escapeHtml(file.name)}</div><span class="small muted">${file.sample?'演示材料 · ':''}${Math.ceil(file.size/1024)||1} KB${file.uploadedBy?' · '+escapeHtml(file.uploadedBy)+' · '+escapeHtml(new Date(file.uploadedAt).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai'})):''}</span></div><button class="icon" title="下载 ${escapeHtml(file.name)}" aria-label="下载交付材料" onclick="downloadEvidence('${task.id}',${index})">${icon('download')}</button></div>`).join(''):'<span class="small muted">未上传交付附件（选填）</span>'}<p class="direct-upload-note">${reason?escapeHtml(reason):'上传即保存，无需审核 · 单份750KB以内，合计2MB。'}</p><p id="directUploadError" class="error" role="alert"></p>`;
+  return workAttachmentContent('task',task);
 }
 function taskPage(){
   const task=objectRef(db,'task',ui.taskId),item=task&&taskCase(db,task);if(!task||!item||!visibleTo(db,CURRENT_USER,'task',task))return pageHead('Task不可用','')+empty('Task不存在或无权查看');
   const blockers=discussionBlockers(task),blockerShortcut=blockers.length?`<button type="button" class="blocker-marker task-blocker-shortcut" id="taskBlockerShortcut" title="${blockers.length} 项未解决阻塞，点击查看" onclick="openDiscussionSource('task','${task.id}','${blockers[0].id}')">${blockerLabel()}</button>`:'';
   const state=badge(task,false,sharedStatus(task),undefined,false)+(late(task)?`<span class="pill overdue"><span>已超期 ${elapsedDays(task.due,db.today)} 天</span></span>`:'')+blockerShortcut;
   const meta=`<div class="detail-header-summary">${taskDetailHeader(task,item)}</div>`;
-  const deliveryMaterials=`<section class="detail-sheet-section task-materials-section" id="taskMaterials">${taskEvidenceSection(task)}</section>`;
+  const deliveryMaterials=workAttachmentSection('task',task);
   const result=completionSummary(task);
-  return `<div class="work-detail-page">${recursiveBreadcrumb(item)}<article class="detail-sheet"><header class="detail-sheet-header">${pageHead(escapeHtml(task.name),'',taskPageActions(task),'task',state)}${meta}</header><div class="detail-sheet-body">${keyUpdates('task',task)}${allocationPanel('task',task)}${taskDetailSections(task)}${result}${deliveryMaterials}${taskCaseBackgroundSection(task)}${taskExecutionSection(task)}${taskReferenceSection(task)}${discussionSection('task',task)}${PROTOTYPE_FEATURES.equipmentWbs?`<section class="detail-sheet-section">${caseEquipmentSection(item)}</section>`:''}<details class="panel" id="taskHistory"><summary class="panel-head">流转记录</summary><div class="panel-body">${objectHistoryHtml('task',task)||historyHtml([])}</div></details></div></article></div>`;
+  return `<div class="work-detail-page">${recursiveBreadcrumb(item)}<article class="detail-sheet"><header class="detail-sheet-header">${pageHead(escapeHtml(task.name),'',taskPageActions(task),'task',state)}${meta}</header><div class="detail-sheet-body">${keyUpdates('task',task)}${allocationPanel('task',task)}${taskDetailSections(task)}${result}${deliveryMaterials}${taskCaseBackgroundSection(task)}${taskExecutionSection(task)}${discussionSection('task',task)}${PROTOTYPE_FEATURES.equipmentWbs?`<section class="detail-sheet-section">${caseEquipmentSection(item)}</section>`:''}<details class="panel" id="taskHistory"><summary class="panel-head">流转记录</summary><div class="panel-body">${objectHistoryHtml('task',task)||historyHtml([])}</div></details></div></article></div>`;
 }
 function openProjectWork(id){return openProject(id);}
 function projectDetailSections(item){
@@ -3888,7 +4125,7 @@ function projectPage(){
   return `<div class="work-detail-page project-detail-page">${pageHead(escapeHtml(project.name),'',projectPageActions(project),'project')}<section class="panel"><div class="panel-body"><div class="detail-status">${badge(project)}${late(project)?`<span class="pill overdue"><span>超期 ${elapsedDays(project.due,db.today)} 天</span></span>`:''}</div>${projectDetailSections(project)}</div></section><section class="panel project-case-panel"><div class="panel-body">${projectCaseManagement(project)}</div></section><details class="panel" id="projectHistory"><summary class="panel-head">Project流转记录</summary><div class="panel-body">${history||historyHtml([])}</div></details></div>`;
 }
 function renderDrawer(){const target=ui.drawer;if(target?.kind==='discussion')return renderDiscussionDrawer();closeDrawer();if(target)return openObject(target.kind,target.id);}
-function modal(title,body,submitLabel,handler,wide=false,footerStart='',showCancel=true){closeWorkspaceFilter(false);closeNotificationPopover(false);modalReturnFocus=document.activeElement;document.getElementById('modalRoot').innerHTML=`<div class="modal-mask"><section class="modal ${wide?'wide-modal':''}" role="dialog" aria-modal="true" aria-label="${escapeHtml(title)}"><form id="dialogForm" novalidate><div class="modal-head between"><h2>${escapeHtml(title)}</h2><button class="icon" type="button" aria-label="关闭弹窗" onclick="closeModal()">${icon('close')}</button></div><div class="modal-body">${body}<div class="error" id="modalError" role="alert"></div></div><div class="modal-foot">${footerStart}${showCancel?'<button type="button" onclick="closeModal()">取消</button>':''}<button class="primary" type="submit">${escapeHtml(submitLabel)}</button></div></form></section></div>`;document.getElementById('dialogForm').onsubmit=async event=>{event.preventDefault();const form=event.target,invalid=form.checkValidity&&!form.checkValidity()?form.querySelector(':invalid'):null;if(invalid){const label=invalid.id?form.querySelector(`label[for="${invalid.id}"]`):null,name=(label?.textContent||invalid.getAttribute('aria-label')||'必填项').replace('*','').trim(),target=document.getElementById('modalError');if(target)target.textContent='请填写必填项：'+name;invalid.reportValidity?.();invalid.focus?.();return;}const button=form.querySelector('[type=submit]');button.disabled=true;try{await handler(Object.fromEntries(new FormData(form)),form);}catch(error){const target=document.getElementById('modalError');if(target)target.textContent=error.message;}finally{button.disabled=form.dataset?.filesLoading==='true';}};setTimeout(()=>document.querySelector('#dialogForm input,#dialogForm select,#dialogForm textarea,#dialogForm button')?.focus(),0);}
+function modal(title,body,submitLabel,handler,wide=false,footerStart='',showCancel=true){closeWorkspaceFilter(false);closeNotificationPopover(false);modalReturnFocus=document.activeElement;document.getElementById('modalRoot').innerHTML=`<div class="modal-mask"><section class="modal ${wide?'wide-modal':''}" role="dialog" aria-modal="true" aria-label="${escapeHtml(title)}"><form id="dialogForm" novalidate><div class="modal-head between"><h2>${escapeHtml(title)}</h2><button class="icon" type="button" aria-label="关闭弹窗" onclick="closeModal()">${icon('close')}</button></div><div class="modal-body">${body}<div class="error" id="modalError" role="alert"></div></div><div class="modal-foot">${footerStart}${showCancel?'<button type="button" onclick="closeModal()">取消</button>':''}<button class="primary" type="submit">${escapeHtml(submitLabel)}</button></div></form></section></div>`;document.getElementById('dialogForm').onsubmit=async event=>{event.preventDefault();const form=event.target,invalid=form.checkValidity&&!form.checkValidity()?form.querySelector('input:invalid,select:invalid,textarea:invalid'):null;if(invalid){const label=invalid.id?form.querySelector(`label[for="${invalid.id}"]`):null,name=(label?.textContent||invalid.getAttribute('aria-label')||'必填项').replace('*','').trim(),target=document.getElementById('modalError');if(target)target.textContent='请填写必填项：'+name;invalid.reportValidity?.();invalid.focus?.();return;}const button=form.querySelector('[type=submit]');button.disabled=true;try{await handler(Object.fromEntries(new FormData(form)),form);}catch(error){const target=document.getElementById('modalError');if(target)target.textContent=error.message;}finally{button.disabled=form.dataset?.filesLoading==='true';}};setTimeout(()=>document.querySelector('#dialogForm input,#dialogForm select,#dialogForm textarea,#dialogForm button')?.focus(),0);}
 function closeModal(returnToLibrary=true,discardWorkEdits=false){
   const hadCreation=!!caseCreationDraft;
   if(!confirmCaseCreationExit(discardWorkEdits))return false;
@@ -3942,7 +4179,7 @@ function workEditConfirmationText(item,owner,actor=CURRENT_USER){
 }
 function workEditorSnapshot(){
   const fields=[...(document.getElementById('dialogForm')?.querySelectorAll?.('input,textarea,select')||[])].map(field=>[field.name||field.id,field.value,field.disabled]);
-  return JSON.stringify({fields,tasks:templateDraft});
+  return JSON.stringify({fields,tasks:templateDraft,requirementFiles:caseEditorDraft?.requirementFiles});
 }
 function workEditorDirty(){
   const editor=caseEditorDraft||taskEditorDraft;
@@ -4004,17 +4241,18 @@ function editCaseModal(id){
   if(!closeModal(false))return false;
   const preAcceptance=['ready','rejected'].includes(item.status),createAllowed=!preAcceptance&&canManageBranch(db,item,CURRENT_USER),label=workTypeName('case',item);
   const tasks=caseTasks(db,id);
-  caseEditorDraft={caseId:id,preAcceptance,caseSnapshot:JSON.stringify(item),tasksSnapshot:JSON.stringify(tasks),tasks:clone(tasks)};
+  caseEditorDraft={caseId:id,preAcceptance,caseSnapshot:JSON.stringify(item),tasksSnapshot:JSON.stringify(tasks),tasks:clone(tasks),requirementFiles:clone(workAttachments(item))};
   templateDraft=clone(tasks);
   const basic=`<section><h3>当前${label} · 基本信息</h3><div class="fields">${inputField(label+'名称','name',item.name,'text',false,'required maxlength="80"')}${responsibilityOwnerField('case',item,label+'负责人')}${preAcceptance?`<div class="field"><label>所属 Project</label><input value="${escapeHtml(caseProjectName(item))}" disabled><input type="hidden" name="project" value="${escapeHtml(item.project||'')}"></div>`:caseProjectField(item.project,createAllowed,true,item)}${inputField('开始日期','start',item.start,'date',false,'required')}${inputField('完成日期','due',item.due,'date',false,'required')}</div>${createAllowed?`<fieldset id="caseEditNewProject" hidden disabled>${projectForm({start:item.start,due:item.due},'newProject-')}</fieldset>`:''}<p class="editor-scope-note">${item.parentCaseId?'日期须在父Case范围内，并覆盖现有直属subCase与Task。':'日期须在Project范围内，并覆盖现有直属subCase与Task。'}不会自动调整下级日期。</p><div id="caseEditScheduleError" class="error" role="alert"></div>${workEditorChangeFields()}</section>`;
-  const requirements=`<section><h3>背景与交付要求</h3><div class="field"><label for="field-background">背景${requiredMark()}</label><textarea name="background" id="field-background" required maxlength="1000" placeholder="为什么开展这个Case">${escapeHtml(item.background||'')}</textarea></div><div class="work-editor-pair"><div class="field"><label for="field-goal">交付目标${requiredMark()}</label><textarea name="goal" id="field-goal" required maxlength="1000" placeholder="最终要交付什么">${escapeHtml(item.goal)}</textarea></div><div class="field"><label for="field-completionStandard">完成标准${requiredMark()}</label><textarea name="completionStandard" id="field-completionStandard" required maxlength="1000" placeholder="满足什么条件才算完成">${escapeHtml(item.completionStandard||'')}</textarea></div></div></section>`;
+  const requirements=`<section><h3>${item.parentCaseId?'目标与要求':'背景与交付要求'}</h3>${item.parentCaseId?'':`<div class="field"><label for="field-background">背景${requiredMark()}</label><textarea name="background" id="field-background" required maxlength="1000" placeholder="为什么开展这个Case">${escapeHtml(item.background||'')}</textarea></div>`}<div class="work-editor-pair"><div class="field"><label for="field-goal">交付目标${requiredMark()}</label><textarea name="goal" id="field-goal" required maxlength="1000" placeholder="最终要交付什么">${escapeHtml(item.goal)}</textarea></div><div class="field"><label for="field-completionStandard">完成标准${requiredMark()}</label><textarea name="completionStandard" id="field-completionStandard" required maxlength="1000" placeholder="满足什么条件才算完成">${escapeHtml(item.completionStandard||'')}</textarea></div></div>${item.parentCaseId?caseBackgroundContextHtml(findCase(db,item.parentCaseId))+(item.background?`<details class="inherited-work-context"><summary>本层背景（历史保留）</summary><p>${escapeHtml(item.background)}</p></details>`:''):''}</section>`;
+  const references=`<section><div class="module-title-actions"><h3>附件（可选）</h3><input id="caseReferenceUpload" type="file" multiple hidden accept=".ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.pdf,.txt,.png,.jpg,.jpeg" onchange="readInlineCaseReferences(this)"><button type="button" id="caseReferenceUploadButton" onclick="document.getElementById('caseReferenceUpload').click()">${icon('plus')} 上传附件</button></div><p class="editor-scope-note">与详情页使用同一份附件列表，随本页保存生效；单份750KB以内，合计2MB。</p><div id="caseReferenceFiles"></div><p id="caseReferenceStatus" class="small muted" aria-live="polite"></p><p id="caseReferenceError" class="error" role="alert"></p></section>`;
   const directTasks=`<section><div class="module-title-actions"><h3>Task清单 <span class="small muted" id="caseEditorTaskCount">${tasks.length}</span></h3></div><p class="editor-scope-note">仅批量维护当前${label}已有的直属Task，不包含subCase中的Task。已结束Task只读；只有待接受且从未开始的Task可删除。新增工作请保存或取消编辑后，在详情下属工作区使用“新增下级”。</p><div id="caseEditTasks" class="editor-task-list table-scroll"></div></section>`;
-  modal('编辑'+label,`<div class="work-editor case-editor" oninput="updateCaseEditorPreview()" onchange="updateCaseEditorPreview()">${workEditorLocation('case',item)}<p class="notice" id="workEditConfirmation">${workEditConfirmationText(item,item.owner)}</p>${basic}${requirements}${preAcceptance?'<p class="editor-scope-note">当前只编辑本Case；接受前不能新增、编辑或执行下属工作。</p>':caseEditorChildren(item)+directTasks}</div>`,'确认',data=>{
+  modal('编辑'+label,`<div class="work-editor case-editor" oninput="updateCaseEditorPreview()" onchange="updateCaseEditorPreview()">${workEditorLocation('case',item)}<p class="notice" id="workEditConfirmation">${workEditConfirmationText(item,item.owner)}</p>${basic}${requirements}${references}${preAcceptance?'<p class="editor-scope-note">当前只编辑本Case；接受前不能新增、编辑或执行下属工作。</p>':caseEditorChildren(item)+directTasks}</div>`,'确认',data=>{
     check(!taskRequirementEditorState,'请先保存或取消Task要求编辑');collectTemplateDraft();updateWorkEditorControls();
     const reasons=readWorkEditorReasons();
     handleOperation(()=>applyCaseEditorChanges(id,data,reasons),item.status==='rejected'?'修改已确认，已重新分配':'修改已确认');
   },true,`<span class="small muted spacer">${preAcceptance?'仅确认当前'+label+'的修改':'确认当前'+label+'及本次直属Task修改，不修改subCase内容'}</span>`);
-  if(!preAcceptance){renderTemplateDraft();collectTemplateDraft();}caseEditorDraft.baseline=workEditorSnapshot();
+  if(!preAcceptance){renderTemplateDraft();collectTemplateDraft();}renderInlineWorkReferences('case');caseEditorDraft.baseline=workEditorSnapshot();
   return true;
 }
 function updateCaseEditorPreview(){
@@ -4036,11 +4274,12 @@ function applyCaseEditorChanges(id,data,dueReasons={}){
   const instance=requireWorkDefinitionEdit(db,'case',id,CURRENT_USER);
   const editor=caseEditorDraft?.caseId===id?caseEditorDraft:null;
   check(!editor||JSON.stringify(instance)===editor.caseSnapshot,'Case信息已变化，请重新打开编辑Case');
-  const current={name:instance.name,owner:instance.owner,start:instance.start,due:instance.due,background:instance.background||'',goal:instance.goal,completionStandard:instance.completionStandard||''};
+  if(editor){check(!editor.filesLoading,'请等待附件读取完成');data={...data,requirementFiles:clone(editor.requirementFiles)};}
+  const current={name:instance.name,owner:instance.owner,start:instance.start,due:instance.due,background:instance.background||'',goal:instance.goal,completionStandard:instance.completionStandard||'',requirementFiles:workAttachments(instance)};
   const values=Object.fromEntries(Object.entries(current).map(([key,value])=>[key,Object.hasOwn(data,key)?data[key]:value]));
-  values.name=String(values.name||'').trim();values.background=String(values.background||'').trim();values.goal=String(values.goal||'').trim();values.completionStandard=String(values.completionStandard||'').trim();
+  values.name=String(values.name||'').trim();values.background=Object.hasOwn(data,'background')?String(values.background||'').trim():current.background;values.goal=String(values.goal||'').trim();values.completionStandard=String(values.completionStandard||'').trim();
   
-  const changed=Object.keys(current).some(key=>Object.hasOwn(data,key)&&values[key]!==(['name','background','goal','completionStandard'].includes(key)?String(current[key]||'').trim():current[key]));
+  const changed=Object.keys(current).some(key=>Object.hasOwn(data,key)&&JSON.stringify(values[key])!==JSON.stringify(['name','background','goal','completionStandard'].includes(key)?String(current[key]||'').trim():current[key]));
   let projectId=Object.hasOwn(data,'project')?data.project:instance.project||'';
   check(typeof projectId==='string','请选择有效的所属 Project');
   if(projectId==='__new_project__'){
@@ -4051,13 +4290,15 @@ function applyCaseEditorChanges(id,data,dueReasons={}){
   if(['ready','rejected'].includes(instance.status)){
     check(projectId===(instance.project||''),'待接受或已拒绝的Case不能变更Project归属');
     check(!editor||JSON.stringify(caseTasks(db,id))===editor.tasksSnapshot,'下属Task已变化，请重新打开编辑');
-    return confirmWorkDefinitionEdit(db,'case',id,{...values,assignmentReason:data.assignmentReason},CURRENT_USER,dueReasons['case:'+id]);
+    const definition={...values,assignmentReason:data.assignmentReason};
+    if(instance.parentCaseId&&!Object.hasOwn(data,'background'))delete definition.background;
+    return confirmWorkDefinitionEdit(db,'case',id,definition,CURRENT_USER,dueReasons['case:'+id]);
   }
   if(editor)editedTaskPlans(templateDraft,caseTasks(db,id),values.start,values.due);
   const ownerChanged=values.owner!==instance.owner;
   if(ownerChanged)requireAssignmentTarget(db,CURRENT_USER,'case',instance,values.owner);
-  if(changed&&Object.keys(current).some(key=>key!=='owner'&&values[key]!==current[key])){
-    const basicValues={name:values.name,owner:instance.owner,start:values.start,due:values.due,goal:values.goal,...(Object.hasOwn(data,'background')?{background:values.background}:{}),...(Object.hasOwn(data,'completionStandard')?{completionStandard:values.completionStandard}:{})};
+  if(changed&&Object.keys(current).some(key=>key!=='owner'&&JSON.stringify(values[key])!==JSON.stringify(current[key]))){
+    const basicValues={name:values.name,owner:instance.owner,start:values.start,due:values.due,goal:values.goal,...(Object.hasOwn(data,'background')?{background:values.background}:{}),...(Object.hasOwn(data,'completionStandard')?{completionStandard:values.completionStandard}:{}),...(Object.hasOwn(data,'requirementFiles')?{requirementFiles:values.requirementFiles}:{})};
     editCase(db,id,basicValues,CURRENT_USER,dueReasons['case:'+id],projectId);
   }
   if(projectId!==(instance.project||'')){moveCase(db,id,projectId,CURRENT_USER);if(projectId)db.selectedProject=projectId;}
@@ -4408,7 +4649,7 @@ function addDraftTask(){
 function claimTaskModal(id){const task=objectRef(db,'task',id);if(!task||task.owner!==CURRENT_USER||task.status!=='ready')return toast('仅Task负责人可接受待接受的Task');if(PROTOTYPE_FEATURES.taskDependencies&&waitingPredecessors(db,task).length)return toast('等待全部前置Task完成后才可接受');modal('接受Task',`<p>${escapeHtml(task.name)}</p><p class="small muted">负责人：${escapeHtml(CURRENT_USER)}。确认后状态为进行中，基础配置锁定。</p>`,'确认接受',()=>handleOperation(()=>claimTask(db,id,CURRENT_USER),'Task进行中'));}
 function deliveryTextRow(label,value){return `<div><dt>${escapeHtml(label)}</dt><dd class="delivery-summary-text">${escapeHtml(value)}</dd></div>`;}
 function deliveryStandardSummary(task){
-  const instance=taskCase(db,task);
+  const instance=caseBackgroundSource(db,task.caseId);
   return `<dl class="delivery-summary">${deliveryTextRow('所属Case背景',instance?.background||'未填写')}${deliveryTextRow('交付目标',task.goal||'未填写')}${deliveryTextRow('完成标准',task.completionStandard||'未填写')}${task.requirementFiles?.length?`<div><dt>参考附件</dt><dd>${requirementFilesHtml(task.requirementFiles,task.id)}</dd></div>`:''}</dl>`;
 }
 function workActionContext(kind,item){return `<div class="submission-context">${['case','task'].includes(kind)?workTypeTag(kind,item):`<span class="tag">${escapeHtml(kindLabels[kind])}</span>`}<strong>${escapeHtml(item.name)}</strong></div>`;}
@@ -4417,22 +4658,27 @@ function deliveryRequirementsDisclosure(kind,item){
 }
 function completionFormHtml(kind,item){
   const task=kind==='task';
-  return `<div class="submission-form">${workActionContext(kind,item)}${task?'':deliveryRequirementsDisclosure(kind,item)}<div class="field submission-note-field"><label for="completionNote">${kind==='project'?'整体完成说明':'完成结果说明'}${requiredMark()}</label><textarea id="completionNote" name="note" required maxlength="1000" class="submission-note" rows="4" placeholder="说明实际完成了什么、结果如何，以及如何满足交付目标"></textarea></div>${task?`<div class="field"><label for="evidenceUploadButton">交付附件（选填）</label><input id="evidenceUpload" type="file" multiple hidden onchange="readEvidenceFiles(this)"><button id="evidenceUploadButton" type="button" class="requirement-upload-button" onclick="document.getElementById('evidenceUpload').click()">${icon('plus')} 上传附件</button><span class="small muted">可不上传；单份不超过750KB，合计不超过2MB。</span><div id="pendingFiles"></div><div id="evidenceFileStatus" aria-live="polite"></div></div>`:''}<p class="submission-identity">负责人：${escapeHtml(item.owner)}。确认后记录为本人完成，不交由其他人审核。</p></div>`;
+  return `<div class="submission-form">${workActionContext(kind,item)}${task?'':deliveryRequirementsDisclosure(kind,item)}<div class="field submission-note-field"><label for="completionNote">${kind==='project'?'整体完成说明':'完成结果说明'}${requiredMark()}</label><textarea id="completionNote" name="note" required maxlength="1000" class="submission-note" rows="4" placeholder="说明实际完成了什么、结果如何，以及如何满足交付目标"></textarea></div>${kind!=='project'?`<div class="field"><label for="evidenceUploadButton">附件（选填）</label><input id="evidenceUpload" type="file" multiple hidden accept=".ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.pdf,.txt,.png,.jpg,.jpeg" onchange="readEvidenceFiles(this)"><button id="evidenceUploadButton" type="button" class="requirement-upload-button" onclick="document.getElementById('evidenceUpload').click()">${icon('plus')} 上传附件</button><span class="small muted">与详情页使用同一份附件列表；单份不超过750KB，合计不超过2MB。</span><div id="pendingFiles"></div><div id="evidenceFileStatus" aria-live="polite"></div></div>`:''}<p class="submission-identity">负责人：${escapeHtml(item.owner)}。确认后记录为本人完成，不交由其他人审核。</p></div>`;
 }
 function completeTaskModal(id){
   if(materialUploads.has(id))return toast('请等待材料上传完成，再提交Task完成结果');
   const task=objectRef(db,'task',id);if(!task||task.owner!==CURRENT_USER||task.status!=='active'||!visibleTo(db,CURRENT_USER,'task',task))return toast('仅Task负责人可在进行中提交完成');
   const missing=missingCompletionFields(db,'task',task);if(missing.length)return completionMissingModal('task',task,missing);
-  pendingFiles=clone(task.files||[]);
+  pendingFiles=clone(workAttachments(task));const attachmentSnapshot=JSON.stringify(workAttachments(task));
   modal('完成Task',completionFormHtml('task',task),'确认完成',(data,form)=>{
     check(form?.dataset?.filesLoading!=='true','请等待附件读取完成');
-    handleOperation(()=>completeTask(db,id,pendingFiles,CURRENT_USER,data.note),'Task已完成，完成结果说明和附件已保存');
+    handleOperation(()=>{
+      const current=objectRef(db,'task',id);check(JSON.stringify(workAttachments(current))===attachmentSnapshot,'附件列表已变化，请重新打开完成窗口');
+      const attachments=partitionTaskAttachments(current,pendingFiles);validateRequirementFiles(attachments.requirementFiles);
+      current.requirementFiles=attachments.requirementFiles;
+      completeTask(db,id,attachments.files,CURRENT_USER,data.note);
+    },'Task已完成，完成结果说明和附件已保存');
   });renderPendingFiles();
 }
 async function readLocalAttachmentFiles(files,existing){
   check(files.every(file=>file.size<=750*1024),'单份文件不能超过 750 KB');
   check(files.reduce((total,file)=>total+file.size,0)+existing.reduce((total,file)=>total+file.size,0)<=2*1024*1024,'本次文件合计不能超过 2 MB');
-  return Promise.all(files.map(file=>new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve({id:makeId('file'),name:file.name,size:file.size,type:file.type,data:reader.result});reader.onerror=()=>reject(Error('文件读取失败：'+file.name));reader.readAsDataURL(file);})));
+  return Promise.all(files.map(file=>new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve({id:makeId('file'),name:file.name,size:file.size,type:file.type,data:reader.result,uploadedBy:CURRENT_USER,uploadedAt:new Date().toISOString()});reader.onerror=()=>reject(Error('文件读取失败：'+file.name));reader.readAsDataURL(file);})));
 }
 async function readEvidenceFiles(input){
   const form=input.closest('form');if(!form||form!==document.getElementById('dialogForm'))return toast('上传界面已关闭，请重新打开');
@@ -4448,7 +4694,7 @@ async function readEvidenceFiles(input){
 function renderPendingFiles(){
   const target=document.getElementById('pendingFiles');if(!target)return;
   const form=document.getElementById('dialogForm'),loading=form?.dataset?.filesLoading==='true';
-  target.innerHTML=pendingFiles.map((file,index)=>`<div class="requirement-file-row"><span class="requirement-file-name">${escapeHtml(file.name)} <span class="small muted">${Math.ceil(file.size/1024)||1} KB</span></span><button type="button" class="link small" onclick="downloadPendingEvidence(${index})">下载</button><button type="button" class="link small danger" aria-label="移除交付附件 ${escapeHtml(file.name)}" ${loading?'disabled ':''}onclick="removePendingEvidence(${index})">移除</button></div>`).join('')||'<span class="small muted">暂无交付附件</span>';
+  target.innerHTML=pendingFiles.map((file,index)=>`<div class="requirement-file-row"><span class="requirement-file-name">${escapeHtml(file.name)} <span class="small muted">${Math.ceil(file.size/1024)||1} KB</span></span><button type="button" class="link small" onclick="downloadPendingEvidence(${index})">下载</button><button type="button" class="link small danger" aria-label="移除附件 ${escapeHtml(file.name)}" ${loading?'disabled ':''}onclick="removePendingEvidence(${index})">移除</button></div>`).join('')||'<span class="small muted">暂无附件</span>';
   for(const control of [document.getElementById('evidenceUpload'),document.getElementById('evidenceUploadButton'),form?.querySelector?.('[type=submit]')])if(control)control.disabled=loading;
   const status=document.getElementById('evidenceFileStatus');if(status)status.textContent=loading?'正在读取附件…':'';
 }
@@ -4457,14 +4703,23 @@ function removePendingEvidence(index){
   if(!Number.isInteger(index)||index<0||index>=pendingFiles.length)return toast('交付附件不存在');
   pendingFiles.splice(index,1);renderPendingFiles();
 }
-function downloadEvidenceFile(file){if(!file)return toast('交付附件不存在');const anchor=document.createElement('a');anchor.href=file.data;anchor.download=file.name;anchor.click();}
+function downloadEvidenceFile(file){if(!file||typeof file.data!=='string'||!/^data:[^,]*,/.test(file.data))return toast('附件不存在或内容无效');const anchor=document.createElement('a');anchor.href=file.data;anchor.download=file.name;anchor.click();}
 function downloadPendingEvidence(index){downloadEvidenceFile(pendingFiles[index]);}
-function downloadEvidence(id,index){downloadEvidenceFile(objectRef(db,'task',id)?.files[index]);}
+function downloadEvidence(id,index){const task=objectRef(db,'task',id);if(!task||!visibleTo(db,CURRENT_USER,'task',task))return toast('附件不存在或无权查看');downloadEvidenceFile(task.files?.[index]);}
 
 function completeParentModal(kind,id){
   const item=objectRef(db,kind,id);if(!['case','project'].includes(kind)||!item||item.owner!==CURRENT_USER||!visibleTo(db,CURRENT_USER,kind,item)||!readyForCompletion(db,kind,item))return toast('仅负责人可在下属工作全部完成后确认整体完成');
+  if(kind==='case'&&materialUploads.has(kind+':'+id))return toast('请等待附件上传完成');
   const missing=missingCompletionFields(db,kind,item);if(missing.length)return completionMissingModal(kind,item,missing);
-  modal('完成'+workTypeName(kind,item),completionFormHtml(kind,item),'确认完成',data=>handleOperation(()=>completeParent(db,kind,id,CURRENT_USER,data.note),workTypeName(kind,item)+'已完成'));
+  const attachmentSnapshot=kind==='case'?JSON.stringify(workAttachments(item)):null;if(kind==='case')pendingFiles=clone(workAttachments(item));
+  modal('完成'+workTypeName(kind,item),completionFormHtml(kind,item),'确认完成',(data,form)=>{
+    check(form?.dataset?.filesLoading!=='true','请等待附件读取完成');
+    handleOperation(()=>{
+      if(kind==='case')check(JSON.stringify(workAttachments(objectRef(db,kind,id)))===attachmentSnapshot,'附件列表已变化，请重新打开完成窗口');
+      completeParent(db,kind,id,CURRENT_USER,data.note,kind==='case'?pendingFiles:undefined);
+    },workTypeName(kind,item)+'已完成');
+  });
+  if(kind==='case')renderPendingFiles();
 }
 function completionMissingModal(kind,item,missing){
   const list=`<ul>${missing.map(field=>`<li>${escapeHtml(field)}</li>`).join('')}</ul>`;
@@ -4497,21 +4752,27 @@ function editTaskModal(id){
   let task;try{task=requireWorkDefinitionEdit(db,'task',id,CURRENT_USER);}catch(error){return toast(error.message);}
   if(!closeModal(false))return false;
   const editor={id,snapshot:JSON.stringify(task)};
-  taskEditorDraft=editor;templateDraft=[{...clone(task),requirementFiles:clone(task.requirementFiles||[])}];
+  taskEditorDraft=editor;templateDraft=[{...clone(task),requirementFiles:clone(workAttachments(task))}];
   const instance=taskCase(db,task);
   const basic=`<section><h3>当前Task · 基本信息</h3><div class="fields">${inputField('Task名称','name',task.name,'text',false,'required maxlength="80"')}${responsibilityOwnerField('task',task,'Task负责人')}${inputField('开始日期','start',task.start,'date',false,`required min="${instance.start}" max="${instance.due}"`)}${inputField('完成日期','due',task.due,'date',false,`required min="${instance.start}" max="${instance.due}"`)}</div><p class="editor-scope-note">日期范围：${escapeHtml(instance.start)} 至 ${escapeHtml(instance.due)}，继承所属${workTypeName('case',instance)}约束，不修改其他Task。</p><div id="workEditorScheduleError" class="error" role="alert"></div>${workEditorChangeFields()}</section>`;
   const requirements=`<section class="task-requirement-fields"><h3>任务要求</h3>${taskDeliveryEditor(task,0,false)}</section>`;
   const contacts=`<section><h3>对接信息</h3><div class="fields">${inputField('对接人','contactPerson',task.contactPerson||'','text',false,'maxlength="100"')}${inputField('对接说明','contactNote',task.contactNote||'','text',false,'maxlength="500"')}</div></section>`;
-  const references=`<section><div class="module-title-actions"><h3>参考附件</h3><input id="inlineReferenceUpload" type="file" multiple hidden accept=".ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.pdf,.txt,.png,.jpg,.jpeg" onchange="readInlineTaskReferences(this)"><button type="button" id="inlineReferenceUploadButton" onclick="document.getElementById('inlineReferenceUpload').click()">${icon('plus')} 添加参考附件</button></div><p class="editor-scope-note">随本页保存生效；单份750KB以内，合计2MB。交付材料仍在详情页直接上传，不在此处修改。</p><div id="inlineReferenceFiles"></div><p id="inlineReferenceStatus" class="small muted" aria-live="polite"></p><p id="inlineReferenceError" class="error" role="alert"></p></section>`;
+  const references=`<section><div class="module-title-actions"><h3>附件</h3><input id="inlineReferenceUpload" type="file" multiple hidden accept=".ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.pdf,.txt,.png,.jpg,.jpeg" onchange="readInlineTaskReferences(this)"><button type="button" id="inlineReferenceUploadButton" onclick="document.getElementById('inlineReferenceUpload').click()">${icon('plus')} 上传附件</button></div><p class="editor-scope-note">与详情页使用同一份附件列表，随本页保存生效；单份750KB以内，合计2MB。</p><div id="inlineReferenceFiles"></div><p id="inlineReferenceStatus" class="small muted" aria-live="polite"></p><p id="inlineReferenceError" class="error" role="alert"></p></section>`;
   modal('编辑Task',`<div id="taskEditTasks" class="work-editor task-editor" oninput="updateTaskEditorPreview()" onchange="updateTaskEditorPreview()">${workEditorLocation('task',task)}<p class="notice" id="workEditConfirmation">${workEditConfirmationText(task,task.owner)}</p>${basic}${requirements}${contacts}${references}</div>`,'确认',data=>{
     check(taskEditorDraft===editor,'Task编辑上下文已变化，请重新打开');
     check(!editor.filesLoading,'请等待参考附件读取完成');
     updateWorkEditorControls();const reasons=readWorkEditorReasons();
-    const values={...data,goal:document.getElementById('requirementEditorGoal').value,completionStandard:document.getElementById('requirementEditorStandard').value,requirementFiles:clone(templateDraft[0].requirementFiles||[])};
+    const attachments=partitionTaskAttachments(task,templateDraft[0].requirementFiles||[]);
+    const values={...data,goal:document.getElementById('requirementEditorGoal').value,completionStandard:document.getElementById('requirementEditorStandard').value,requirementFiles:attachments.requirementFiles};
     handleOperation(()=>{
       const current=requireWorkDefinitionEdit(db,'task',id,CURRENT_USER);
       check(JSON.stringify(current)===editor.snapshot,'Task状态或配置已变化，请重新打开编辑Task');
+      validateWorkAttachmentFiles(attachments.files);
+      const before=(current.files||[]).map(({data,...metadata})=>metadata);
       confirmWorkDefinitionEdit(db,'task',id,values,CURRENT_USER,reasons['task:'+id]);
+      current.files=attachments.files;
+      const after=current.files.map(({data,...metadata})=>metadata);
+      if(JSON.stringify(before)!==JSON.stringify(after))recordDeliveryChange(db,current,'更新附件',CURRENT_USER,{files:before},{files:after});
     },task.status==='rejected'?'修改已确认，已重新分配':'修改已确认');
   },true);
   updateTaskEditorPreview();renderInlineTaskReferences();editor.baseline=workEditorSnapshot();
@@ -4526,31 +4787,41 @@ function updateTaskEditorPreview(){
   document.getElementById('workEditorScheduleError').textContent=message;
 }
 function renderInlineTaskReferences(){
-  const editor=taskEditorDraft;if(!editor)return;
-  const files=templateDraft[0]?.requirementFiles||[];
-  document.getElementById('inlineReferenceFiles').innerHTML=requirementFilesHtml(files,null,true);
-  for(const button of document.getElementById('inlineReferenceFiles').querySelectorAll?.('button')||[])button.disabled=!!editor.filesLoading;
-  document.getElementById('inlineReferenceUploadButton').disabled=!!editor.filesLoading;
-  document.getElementById('inlineReferenceUpload').disabled=!!editor.filesLoading;
-  document.getElementById('inlineReferenceStatus').textContent=editor.filesLoading?'正在读取参考附件…':`${files.length} 份参考附件 · 保存前不会写入Task`;
+  return renderInlineWorkReferences('task');
+}
+function renderInlineWorkReferences(kind){
+  const editor=kind==='case'?caseEditorDraft:taskEditorDraft;if(!editor)return;
+  const files=kind==='case'?editor.requirementFiles:templateDraft[0]?.requirementFiles||[];
+  if(!files)return;
+  const prefix=kind==='case'?'caseReference':'inlineReference',label=kind==='case'?'subCase':'Task';
+  document.getElementById(prefix+'Files').innerHTML=requirementFilesHtml(files,null,true,kind);
+  for(const button of document.getElementById(prefix+'Files').querySelectorAll?.('button')||[])button.disabled=!!editor.filesLoading;
+  document.getElementById(prefix+'UploadButton').disabled=!!editor.filesLoading;
+  document.getElementById(prefix+'Upload').disabled=!!editor.filesLoading;
+  document.getElementById(prefix+'Status').textContent=editor.filesLoading?'正在读取附件…':`${files.length} 份附件 · 保存前不会写入${label}`;
   const form=document.getElementById('dialogForm'),save=form.querySelector?.('[type=submit]');
   if(form.dataset)form.dataset.filesLoading=editor.filesLoading?'true':'false';
   if(save)save.disabled=!!editor.filesLoading;
 }
 async function readInlineTaskReferences(input){
-  const editor=taskEditorDraft,task=templateDraft[0];
-  if(!editor||editor.id!==task?.id)return toast('参考附件编辑界面已关闭，请重新打开');
+  return readInlineWorkReferences('task',input);
+}
+async function readInlineCaseReferences(input){return readInlineWorkReferences('case',input);}
+async function readInlineWorkReferences(kind,input){
+  const editor=kind==='case'?caseEditorDraft:taskEditorDraft,target=kind==='case'?editor:templateDraft[0];
+  if(!editor||!target||kind==='task'&&editor.id!==target.id||kind==='case'&&!Array.isArray(target.requirementFiles))return toast('参考附件编辑界面已关闭，请重新打开');
   if(editor.filesLoading)return toast('请等待当前参考附件读取完成');
+  const prefix=kind==='case'?'caseReference':'inlineReference',active=()=>kind==='case'?caseEditorDraft===editor:taskEditorDraft===editor&&templateDraft[0]===target;
   try{
     const files=[...input.files];check(files.length,'请选择参考附件');
     check(files.every(file=>isRequirementFileName(file.name)),'请上传 PPT、Word、Excel、CSV、PDF、文本或图片文件');
-    editor.filesLoading=true;editor.exitApproved=false;renderInlineTaskReferences();
-    const loaded=await readLocalAttachmentFiles(files,task.requirementFiles||[]);
-    check(taskEditorDraft===editor&&templateDraft[0]===task,'编辑已关闭，参考附件未保存，请重新选择');
-    const next=[...(task.requirementFiles||[]),...loaded];validateRequirementFiles(next);
-    task.requirementFiles=next;document.getElementById('inlineReferenceError').textContent='';
-  }catch(error){if(taskEditorDraft===editor)document.getElementById('inlineReferenceError').textContent=error.message;else toast(error.message);}
-  finally{input.value='';editor.filesLoading=false;if(taskEditorDraft===editor)renderInlineTaskReferences();}
+    editor.filesLoading=true;editor.exitApproved=false;renderInlineWorkReferences(kind);
+    const loaded=await readLocalAttachmentFiles(files,target.requirementFiles||[]);
+    check(active(),'编辑已关闭，参考附件未保存，请重新选择');
+    const next=[...(target.requirementFiles||[]),...loaded];if(kind==='task')validateWorkAttachmentFiles(next);else validateRequirementFiles(next);
+    target.requirementFiles=next;document.getElementById(prefix+'Error').textContent='';
+  }catch(error){if(active())document.getElementById(prefix+'Error').textContent=error.message;else toast(error.message);}
+  finally{input.value='';editor.filesLoading=false;if(active())renderInlineWorkReferences(kind);}
 }
 function suggestEditedTaskDates(id){
   try{
@@ -4589,7 +4860,7 @@ function taskManagementShell(content){
   return `<div class="case-workspace">${caseWorkspaceHead()}${workspaceSearchBar('gantt')}<section class="panel">${content}</section></div>`;
 }
 function taskManagementList(tasks=taskManagementTasks()){
-  return tasks.length?`<div class="table-scroll"><table class="task-list"><thead><tr><th>Task名称 / 材料</th><th>所属Case / 路径</th><th>所属Project</th><th>负责人</th><th>状态</th><th>开始日期</th><th>完成日期</th></tr></thead><tbody>${tasks.map(task=>{const item=taskCase(db,task);return `<tr data-task-id="${task.id}"><td><button class="link" onclick="openTask('${task.id}')">${escapeHtml(task.name)}</button>${task.files.length?`<div><button class="link small" onclick="openTaskMaterials('${task.id}')">交付材料 ${task.files.length} 份</button></div>`:''}</td><td><button class="link" onclick="openCase('${item.id}')">${escapeHtml(item.name)}</button>${item.parentCaseId?casePathHint(item,false):''}</td><td>${escapeHtml(caseProjectName(item))}</td><td>${escapeHtml(task.owner)}</td><td>${badge(task)}</td><td>${task.start}</td><td>${dateCell(task)}</td></tr>`;}).join('')}</tbody></table></div>`:empty('没有符合条件的Task');
+  return tasks.length?`<div class="table-scroll"><table class="task-list"><thead><tr><th>Task名称 / 附件</th><th>所属Case / 路径</th><th>所属Project</th><th>负责人</th><th>状态</th><th>开始日期</th><th>完成日期</th></tr></thead><tbody>${tasks.map(task=>{const item=taskCase(db,task);return `<tr data-task-id="${task.id}"><td><button class="link" onclick="openTask('${task.id}')">${escapeHtml(task.name)}</button>${workAttachments(task).length?`<div><button class="link small" onclick="openTaskMaterials('${task.id}')">附件 ${workAttachments(task).length} 份</button></div>`:''}</td><td><button class="link" onclick="openCase('${item.id}')">${escapeHtml(item.name)}</button>${item.parentCaseId?casePathHint(item,false):''}</td><td>${escapeHtml(caseProjectName(item))}</td><td>${escapeHtml(task.owner)}</td><td>${badge(task)}</td><td>${task.start}</td><td>${dateCell(task)}</td></tr>`;}).join('')}</tbody></table></div>`:empty('没有符合条件的Task');
 }
 function ganttPage(){return taskManagementShell(taskManagementList());}
 function ganttTaskLifecycle(task){
@@ -4857,17 +5128,33 @@ function taskDeliveryEditor(task,index,readOnly){
   const disabled=readOnly?'disabled':'';
   return `<div role="group" aria-label="Task ${index+1} 要求"><div class="field"><label for="requirementEditorGoal">交付目标${requiredMark()}</label><textarea id="requirementEditorGoal" maxlength="1000" aria-required="true" ${disabled} placeholder="例如：10月20日前完成询价，并形成三家供应商报价对比表">${escapeHtml(task.goal||'')}</textarea><span class="requirement-files-note">请说明何时完成什么工作，以及需要形成什么交付物。</span></div><div class="field"><label for="requirementEditorStandard">完成标准${requiredMark()}</label><textarea id="requirementEditorStandard" maxlength="1000" aria-required="true" ${disabled} placeholder="例如：10月20日前收到三份有效报价，参数、价格和交期信息完整可比">${escapeHtml(task.completionStandard||'')}</textarea><span class="requirement-files-note">请说明截止时间、验收条件和能够证明完成的材料。</span></div></div>`;
 }
-function requirementFilesHtml(files,taskId=null,editable=false){
-  if(!files.length)return '<span class="small muted">暂无参考附件</span>';
-  return files.map((file,index)=>`<div class="requirement-file-row"><button type="button" class="requirement-file-name requirement-file-open" aria-label="打开附件 ${escapeHtml(file.name)}"${taskId?` data-task-id="${escapeHtml(taskId)}" onclick="openTaskRequirementFile(this.dataset.taskId,${index})"`:` onclick="openEditorRequirementFile(${index})"`}>${escapeHtml(file.name)} <span class="small muted">${Math.ceil(file.size/1024)||1} KB</span></button>${editable?`<button type="button" class="link small danger" aria-label="移除参考附件 ${escapeHtml(file.name)}" onclick="removeEditorRequirementFile(${index})">移除</button>`:''}</div>`).join('');
+function requirementFilesHtml(files,taskId=null,editable=false,kind='task'){
+  if(!files.length)return '<span class="small muted">暂无附件</span>';
+  const opener=kind==='case'?'openCaseRequirementFile':'openTaskRequirementFile',attribute=kind==='case'?'case':'task',dataset=kind==='case'?'caseId':'taskId',editorOpener=kind==='case'?'openCaseEditorReference':'openEditorRequirementFile',remover=kind==='case'?'removeCaseEditorReference':'removeEditorRequirementFile';
+  return files.map((file,index)=>`<div class="requirement-file-row"><button type="button" class="requirement-file-name requirement-file-open" aria-label="打开附件 ${escapeHtml(file.name)}"${taskId?` data-${attribute}-id="${escapeHtml(taskId)}" onclick="${opener}(this.dataset.${dataset},${index})"`:` onclick="${editorOpener}(${index})"`}>${escapeHtml(file.name)} <span class="small muted">${Math.ceil(file.size/1024)||1} KB</span></button>${taskId?`<button type="button" class="link small" data-${attribute}-id="${escapeHtml(taskId)}" aria-label="下载附件 ${escapeHtml(file.name)}" onclick="${opener}(this.dataset.${dataset},${index},true)">下载</button>`:''}${editable?`<button type="button" class="link small danger" aria-label="移除参考附件 ${escapeHtml(file.name)}" onclick="${remover}(${index})">移除</button>`:''}</div>`).join('');
 }
-function openReferenceAttachment(file){
-  if(!file)return toast('参考附件不存在');
-  try{validateRequirementFiles([file]);const anchor=document.createElement('a');anchor.href=file.data;anchor.target='_blank';anchor.rel='noopener';anchor.click();}
-  catch(error){toast(error.message);}
+function openReferenceAttachment(file,download=false){
+  if(!file)return toast('附件不存在');
+  return download?downloadEvidenceFile(file):previewAttachment(file);
 }
 function openEditorRequirementFile(index){openReferenceAttachment((taskRequirementEditorState?.files||(taskEditorDraft?templateDraft[0]?.requirementFiles:[]))?.[index]);}
-function openTaskRequirementFile(id,index){const task=objectRef(db,'task',id);if(!task||!visibleTo(db,CURRENT_USER,'task',task))return toast('无权查看此 Task');openReferenceAttachment(task.requirementFiles?.[index]);}
+function openTaskRequirementFile(id,index,download=false){return openWorkRequirementFile('task',id,index,download);}
+function openCaseRequirementFile(id,index,download=false){return openWorkRequirementFile('case',id,index,download);}
+function openWorkRequirementFile(kind,id,index,download=false){
+  const item=objectRef(db,kind,id);if(!item||!visibleTo(db,CURRENT_USER,kind,item))return toast('无权查看此 '+(kind==='case'?'Case':'Task'));
+  if(!Number.isInteger(index)||index<0)return toast('参考附件不存在');
+  openReferenceAttachment(item.requirementFiles?.[index],download);
+}
+function openCaseEditorReference(index){
+  if(!caseEditorDraft)return toast('参考附件编辑界面已关闭');
+  openReferenceAttachment(caseEditorDraft.requirementFiles?.[index]);
+}
+function removeCaseEditorReference(index){
+  const editor=caseEditorDraft,files=editor?.requirementFiles;
+  if(!files||editor.filesLoading)return toast('当前不能移除参考附件');
+  if(!Number.isInteger(index)||index<0||index>=files.length)return toast('参考附件不存在');
+  files.splice(index,1);editor.exitApproved=false;renderInlineWorkReferences('case');
+}
 function renderRequirementFiles(){
   const editor=taskRequirementEditorState;if(!editor)return;
   document.getElementById('requirementEditorFiles').innerHTML=requirementFilesHtml(editor.files,null,!editor.readOnly);
@@ -4927,7 +5214,7 @@ function showTaskRequirementDialog(task,index,readOnly,label){
   editor.scrollPositions=[document.querySelector('.main'),document.querySelector('.modal-body'),draftTaskTable()].filter(Boolean).map(element=>({element,top:element.scrollTop||0,left:element.scrollLeft||0}));
   editor.backgroundLayers=[document.getElementById('app'),document.querySelector('#modalRoot > .modal-mask')].filter(Boolean).map(element=>({element,inert:element.inert}));
   for(const {element} of editor.backgroundLayers)element.inert=true;
-  const files=`<section class="requirement-files-editor"><div class="module-title-actions"><h3>参考附件</h3>${readOnly?'':`<input id="requirementAttachmentUpload" type="file" multiple hidden accept=".ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.pdf,.txt,.png,.jpg,.jpeg" onchange="readRequirementAttachments(this)"><button type="button" id="requirementUploadButton" class="requirement-upload-button" aria-label="添加附件" onclick="document.getElementById('requirementAttachmentUpload').click()">${icon('plus')} 添加附件</button>`}</div><div id="requirementEditorFiles">${requirementFilesHtml(editor.files,null,!readOnly)}</div><p class="requirement-files-note">${readOnly?'参考附件只读，可直接打开；不作为交付材料。':'支持PPT、Word、Excel、CSV、PDF、TXT及图片。参考附件随要求保存到草稿，最终随Case或模版保存生效；不作为交付材料。单份750KB以内，合计2MB。'}</p><span id="requirementFileStatus" class="requirement-files-note" aria-live="polite"></span></section>`;
+  const files=`<section class="requirement-files-editor"><div class="module-title-actions"><h3>附件</h3>${readOnly?'':`<input id="requirementAttachmentUpload" type="file" multiple hidden accept=".ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.pdf,.txt,.png,.jpg,.jpeg" onchange="readRequirementAttachments(this)"><button type="button" id="requirementUploadButton" class="requirement-upload-button" aria-label="添加附件" onclick="document.getElementById('requirementAttachmentUpload').click()">${icon('plus')} 添加附件</button>`}</div><div id="requirementEditorFiles">${requirementFilesHtml(editor.files,null,!readOnly)}</div><p class="requirement-files-note">${readOnly?'附件只读，可直接查看。':'支持PPT、Word、Excel、CSV、PDF、TXT及图片。附件随要求保存到草稿，最终随Case或模版保存生效。单份750KB以内，合计2MB。'}</p><span id="requirementFileStatus" class="requirement-files-note" aria-live="polite"></span></section>`;
   document.getElementById('modalRoot').insertAdjacentHTML('beforeend',`<div id="taskRequirementOverlay" class="task-requirement-overlay" onclick="if(event.target===this)closeTaskRequirementEditor()"><section class="task-requirement-popover" role="dialog" aria-modal="true" aria-label="Task ${label}"><header class="requirement-header"><div class="between"><h3>${label}</h3><button type="button" class="icon" aria-label="关闭${label}" onclick="closeTaskRequirementEditor()">${icon('close')}</button></div><p class="requirement-task-name">${escapeHtml(task.name)}</p></header><div class="requirement-body">${taskDeliveryEditor(task,index,readOnly)}${files}<div id="taskRequirementError" class="error" role="alert"></div></div><footer class="requirement-footer"><button type="button" onclick="closeTaskRequirementEditor()">${readOnly?'关闭':'取消'}</button>${readOnly?'':`<button type="button" id="saveTaskRequirementButton" class="primary" onclick="saveTaskRequirementEditor()">保存要求</button>`}</footer></section></div>`);
   renderRequirementFiles();
 }
@@ -5311,7 +5598,7 @@ function openWorkStructure(id){
 }
 function nestedCaseSection(item){
   const children=childCases(db,item.id);if(!children.length)return '';
-  return `<h3>subCase清单 <span class="small muted">${children.length}</span></h3><div class="table-scroll nested-case-table"><table class="detail-task-list case-child-list"><colgroup><col><col><col><col><col></colgroup><thead><tr><th>Case名称</th><th>负责人</th><th>下级进展</th><th>状态</th><th>完成日期</th></tr></thead><tbody>${children.map(child=>`<tr data-child-case="${child.id}"><td>${workTypeTag('case',child)} <button class="link" onclick="openCase('${child.id}')">${escapeHtml(child.name)}</button></td><td>${escapeHtml(child.owner)}</td><td>${workspaceChildProgress(child)}</td><td>${badge(child)}</td><td>${dateCell(child)}</td></tr>`).join('')}</tbody></table></div>`;
+  return `<div class="table-scroll nested-case-table child-work-table"><table class="detail-task-list case-child-list child-work-list" aria-label="直属subCase">${childWorkColumns()}<thead><tr><th>subCase名称</th><th>负责人</th><th>下级进展</th><th>开始日期</th><th>完成日期</th><th>要求</th><th>状态</th></tr></thead><tbody>${children.map(child=>`<tr data-child-case="${child.id}"><td class="title-cell"><button class="link" onclick="openCase('${child.id}')">${escapeHtml(child.name)}</button></td><td>${escapeHtml(child.owner)}</td><td>${workspaceChildProgress(child)}</td><td class="mono">${escapeHtml(child.start||'待确定')}</td><td><div class="child-work-date">${dateCell(child)}</div></td><td>${childWorkRequirementsCell('case',child)}</td><td><div class="child-work-status">${badge(child)}</div></td></tr>`).join('')}</tbody></table></div>`;
 }
 function createNestedBatch(state,parentId,rows,actor){
   check(Array.isArray(rows)&&rows.length,'请至少新增一行下级工作');
@@ -5329,10 +5616,10 @@ function newBatchWorkModal(parentId='',chooseParent=true){
   if(!chooseParent){try{requireCaseOwnerEdit(db,parentId,CURRENT_USER);}catch(error){return toast(error.message);}}
   if(!closeModal(false))return false;
   const selected=chooseParent?(parents.some(item=>item.id===parentId)?parentId:''):parentId;
-  const draft={parentId:selected,fixedParentId:chooseParent?'':selected,chooseParent,rows:[],filesLoading:false,confirmation:null};
+  const draft={parentId:selected,fixedParentId:chooseParent?'':selected,chooseParent,rows:[],filesLoading:false,submitting:false};
   batchWorkDraft=draft;
-  const parentField=chooseParent?`<div class="field"><label for="batchWorkParent">上级 Case${requiredMark()}</label><select id="batchWorkParent" name="parentId" required onchange="changeBatchWorkParent(this.value)"><option value="">请选择Case或subCase</option>${parents.map(item=>`<option value="${escapeHtml(item.id)}" ${item.id===selected?'selected':''}>${escapeHtml(casePath(item)+' · '+caseProjectName(item))}</option>`).join('')}</select><span class="small muted">${selected?'已按当前Case范围预填，请确认。':'整批只选择一次上级，所有新增对象为同级。'}</span></div>`:`<input name="parentId" type="hidden" value="${escapeHtml(selected)}"><p class="small muted">在当前Case／subCase下批量新增，上级固定，不重复选择。</p>`;
-  modal('批量新增下属工作',`<div class="batch-work" oninput="clearBatchWorkReview()" onchange="clearBatchWorkReview()">${parentField}<div id="batchWorkContext" class="nested-parent-context" aria-live="polite"></div><p class="small muted">允许混合新增subCase与Task。本批不创建多层嵌套；需要继续拆解时，进入新建subCase再新增下级。</p><div id="batchWorkRows"></div><p id="batchWorkStatus" class="small muted" aria-live="polite"></p><div class="row"><button type="button" onclick="addBatchWorkRow('case')">${icon('plus')} 添加subCase行</button><button type="button" onclick="addBatchWorkRow('task')">${icon('plus')} 添加Task行</button></div><div id="batchWorkReview" aria-live="polite"></div></div>`,'检查并创建',data=>submitBatchWork(data,draft),true);
+  const parentField=chooseParent?`<div class="field"><label for="batchWorkParent">上级 Case${requiredMark()}</label><select id="batchWorkParent" name="parentId" required onchange="changeBatchWorkParent(this.value)"><option value="">请选择Case或subCase</option>${parents.map(item=>`<option value="${escapeHtml(item.id)}" ${item.id===selected?'selected':''}>${escapeHtml(casePath(item)+' · '+caseProjectName(item))}</option>`).join('')}</select></div>`:`<input name="parentId" type="hidden" value="${escapeHtml(selected)}">`;
+  modal('新增',`<div class="batch-work">${parentField}<div class="row batch-work-add"><button type="button" onclick="addBatchWorkRow('task')">${icon('plus')} 新增</button></div><div id="batchWorkRows"></div><p id="batchWorkStatus" class="small muted" role="status" hidden></p></div>`,'创建',data=>submitBatchWork(data,draft),true);
   changeBatchWorkParent(selected);addBatchWorkRow('task');draft.baseline=batchWorkSnapshot();
   return true;
 }
@@ -5344,73 +5631,65 @@ function collectBatchWorkRows(){
   }
 }
 function batchWorkSnapshot(){collectBatchWorkRows();return JSON.stringify({parentId:batchWorkDraft?.parentId,rows:batchWorkDraft?.rows});}
-function clearBatchWorkReview(){
-  if(!batchWorkDraft)return;
-  batchWorkDraft.confirmation=null;document.getElementById('batchWorkReview').innerHTML='';
-  const button=document.querySelector('#dialogForm [type=submit]');if(button)button.textContent='检查并创建';
+function updateBatchWorkSubmit(){
+  const draft=batchWorkDraft;if(!draft)return;
+  const button=document.querySelector('#dialogForm [type=submit]');
+  if(button){button.textContent=draft.submitting?'创建中…':draft.rows.length>1?`创建${draft.rows.length}项工作`:'创建';button.disabled=draft.filesLoading||draft.submitting;}
 }
 function changeBatchWorkParent(id){
   const draft=batchWorkDraft;if(!draft)return toast('批量新增窗口已关闭');
   collectBatchWorkRows();draft.parentId=id;
-  const parent=nestedWorkParents().find(item=>item.id===id);
-  document.getElementById('batchWorkContext').innerHTML=parent?`<strong>${escapeHtml(casePath(parent))}</strong><div>所属 Project：${escapeHtml(caseProjectName(parent))}（自动继承）</div><div>允许日期：${parent.start} 至 ${parent.due}；切换上级不改写已填日期。</div><details><summary>所属Case背景（Task参考）</summary><p>${escapeHtml(parent.background||'尚未填写背景')}</p></details>`:'<span class="muted">请选择整批工作的直接上级。</span>';
-  clearBatchWorkReview();renderBatchWorkRows();
+  renderBatchWorkRows();
 }
 function addBatchWorkRow(kind){
   const draft=batchWorkDraft;if(!draft||draft.filesLoading)return toast('当前不能添加，请等待附件读取完成');
   if(!['case','task'].includes(kind))return toast('工作类型无效');
   collectBatchWorkRows();draft.rows.push({id:makeId('batch-row'),kind,name:'',owner:CURRENT_USER,start:'',due:'',background:'',goal:'',completionStandard:'',contactPerson:'',contactNote:'',requirementFiles:[]});
-  clearBatchWorkReview();renderBatchWorkRows();
+  renderBatchWorkRows();
 }
 function removeBatchWorkRow(id){
   const draft=batchWorkDraft;if(!draft||draft.filesLoading)return toast('当前不能移除，请等待附件读取完成');
   collectBatchWorkRows();const index=draft.rows.findIndex(row=>row.id===id);if(index<0)return toast('批量行不存在');
-  draft.rows.splice(index,1);clearBatchWorkReview();renderBatchWorkRows();
+  draft.rows.splice(index,1);renderBatchWorkRows();
 }
 function changeBatchWorkKind(id,kind){
   const draft=batchWorkDraft;if(!draft||draft.filesLoading)return toast('当前不能切换，请等待附件读取完成');
   if(!['case','task'].includes(kind))return toast('工作类型无效');
   collectBatchWorkRows();const row=draft.rows.find(item=>item.id===id);if(!row)return toast('批量行不存在');
-  if(kind==='case'&&(row.requirementFiles.length||row.contactPerson||row.contactNote)&&!confirm('切换为subCase将移除本行Task对接信息与参考附件，确认继续？')){renderBatchWorkRows();return;}
-  row.kind=kind;if(kind==='case'){row.requirementFiles=[];row.contactPerson='';row.contactNote='';}
-  clearBatchWorkReview();renderBatchWorkRows();
+  if(kind==='case'&&(row.contactPerson||row.contactNote)&&!confirm('切换为subCase将移除本行Task对接信息，参考附件保留，确认继续？')){renderBatchWorkRows();return;}
+  row.kind=kind;if(kind==='case'){row.contactPerson='';row.contactNote='';}
+  renderBatchWorkRows();
 }
 function renderBatchWorkRows(){
   const draft=batchWorkDraft;if(!draft)return;
   const parent=nestedWorkParents().find(item=>item.id===draft.parentId);
+  const expandedRows=new Set([...document.querySelectorAll('#batchWorkRows [data-batch-row] details[open]')].map(details=>details.closest('[data-batch-row]').dataset.batchRow));
   const field=(row,key,label,type='text',required=false,max='')=>`<div class="field"><label for="${row.id}-${key}">${label}${required?requiredMark():''}</label><input id="${row.id}-${key}" data-batch-field="${key}" value="${escapeHtml(row[key])}" type="${type}" ${required?'required':''} ${max?`maxlength="${max}"`:''} ${type==='date'?`min="${parent?.start||''}" max="${parent?.due||''}"`:''}></div>`;
   document.getElementById('batchWorkRows').innerHTML=draft.rows.map((row,index)=>{
-    const label=row.kind==='case'?'subCase':'Task';
-    const requirements=(row.kind==='case'?[['background','背景'],['goal','交付目标'],['completionStandard','完成标准']]:[['goal','交付目标'],['completionStandard','完成标准']]).map(([key,title])=>`<div class="field full"><label for="${row.id}-${key}">${title}${requiredMark()}</label><textarea id="${row.id}-${key}" data-batch-field="${key}" required maxlength="1000" oninvalid="this.closest('details').open=true">${escapeHtml(row[key])}</textarea></div>`).join('');
-    const references=row.kind==='task'?`<div class="fields">${field(row,'contactPerson','对接人（可选）','text',false,100)}${field(row,'contactNote','对接说明（可选）','text',false,500)}</div><p class="small muted">背景参考上级Case。参考附件单份750KB以内、每Task合计2MB，随整批创建保存。</p><input id="${row.id}-upload" type="file" multiple hidden accept=".ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.pdf,.txt,.png,.jpg,.jpeg" onchange="readBatchWorkReferences('${row.id}',this)"><button type="button" ${draft.filesLoading?'disabled':''} onclick="document.getElementById('${row.id}-upload').click()">添加参考附件</button>${row.requirementFiles.map((file,fileIndex)=>`<div class="row"><button class="link" type="button" onclick="openBatchWorkReference('${row.id}',${fileIndex})">${escapeHtml(file.name)}</button><button type="button" ${draft.filesLoading?'disabled':''} onclick="removeBatchWorkReference('${row.id}',${fileIndex})">移除</button></div>`).join('')}`:'';
-    return `<section class="batch-work-row" data-batch-row="${row.id}"><div class="module-title-actions"><strong>${index+1}. ${label}</strong><button type="button" ${draft.filesLoading?'disabled':''} onclick="removeBatchWorkRow('${row.id}')" aria-label="移除第${index+1}行">移除</button></div><div class="fields"><div class="field"><label for="${row.id}-kind">类型</label><select id="${row.id}-kind" data-batch-field="kind" ${draft.filesLoading?'disabled':''} onchange="changeBatchWorkKind('${row.id}',this.value)"><option value="case" ${row.kind==='case'?'selected':''}>subCase</option><option value="task" ${row.kind==='task'?'selected':''}>Task</option></select></div>${field(row,'name',label+'名称','text',true,80)}<div class="field"><label for="${row.id}-owner">负责人${requiredMark()}</label><select id="${row.id}-owner" data-batch-field="owner" required>${PEOPLE.filter(person=>!isAssignmentExempt(db,person)).map(person=>`<option ${person===row.owner?'selected':''}>${escapeHtml(person)}</option>`).join('')}</select></div>${field(row,'start','开始日期','date',true)}${field(row,'due','完成日期','date',true)}</div><details${row.goal||row.completionStandard||row.background||row.requirementFiles.length?' open':''}><summary>目标与要求（必填）${row.kind==='task'?' · 对接与附件（可选）':''}</summary><div class="fields">${requirements}</div>${references}</details></section>`;
-  }).join('')||'<p class="small muted">暂无批量行，请添加subCase或Task。</p>';
-  document.getElementById('batchWorkStatus').textContent=draft.filesLoading?'正在读取参考附件，请稍候…':`${draft.rows.filter(row=>row.kind==='case').length} 个subCase · ${draft.rows.filter(row=>row.kind==='task').length} 个Task · 创建前不会保存或派发`;
+    const requirements=[['goal','交付目标'],['completionStandard','完成标准']].map(([key,title])=>`<div class="field full"><label for="${row.id}-${key}">${title}${requiredMark()}</label><textarea id="${row.id}-${key}" data-batch-field="${key}" required maxlength="1000" oninvalid="this.closest('details').open=true">${escapeHtml(row[key])}</textarea></div>`).join('');
+    const references=(row.kind==='task'?`<div class="fields">${field(row,'contactPerson','对接人（可选）','text',false,100)}${field(row,'contactNote','对接说明（可选）','text',false,500)}</div>`:'')+`<h4>附件（可选）</h4><input id="${row.id}-upload" type="file" multiple hidden accept=".ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.pdf,.txt,.png,.jpg,.jpeg" onchange="readBatchWorkReferences('${row.id}',this)"><button type="button" ${draft.filesLoading?'disabled':''} onclick="document.getElementById('${row.id}-upload').click()">上传附件</button>${row.requirementFiles.map((file,fileIndex)=>`<div class="row"><button class="link" type="button" onclick="openBatchWorkReference('${row.id}',${fileIndex})">${escapeHtml(file.name)}</button><button type="button" ${draft.filesLoading?'disabled':''} onclick="removeBatchWorkReference('${row.id}',${fileIndex})">移除</button></div>`).join('')}`;
+    return `<section class="batch-work-row" data-batch-row="${row.id}"><div class="batch-work-fields-scroll" tabindex="0" role="group" aria-label="工作基本信息，可横向滚动"><div class="fields batch-work-heading"><div class="field"><label for="${row.id}-kind">类型</label><select id="${row.id}-kind" data-batch-field="kind" ${draft.filesLoading?'disabled':''} onchange="changeBatchWorkKind('${row.id}',this.value)"><option value="case" ${row.kind==='case'?'selected':''}>subCase</option><option value="task" ${row.kind==='task'?'selected':''}>Task</option></select></div>${field(row,'name','名称','text',true,80)}<div class="field"><label for="${row.id}-owner">负责人${requiredMark()}</label><select id="${row.id}-owner" data-batch-field="owner" required>${PEOPLE.filter(person=>!isAssignmentExempt(db,person)).map(person=>`<option ${person===row.owner?'selected':''}>${escapeHtml(person)}</option>`).join('')}</select></div>${field(row,'start','开始日期','date',true)}${field(row,'due','完成日期','date',true)}<button type="button" ${draft.filesLoading?'disabled':''} onclick="removeBatchWorkRow('${row.id}')" aria-label="移除第${index+1}行">移除</button></div></div><details${expandedRows.has(row.id)?' open':''}><summary>目标与要求${requiredMark()}</summary><div class="fields">${requirements}</div>${references}</details></section>`;
+  }).join('');
+  const status=document.getElementById('batchWorkStatus');status.textContent=draft.filesLoading?'正在读取附件，请稍候…':'';status.hidden=!draft.filesLoading;
   const form=document.getElementById('dialogForm');if(form.dataset)form.dataset.filesLoading=String(draft.filesLoading);
-  const submit=form.querySelector?.('[type=submit]');if(submit)submit.disabled=draft.filesLoading;
+  updateBatchWorkSubmit();
 }
 function submitBatchWork(data,draft){
+  if(!draft||batchWorkDraft!==draft)return toast('新增窗口已关闭，请勿重复提交');
+  if(draft.submitting)return toast('正在创建，请勿重复提交');
+  draft.submitting=true;updateBatchWorkSubmit();
   try{
-    check(batchWorkDraft===draft,'批量新增窗口已关闭');check(!draft.filesLoading,'请等待附件读取完成');
+    check(!draft.filesLoading,'请等待附件读取完成');
     check(data.parentId===draft.parentId,'上级选择已变化，请重新确认');
     if(!draft.chooseParent)check(draft.parentId===draft.fixedParentId,'当前详情的上级不可更改');
     collectBatchWorkRows();
     const rows=draft.rows.map(row=>({...clone(row),background:row.kind==='task'?'':row.background}));
-    createNestedBatch(clone(db),draft.parentId,rows,CURRENT_USER);
-    const signature=JSON.stringify({parentId:draft.parentId,rows});
-    if(draft.confirmation!==signature){
-      const cases=rows.filter(row=>row.kind==='case').length,tasks=rows.filter(row=>row.kind==='task'),ready=rows.filter(row=>row.owner!==CURRENT_USER);
-      draft.confirmation=signature;
-      document.getElementById('batchWorkReview').innerHTML=`<div class="batch-work-review"><strong>创建前确认</strong><p>将新增 ${cases} 个subCase、${tasks.length} 个Task，全部直接归属 ${escapeHtml(findCase(db,draft.parentId).name)}。</p><p>${ready.length} 项工作将等待负责人接受；其余由本人负责，直接进入进行中。</p>${ready.length?`<ul>${ready.map(row=>`<li>${row.kind==='case'?'subCase':'Task'} · ${escapeHtml(row.name)} → ${escapeHtml(row.owner)}（待接受）</li>`).join('')}</ul>`:''}<p class="small muted">整批校验并一起保存，有错误不创建任何记录。修改填写内容后需要重新确认。</p></div>`;
-      const button=document.querySelector('#dialogForm [type=submit]');if(button)button.textContent='确认创建全部';
-      document.getElementById('modalError').textContent='';document.getElementById('batchWorkReview').scrollIntoView({block:'nearest'});
-      return;
-    }
     transact(()=>createNestedBatch(db,draft.parentId,rows,CURRENT_USER));
     batchWorkDraft=null;closeModal(false,true);
     if(draft.chooseParent)openCase(draft.parentId);else renderKeepingPosition();
     toast('下属工作已整批创建，责任分配已保存');
-  }catch(error){clearBatchWorkReview();document.getElementById('modalError').textContent=error.message;}
+  }catch(error){document.getElementById('modalError').textContent=error.message;}
+  finally{draft.submitting=false;if(batchWorkDraft===draft)updateBatchWorkSubmit();}
 }
 function openBatchWorkReference(id,index){
   const file=batchWorkDraft?.rows.find(row=>row.id===id)?.requirementFiles[index];if(!file)return toast('参考附件不存在');
@@ -5420,18 +5699,18 @@ function removeBatchWorkReference(id,index){
   const draft=batchWorkDraft;if(!draft||draft.filesLoading)return toast('当前不能移除附件');
   collectBatchWorkRows();const row=draft.rows.find(item=>item.id===id);
   if(!row||!Number.isInteger(index)||index<0||index>=row.requirementFiles.length)return toast('参考附件不存在');
-  row.requirementFiles.splice(index,1);clearBatchWorkReview();renderBatchWorkRows();
+  row.requirementFiles.splice(index,1);renderBatchWorkRows();
 }
 async function readBatchWorkReferences(id,input){
   const draft=batchWorkDraft,row=draft?.rows.find(item=>item.id===id);
-  if(!row||row.kind!=='task')return toast('Task批量行已不可用');
+  if(!row||!['case','task'].includes(row.kind))return toast('批量行已不可用');
   if(draft.filesLoading)return toast('请等待当前附件读取完成');
   try{
     collectBatchWorkRows();const files=[...input.files];check(files.length,'请选择参考附件');
     check(files.every(file=>isRequirementFileName(file.name)),'请上传支持的参考附件类型');
-    draft.filesLoading=true;clearBatchWorkReview();renderBatchWorkRows();
+    draft.filesLoading=true;renderBatchWorkRows();
     const loaded=await readLocalAttachmentFiles(files,row.requirementFiles);
-    check(batchWorkDraft===draft,'批量新增已关闭，附件未保存');
+    check(batchWorkDraft===draft&&draft.rows.includes(row),'批量新增已关闭或行已移除，附件未保存');
     const next=[...row.requirementFiles,...loaded];validateRequirementFiles(next);row.requirementFiles=next;
     document.getElementById('modalError').textContent='';
   }catch(error){if(batchWorkDraft===draft)document.getElementById('modalError').textContent=error.message;else toast(error.message);}
@@ -5448,12 +5727,12 @@ function newNestedWorkModal(parentId,kind,chooseParent=false){
   const label=kind==='case'?'subCase':'Task',selected=chooseParent?(parents.some(item=>item.id===parentId)?parentId:''):parentId;
   const draft={kind,label,parentId:selected,fixedParentId:chooseParent?'':selected,chooseParent,files:[],filesLoading:false};
   nestedWorkDraft=draft;
-  const parentField=chooseParent?`<div class="field full"><label for="workspaceNewParent">${kind==='case'?'上级 Case':'所属 Case'}${requiredMark()}</label><select id="workspaceNewParent" name="parentId" required onchange="changeNestedWorkParent(this.value)"><option value="">请选择 Case 或 subCase</option>${parents.map(item=>`<option value="${escapeHtml(item.id)}" ${item.id===selected?'selected':''}>${escapeHtml(casePath(item)+' · '+caseProjectName(item))}</option>`).join('')}</select><span class="small muted">${selected?'已按当前 Case 范围预填，请确认直接上级。':'选择直接上级，完整路径和 Project 将自动显示。'}</span></div>`:`<input type="hidden" name="parentId" value="${escapeHtml(selected)}"><p class="small muted">从当前详情新增，${kind==='case'?'上级':'所属'}Case已确定，无需重复选择。</p>`;
-  const requirements=(kind==='case'?[['background','背景'],['goal','交付目标'],['completionStandard','完成标准']]:[['goal','交付目标'],['completionStandard','完成标准']]).map(([key,title])=>`<div class="field full"><label for="nested-${key}">${title}${requiredMark()}</label><textarea id="nested-${key}" name="${key}" required maxlength="1000"></textarea></div>`).join('');
-  const taskExtras=kind==='task'?`<section><h3>对接信息（可选）</h3><div class="fields">${inputField('对接人','contactPerson','','text',false,'maxlength="100"')}${inputField('对接说明','contactNote','','text',false,'maxlength="500"')}</div></section><section><div class="module-title-actions"><h3>参考附件（可选）</h3><input id="nestedReferenceUpload" type="file" multiple hidden accept=".ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.pdf,.txt,.png,.jpg,.jpeg" onchange="readNestedWorkReferences(this)"><button type="button" id="nestedReferenceUploadButton" onclick="document.getElementById('nestedReferenceUpload').click()">${icon('plus')} 添加参考附件</button></div><p class="editor-scope-note">单份750KB以内，合计2MB；随创建保存。交付材料在Task详情中上传。</p><div id="nestedReferenceFiles" class="nested-reference-list"></div><p id="nestedReferenceStatus" class="small muted" aria-live="polite"></p><p id="nestedReferenceError" class="error" role="alert"></p></section>`:'';
-  modal('新增'+label,`<div class="nested-create" oninput="updateNestedWorkSchedule()" onchange="updateNestedWorkSchedule()"><div class="work-editor-identity">${workTypeTag(kind,{parentCaseId:selected||'new'})}<span>新建${label}</span></div>${parentField}<div id="nestedParentContext" class="nested-parent-context" aria-live="polite"></div><section><h3>基本信息</h3><div class="fields">${inputField(label+'名称','name','','text',true,'required maxlength="80"')}${peopleSelect('owner',CURRENT_USER,label+'负责人',false,'',PEOPLE.filter(person=>!isAssignmentExempt(db,person)))}${inputField('开始日期','start','','date',false,'required')}${inputField('完成日期','due','','date',false,'required')}</div><p id="nestedDateHint" class="editor-scope-note"></p><p id="nestedScheduleError" class="error" role="alert"></p></section><section><h3>${kind==='case'?'目标与要求':'任务要求'}</h3><div class="fields">${requirements}</div></section>${taskExtras}<p class="small muted">${kind==='case'?'只创建当前subCase；后续可同时包含subCase与直属Task，不需要先拆解。':'给他人安排后需要对方接受；本人安排直接进入进行中。背景参考所属Case，无需重复填写。'}</p></div>`,'创建'+label,data=>submitNestedWork(data,draft),true);
+  const parentField=chooseParent?`<div class="field full"><label for="workspaceNewParent">${kind==='case'?'上级 Case':'所属 Case'}${requiredMark()}</label><select id="workspaceNewParent" name="parentId" required onchange="changeNestedWorkParent(this.value)"><option value="">请选择 Case 或 subCase</option>${parents.map(item=>`<option value="${escapeHtml(item.id)}" ${item.id===selected?'selected':''}>${escapeHtml(casePath(item)+' · '+caseProjectName(item))}</option>`).join('')}</select><span class="small muted">${selected?'已按当前 Case 范围预填，请确认直接上级。':'选择直接上级，Project将自动继承。'}</span></div>`:`<input type="hidden" name="parentId" value="${escapeHtml(selected)}">`;
+  const requirements=[['goal','交付目标'],['completionStandard','完成标准']].map(([key,title])=>`<div class="field full"><label for="nested-${key}">${title}${requiredMark()}</label><textarea id="nested-${key}" name="${key}" required maxlength="1000"></textarea></div>`).join('');
+  const taskExtras=(kind==='task'?`<section><h3>对接信息（可选）</h3><div class="fields">${inputField('对接人','contactPerson','','text',false,'maxlength="100"')}${inputField('对接说明','contactNote','','text',false,'maxlength="500"')}</div></section>`:'')+`<section><div class="module-title-actions"><h3>附件（可选）</h3><input id="nestedReferenceUpload" type="file" multiple hidden accept=".ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.pdf,.txt,.png,.jpg,.jpeg" onchange="readNestedWorkReferences(this)"><button type="button" id="nestedReferenceUploadButton" onclick="document.getElementById('nestedReferenceUpload').click()">${icon('plus')} 上传附件</button></div><p class="editor-scope-note">单份750KB以内，合计2MB；随创建保存，后续可在详情页统一查看、下载和管理。</p><div id="nestedReferenceFiles" class="nested-reference-list"></div><p id="nestedReferenceStatus" class="small muted" aria-live="polite"></p><p id="nestedReferenceError" class="error" role="alert"></p></section>`;
+  modal('新增'+label,`<div class="nested-create" oninput="updateNestedWorkSchedule()" onchange="updateNestedWorkSchedule()"><section><h3>基本信息</h3><div class="fields nested-basic-fields">${inputField(label+'名称','name','','text',false,'required maxlength="80"')}${peopleSelect('owner',CURRENT_USER,label+'负责人',false,'',PEOPLE.filter(person=>!isAssignmentExempt(db,person)))}${inputField('开始日期','start','','date',false,'required')}${inputField('完成日期','due','','date',false,'required')}${parentField}</div><p id="nestedDateHint" class="editor-scope-note"></p><p id="nestedScheduleError" class="error" role="alert"></p></section><section><h3>${kind==='case'?'目标与要求':'任务要求'}</h3><div class="fields">${requirements}</div>${kind==='task'?'<div id="nestedBackgroundContext"></div>':''}</section>${taskExtras}<p class="small muted">${kind==='case'?'只创建当前subCase；后续可同时包含subCase与直属Task。':'给他人安排后需要对方接受；本人安排直接进入进行中。背景参考所属Case，无需重复填写。'}</p></div>`,'创建'+label,data=>submitNestedWork(data,draft),true);
   changeNestedWorkParent(selected);
-  if(kind==='task')renderNestedWorkReferences();
+  renderNestedWorkReferences();
   draft.baseline=nestedWorkSnapshot();
   return true;
 }
@@ -5464,13 +5743,13 @@ function nestedWorkSnapshot(){
 function changeNestedWorkParent(id){
   const draft=nestedWorkDraft;if(!draft)return toast('创建窗口已关闭');
   draft.parentId=id;
-  const parent=nestedWorkParents().find(item=>item.id===id),context=document.getElementById('nestedParentContext');
-  context.innerHTML=parent?`<div class="small muted">${draft.kind==='case'?'上级 Case':'所属 Case'}</div><div class="work-editor-identity">${workTypeTag('case',parent)}<strong>${escapeHtml(parent.name)}</strong></div><div>所属位置：${escapeHtml(casePath(parent))}</div><div>所属 Project：${escapeHtml(caseProjectName(parent))}（自动继承）</div>${draft.kind==='task'?`<details><summary>查看所属Case背景</summary><p class="task-case-background-text">${escapeHtml(parent.background||'尚未填写背景')}</p></details>`:''}`:'<span class="muted">请选择直接上级，归属 Project 将自动继承。</span>';
+  const parent=nestedWorkParents().find(item=>item.id===id);
   for(const key of ['start','due']){
     const field=document.getElementById('field-'+key);
     if(field){field.min=parent?.start||'';field.max=parent?.due||'';}
   }
   document.getElementById('nestedDateHint').textContent=parent?`允许日期范围：${parent.start} 至 ${parent.due}。请填写本次实际计划，切换上级不会自动改写日期。`:'选择上级后显示允许的日期范围。';
+  if(draft.kind==='task')document.getElementById('nestedBackgroundContext').innerHTML=caseBackgroundContextHtml(parent);
   updateNestedWorkSchedule();
 }
 function nestedWorkScheduleError(parent,start,due){
@@ -5498,9 +5777,9 @@ function submitNestedWork(data,draft){
   }catch(error){document.getElementById('modalError').textContent=error.message;}
 }
 function renderNestedWorkReferences(){
-  const draft=nestedWorkDraft;if(!draft||draft.kind!=='task')return;
+  const draft=nestedWorkDraft;if(!draft)return;
   document.getElementById('nestedReferenceFiles').innerHTML=draft.files.map((file,index)=>`<div class="row"><button type="button" class="link" onclick="openNestedWorkReference(${index})">${icon('attachment')} ${escapeHtml(file.name)}</button><button type="button" ${draft.filesLoading?'disabled':''} onclick="removeNestedWorkReference(${index})" aria-label="移除 ${escapeHtml(file.name)}">移除</button></div>`).join('');
-  document.getElementById('nestedReferenceStatus').textContent=draft.filesLoading?'正在读取参考附件…':`${draft.files.length} 份参考附件 · 创建前不会写入Task`;
+  document.getElementById('nestedReferenceStatus').textContent=draft.filesLoading?'正在读取参考附件…':`${draft.files.length} 份参考附件 · 创建前不会写入${draft.label}`;
   for(const id of ['nestedReferenceUpload','nestedReferenceUploadButton'])document.getElementById(id).disabled=draft.filesLoading;
   const form=document.getElementById('dialogForm');if(form.dataset)form.dataset.filesLoading=String(draft.filesLoading);
   const submit=form.querySelector?.('[type=submit]');if(submit)submit.disabled=draft.filesLoading;
@@ -5515,7 +5794,7 @@ function removeNestedWorkReference(index){
   draft.files.splice(index,1);renderNestedWorkReferences();
 }
 async function readNestedWorkReferences(input){
-  const draft=nestedWorkDraft;if(!draft||draft.kind!=='task')return toast('创建窗口已关闭，请重新打开');
+  const draft=nestedWorkDraft;if(!draft||!['case','task'].includes(draft.kind))return toast('创建窗口已关闭，请重新打开');
   if(draft.filesLoading)return toast('请等待当前参考附件读取完成');
   try{
     const files=[...input.files];check(files.length,'请选择参考附件');
@@ -5571,7 +5850,7 @@ function keyUpdates(kind,item){
   const pending=entry=>localBlocker(entry)&&!entry.resolvedAt,records=keyUpdateSelection(db,kind,item),{locked,canPromote}=discussionAccess(kind,item);
   if(!records.length)return '';
   const counts=[[records.filter(pending).length,'项待解决阻塞'],[records.filter(entry=>localBlocker(entry)&&entry.resolvedAt).length,'项已解决阻塞'],[records.filter(entry=>!entry.blocker).length,'条重要评论']].filter(([count])=>count>0).map(([count,label])=>count+' '+label).join(' · ');
-  return `<section class="key-updates" aria-label="关键信息"><div class="between"><h2>关键信息</h2><span class="small muted">${counts}</span></div><div class="key-update-list" id="keyUpdateRecords" role="region" aria-label="重要评论与阻塞摘要" tabindex="0">${records.map(entry=>{const source=objectRef(db,entry.kind,entry.object),blocker=localBlocker(entry),resolved=blocker&&!!entry.resolvedAt;return `<div class="key-update${blocker?resolved?' is-resolved':' is-blocked':''}" data-key-update="${entry.id}"><div class="discussion-meta"><span class="tag ${blocker?resolved?'good':'bad blocker-marker':''}">${blocker?resolved?'阻塞已解决':blockerLabel():'重要评论'}</span><span>${escapeHtml(blocker?blockerFollowUpOwner(entry,source):entry.actor)}</span></div><p>${escapeHtml(entry.text)}</p>${blocker?`<p class="small muted key-update-next" title="${escapeHtml(entry.nextStep)}">下一步：${escapeHtml(entry.nextStep)}</p>${resolved?`<p class="small muted key-update-next" title="${escapeHtml(entry.resolution||'未记录')}">解决说明：${escapeHtml(entry.resolution||'未记录')}</p>`:''}`:''}<div class="key-update-actions"><button class="link key-update-source" title="${escapeHtml(source.name)} · 查看原文" onclick="openDiscussionSource('${entry.kind}','${entry.object}','${entry.id}')">来源：${escapeHtml(source.name)}</button>${!locked&&canPromote?`<button type="button" class="link small" onclick="toggleKeyUpdatePin('${entry.id}','${kind}','${item.id}')">取消置顶</button>`:''}</div></div>`;}).join('')}</div></section>`;
+  return `<section class="key-updates" aria-label="关键信息"><div class="between"><h2>关键信息</h2><span class="small muted">${counts}</span></div><div class="key-update-list" id="keyUpdateRecords" role="region" aria-label="重要评论与阻塞摘要" tabindex="0">${records.map(entry=>{const source=objectRef(db,entry.kind,entry.object),blocker=localBlocker(entry),resolved=blocker&&!!entry.resolvedAt;return `<div class="key-update${blocker?resolved?' is-resolved':' is-blocked':''}" data-key-update="${entry.id}"><div class="key-update-header"><div class="discussion-meta"><span class="tag ${blocker?resolved?'good':'bad blocker-marker':''}">${blocker?resolved?'阻塞已解决':blockerLabel():'重要评论'}</span>${blocker?'':`<span>${escapeHtml(entry.actor)}</span>`}</div>${!locked&&canPromote?`<button type="button" class="link small key-update-unpin" onclick="toggleKeyUpdatePin('${entry.id}','${kind}','${item.id}')">取消置顶</button>`:''}</div><p>${escapeHtml(entry.text)}</p>${blocker?`<p class="small muted key-update-next" title="${escapeHtml(entry.nextStep)}">解决方案：${escapeHtml(entry.nextStep)}</p>${resolved?`${blockerEffectHtml(entry)}<p class="small muted key-update-next" title="${escapeHtml(entry.resolution||'历史记录未填写结论')}">结论：${escapeHtml(entry.resolution||'历史记录未填写结论')}</p>`:''}`:''}<div class="key-update-actions"><button class="link key-update-source" title="${escapeHtml(source.name)} · 查看原文" onclick="openDiscussionSource('${entry.kind}','${entry.object}','${entry.id}')">来源：${escapeHtml(source.name)}</button></div></div>`;}).join('')}</div></section>`;
 }
 function toggleKeyUpdatePin(id,kind='',objectId=''){
   const entry=(db.discussions||[]).find(record=>record.id===id);if(!entry)return toast('记录不存在，请刷新后重试');
@@ -5597,9 +5876,9 @@ function discussionEntryHtml(kind,item,entry,{inDrawer=false,depth=0}={}){
   const management=!locked&&canPromote?`<button type="button" class="link small" onclick="toggleKeyUpdatePin('${entry.id}')">${pinned?'取消置顶':'置顶到关键信息'}</button>`:'';
   if(entry.blocker&&!inDrawer){
     const shortDate=value=>escapeHtml(validDate(value)?value:new Date(value).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false}));
-    const reassign=!locked&&canPromote&&!entry.resolvedAt?`<button type="button" class="link small" onclick="reassignWorkBlockerModal('${entry.id}')">更换处理人</button>`:'';
-    const resolve=!locked&&canResolveWorkBlocker(db,entry,item,CURRENT_USER)&&!entry.resolvedAt?`<button type="button" class="link small" onclick="resolveDiscussionModal('${entry.id}')">标记已解决</button>`:'';
-    return `<article class="discussion-entry discussion-blocker${entry.resolvedAt?' is-resolved':''}" id="discussion-${entry.id}" aria-label="阻塞记录"><header class="blocker-card-header"><span class="tag ${entry.resolvedAt?'good':'bad blocker-marker'}">${entry.resolvedAt?'阻塞已解决':blockerLabel()}</span>${pinned?'<span class="tag">已置顶</span>':''}</header><p class="blocker-card-problem">${escapeHtml(entry.text)}</p><section class="blocker-card-section"><h3>解决思路</h3><p>${escapeHtml(entry.approach||'未填写')}</p></section><section class="blocker-card-section"><h3>下一步方案</h3><p>${escapeHtml(entry.nextStep)}</p></section>${entry.resolvedAt?`<section class="blocker-card-section"><h3>解决说明</h3><p>${escapeHtml(entry.resolution)}</p></section>`:''}<div class="blocker-card-meta"><span>${escapeHtml(blockerFollowUpOwner(entry,item))}负责处理</span><span aria-hidden="true">·</span><time datetime="${escapeHtml(entry.at)}" title="${validDate(entry.at)?escapeHtml(entry.at):dateText(entry.at)}">${shortDate(entry.at)} 创建</time>${entry.resolvedAt?`<span aria-hidden="true">·</span><time datetime="${escapeHtml(entry.resolvedAt)}" title="${dateText(entry.resolvedAt)}">${shortDate(entry.resolvedAt)} 已解决</time>`:''}</div>${reassign||management||resolve?`<div class="discussion-entry-actions">${reassign}${management}${resolve}</div>`:''}<details class="discussion-assignment-history" id="blocker-history-${entry.id}"><summary>处理记录</summary><p>${escapeHtml(entry.actor)}于 ${validDate(entry.at)?escapeHtml(entry.at):dateText(entry.at)} 创建此阻塞</p>${(entry.followUpHistory||[]).map(record=>`<p>${escapeHtml(record.actor)}于 ${dateText(record.at)} 将处理人由 ${escapeHtml(record.from)} 更换为 ${escapeHtml(record.to)}</p>`).join('')}${entry.resolvedAt?`<p>${escapeHtml(entry.resolvedBy)}于 ${dateText(entry.resolvedAt)} 标记已解决</p>`:''}</details></article>`;
+    const pinControl=!locked&&canPromote?`<button type="button" class="blocker-card-pin" aria-pressed="${pinned}" onclick="toggleKeyUpdatePin('${entry.id}')">${icon('pin')}${pinned?'取消置顶':'置顶到关键信息'}</button>`:pinned?'<span class="tag">已置顶</span>':'';
+    const resolve=!locked&&canResolveWorkBlocker(db,entry,item,CURRENT_USER)&&!entry.resolvedAt?`<button type="button" class="blocker-card-resolve" onclick="resolveDiscussionModal('${entry.id}')">标记已解决</button>`:'';
+    return `<article class="discussion-entry discussion-blocker${entry.resolvedAt?' is-resolved':''}" id="discussion-${entry.id}" aria-label="阻塞记录"><div class="blocker-card-main"><h3>问题描述</h3><header class="blocker-card-header"><div class="blocker-card-tools"><span class="tag ${entry.resolvedAt?'good':'bad blocker-marker'}">${entry.resolvedAt?'阻塞已解决':blockerLabel()}</span>${pinControl}</div>${resolve}</header><p class="blocker-card-problem">${escapeHtml(entry.text)}</p></div><section class="blocker-card-section"><h3>思路</h3><p>${escapeHtml(entry.approach||'未填写')}</p></section><section class="blocker-card-section blocker-card-next"><h3>解决方案</h3><p>${escapeHtml(entry.nextStep)}</p></section>${entry.resolvedAt?`<section class="blocker-conclusion" aria-label="解决结论"><header class="blocker-conclusion-head"><h3>结论</h3>${blockerEffectHtml(entry)}</header><p>${escapeHtml(entry.resolution||'历史记录未填写结论')}</p></section>`:''}<div class="blocker-card-meta"><time datetime="${escapeHtml(entry.at)}" title="${validDate(entry.at)?escapeHtml(entry.at):dateText(entry.at)}">${shortDate(entry.at)} 创建</time>${entry.resolvedAt?`<span aria-hidden="true">·</span><time datetime="${escapeHtml(entry.resolvedAt)}" title="${dateText(entry.resolvedAt)}">${shortDate(entry.resolvedAt)} 已解决</time>`:''}</div></article>`;
   }
   const recipient=entry.replyTo?parent?`<span class="comment-recipient">回复 ${escapeHtml(parent.actor)}</span>`:'<span class="comment-recipient">回复原评论（原文不可用）</span>':'';
   const selected=ui.drawer?.kind==='discussion'&&ui.drawer.objectKind===kind&&ui.drawer.id===item.id&&ui.drawer.replyTo===entry.id;
@@ -5650,20 +5929,21 @@ function activateCommentReply(event,kind,id,replyTo){
 }
 function discussionSection(kind,item){
   const {pending,locked}=discussionAccess(kind,item),own=ownDiscussions(kind,item.id),blockers=own.filter(entry=>entry.blocker),comments=own.filter(entry=>!entry.blocker);
-  return `<section class="detail-sheet-section" id="discussion"><div class="discussion-heading"><h2>阻塞</h2><span class="small muted">${blockers.filter(entry=>!entry.resolvedAt).length} 项待解决 · ${blockers.filter(entry=>entry.resolvedAt).length} 项已解决</span>${!locked&&!pending?`<button type="button" class="discussion-heading-action" onclick="newWorkBlockerModal('${kind}','${item.id}')">${icon('plus')}新增阻塞</button>`:''}</div><div class="discussion-feed">${blockers.map(entry=>discussionEntryHtml(kind,item,entry)).join('')||'<p class="small muted">暂无阻塞。</p>'}</div></section><section class="detail-sheet-section discussion-comments-entry" id="comments"><div class="discussion-heading"><h2>评论</h2><button type="button" class="discussion-heading-action" id="discussionCommentsButton" onclick="openDiscussionReplies('${kind}','${item.id}')">评论 · ${comments.length}条</button></div><p class="small muted">${pending?'待接受期间仅支持沟通澄清。':locked?'评论可查看，当前工作不可发表评论。':'在左侧抽屉中查看、发表和回复评论，可将重要评论置顶到关键信息。'}</p></section>`;
+  const preview=comments.slice(0,3).map(entry=>{
+    const parent=entry.replyTo&&own.find(record=>record.id===entry.replyTo);
+    const recipient=entry.replyTo?`<span class="comment-recipient">${parent?'回复 '+escapeHtml(parent.actor):'回复原评论（原文不可用）'}</span>`:'';
+    return `<article class="comment-preview"><div class="discussion-meta"><strong>${escapeHtml(entry.actor)}</strong>${recipient}<time datetime="${escapeHtml(entry.at)}">${escapeHtml(new Date(entry.at).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai'}))}</time></div><p class="comment-preview-text">${escapeHtml(entry.text)}</p></article>`;
+  }).join('')||`<p class="small muted">${locked?'暂无评论，当前工作不可发表评论。':'点击评论按钮即可参与讨论。'}</p>`;
+  return `<section class="detail-sheet-section" id="discussion"><div class="discussion-heading"><h2>阻塞</h2><span class="small muted">${blockers.filter(entry=>!entry.resolvedAt).length} 项待解决 · ${blockers.filter(entry=>entry.resolvedAt).length} 项已解决</span>${!locked&&!pending?`<button type="button" class="discussion-heading-action" onclick="newWorkBlockerModal('${kind}','${item.id}')">${icon('plus')}新增阻塞</button>`:''}</div><div class="discussion-feed${blockers.length?' blocker-feed':''}">${blockers.map(entry=>discussionEntryHtml(kind,item,entry)).join('')||'<p class="small muted">暂无阻塞。</p>'}</div></section><section class="detail-sheet-section discussion-comments-entry" id="comments"><div class="discussion-heading"><h2>评论</h2><button type="button" class="discussion-heading-action" id="discussionCommentsButton" onclick="openDiscussionReplies('${kind}','${item.id}')">评论 · ${comments.length}条</button></div>${preview}</section>`;
 }
 function blockerDraftKey(kind,id){return 'blocker:'+discussionKey(kind,id);}
 function saveWorkBlockerDraft(form,kind,id){discussionDrafts.set(blockerDraftKey(kind,id),Object.fromEntries(new FormData(form)));}
-function blockerFollowUpField(kind,item,value){
-  const candidates=blockerFollowUpCandidates(db,kind,item);
-  return `<div class="field"><label for="workBlockerFollowUpOwner">处理人</label><select id="workBlockerFollowUpOwner" name="followUpOwner" required><option value="" disabled ${candidates.includes(value)?'':'selected'}>请选择处理人</option>${candidates.map(person=>`<option value="${escapeHtml(person)}" ${value===person?'selected':''}>${escapeHtml(person)}</option>`).join('')}</select></div>`;
-}
 function newWorkBlockerModal(kind,id){
   const item=objectRef(db,kind,id);
   if(!item||!visibleTo(db,CURRENT_USER,kind,item))return toast('工作不存在或无权查看');
   const {pending,locked}=discussionAccess(kind,item);if(pending||locked)return toast('当前工作不可新增阻塞');
   const oldDraft=discussionDrafts.get(discussionKey(kind,id)),draft=discussionDrafts.get(blockerDraftKey(kind,id))||(oldDraft?.blocker?oldDraft:{});
-  modal('新增阻塞',`<p class="small muted">以下三项均需填写。处理人默认当前工作负责人，可调整。</p><div class="field"><label for="workBlockerProblem">阻塞问题</label><textarea id="workBlockerProblem" name="text" required maxlength="2000" placeholder="描述卡在哪里，以及造成的影响">${escapeHtml(draft.text||'')}</textarea></div><div class="field"><label for="workBlockerApproach">解决思路</label><textarea id="workBlockerApproach" name="approach" required maxlength="1000" placeholder="写出当前判断和准备采用的方法">${escapeHtml(draft.approach||'')}</textarea></div><div class="field"><label for="workBlockerNextStep">下一步方案</label><textarea id="workBlockerNextStep" name="nextStep" required maxlength="1000" placeholder="明确接下来准备做什么">${escapeHtml(draft.nextStep||'')}</textarea></div>${blockerFollowUpField(kind,item,draft.followUpOwner??item.owner)}`,'创建阻塞',values=>{
+  modal('新增阻塞',`<p class="small muted">以下三项均需填写，由当前工作Owner处理。</p><div class="field"><label for="workBlockerProblem">问题描述</label><textarea id="workBlockerProblem" name="text" required maxlength="2000" placeholder="描述卡在哪里，以及造成的影响">${escapeHtml(draft.text||'')}</textarea></div><div class="field"><label for="workBlockerApproach">思路</label><textarea id="workBlockerApproach" name="approach" required maxlength="1000" placeholder="写出当前判断和准备采用的方法">${escapeHtml(draft.approach||'')}</textarea></div><div class="field"><label for="workBlockerNextStep">解决方案</label><textarea id="workBlockerNextStep" name="nextStep" required maxlength="1000" placeholder="明确准备如何解决">${escapeHtml(draft.nextStep||'')}</textarea></div>`,'创建阻塞',values=>{
     const entry=transact(()=>createWorkBlocker(db,kind,id,values,CURRENT_USER));
     discussionDrafts.delete(blockerDraftKey(kind,id));if(oldDraft?.blocker)discussionDrafts.delete(discussionKey(kind,id));
     closeModal(false);renderKeepingPosition();document.getElementById('discussion-'+entry.id)?.scrollIntoView({block:'center'});toast('阻塞已创建');
@@ -5671,12 +5951,7 @@ function newWorkBlockerModal(kind,id){
   document.getElementById('dialogForm').oninput=event=>saveWorkBlockerDraft(event.currentTarget,kind,id);
 }
 function reassignWorkBlockerModal(id){
-  const entry=(db.discussions||[]).find(record=>record.id===id),item=entry&&objectRef(db,entry.kind,entry.object);
-  if(!entry?.blocker||!item||!visibleTo(db,CURRENT_USER,entry.kind,item))return toast('阻塞不存在或无权查看');
-  const {locked,canPromote}=discussionAccess(entry.kind,item);if(locked||!canPromote||entry.resolvedAt)return toast('当前不可更换处理人');
-  modal('更换阻塞处理人',`${blockerFollowUpField(entry.kind,item,blockerFollowUpOwner(entry,item))}<p class="small muted">仅调整此条阻塞的处理人，不改变工作的负责人；变更记录将保留。</p>`,'确认更换',values=>{
-    transact(()=>reassignWorkBlocker(db,id,values.followUpOwner,CURRENT_USER));closeModal();renderKeepingPosition();toast('阻塞处理人已调整');
-  });
+  toast('阻塞由工作Owner统一处理，不再单独更换处理人');
 }
 function commentDraft(kind,id){
   const key=discussionKey(kind,id),draft=discussionDrafts.get(key);
@@ -5726,7 +6001,28 @@ function replyToDiscussion(kind,id,replyTo){
   openDiscussionReplies(kind,id,replyTo);document.querySelector('#discussionReplyComposer [name=text]')?.focus();
 }
 document.addEventListener('click',event=>{const current=event.target.closest?.('.discussion-more');document.querySelectorAll('#discussion .discussion-more[open],#discussionReplyDrawer .discussion-more[open]').forEach(menu=>{if(menu!==current)menu.open=false;});});
-function resolveDiscussionModal(id){modal('标记已解决','<div class="field"><label for="blockerResolution">解决说明</label><textarea id="blockerResolution" name="resolution" required maxlength="1000"></textarea></div>','确认解决',data=>handleOperation(()=>resolveDiscussionBlocker(db,id,data.resolution,CURRENT_USER),'阻塞已标记为已解决'));}
+function resolveDiscussionModal(id){
+  const entry=(db.discussions||[]).find(record=>record.id===id),item=entry&&objectRef(db,entry.kind,entry.object);
+  if(!entry?.blocker||!item||!visibleTo(db,CURRENT_USER,entry.kind,item))return toast('阻塞不存在或无权查看');
+  const access=discussionAccess(entry.kind,item);
+  if(entry.resolvedAt||access.pending||access.locked||!canResolveWorkBlocker(db,entry,item,CURRENT_USER))return toast('当前不可解决阻塞');
+  modal('标记已解决',`<fieldset class="blocker-effect-field"><legend>方案效果</legend><div class="blocker-effect-options">${BLOCKER_EFFECTS.map(effect=>`<label class="blocker-effect-option" data-effect="${effect}"><input type="radio" name="effect" value="${effect}" required aria-label="方案效果：${effect}"><span>${effect}</span></label>`).join('')}</div></fieldset><div class="field"><label for="blockerResolution">结论</label><textarea id="blockerResolution" name="conclusion" required maxlength="1000" placeholder="先选择方案效果，再填写实际结果与判断依据"></textarea></div><p class="small muted">评价的是本次方案效果。只有阻塞已解除才能确认；部分有效或无效时，请说明补充或替代措施。结论与效果会同步显示在卡片和流转记录中。</p>`,'确认',data=>handleOperation(()=>resolveDiscussionBlocker(db,id,data,CURRENT_USER),'阻塞已标记为已解决'));
+  document.getElementById('dialogForm').oninput=event=>{
+    if(event.target.name==='effect')document.getElementById('blockerResolution').placeholder=({'有效':'哪些结果证明方案有效？','部分有效':'哪些有效，哪些不足，还采取了什么补充措施？','无效':'为什么无效，最终通过什么方式解除阻塞？'})[event.target.value];
+  };
+}
+async function uploadWorkAttachments(input,kind,id){
+  const key=kind==='task'?id:kind+':'+id;if(materialUploads.has(key))return toast('请等待当前附件上传完成');
+  const files=[...input.files];if(!files.length)return;
+  const item=objectRef(db,kind,id),reason=workAttachmentEditReason(db,kind,item,CURRENT_USER);if(reason)return toast(reason);
+  const expectedFiles=JSON.stringify(workAttachments(item));materialUploads.add(key);renderKeepingPosition();
+  try{
+    const loaded=await readLocalAttachmentFiles(files,workAttachments(item));
+    transact(()=>appendWorkAttachments(db,kind,id,loaded,CURRENT_USER,expectedFiles));
+    ui.attachmentExpanded=ui.attachmentExpanded||{};ui.attachmentExpanded[kind+':'+id]=true;toast('附件已保存，上传记录已保留');
+  }catch(error){toast('上传失败：'+error.message);}
+  finally{input.value='';materialUploads.delete(key);renderKeepingPosition();}
+}
 async function uploadTaskMaterials(input,id){
   if(materialUploads.has(id))return toast('请等待当前上传完成');const files=[...input.files];if(!files.length)return;
   const expectedFiles=JSON.stringify(objectRef(db,'task',id)?.files||[]);materialUploads.add(id);renderKeepingPosition();
@@ -5736,6 +6032,7 @@ async function uploadTaskMaterials(input,id){
 }
 function showHelp(){
   modal('原型演示说明',`<div class="stack">
+    <p>Case、subCase及Task详情的评论模块，无评论时提示“点击评论按钮即可参与讨论。”，只读工作改为“暂无评论，当前工作不可发表评论。”。有评论时替换提示，按时间从新到旧预览当前工作的最新3条，包含回复，显示评论人、回复对象、北京时间和最多两行正文，不混入上下级工作或阻塞记录。完整正文、其余评论及发表回复仍通过右上角“评论 · N条”进入评论区查看，原有权限和历史记录不变。</p>
     <p>评论抽屉按主评论及回复关系成组展示，同级按时间正序，子回复紧跟对应上级；最多缩进两级，更深回复以姓名旁的回复对象标明关系。每条依次展示姓名、正文方框、底部时间与置顶操作，不再单独提供回复按钮。姓名旁的回复某人仅为纯文字说明，不可点击、不跳转原文；已知原作者时直接显示姓名，包括历史回复的原阻塞作者，原文缺失时明确提示。只有点击正文或键盘Enter／空格进入回复，选中正文保留浅色边框并聚焦底部输入框；姓名、回复关系、时间和置顶不会触发回复。回复状态底部在发布左侧显示取消，普通评论仅显示发布，上方只保留回复对象及摘要。拖动选择或复制正文不进入回复，切换对象或取消回复保留已输入文字；取消后恢复普通评论。已结束或锁定工作的正文可阅读、选择、复制但不可进入回复。置顶只影响关键信息，不改变对话楼层；关键信息来源仍定位具体原文，旧记录及阻塞卡片不变。</p>
     <p>未解决阻塞的状态标识统一使用警示图标加“有阻塞”，覆盖列表、树结构、甘特图及其悬浮信息、我的工作卡片、详情页和交流标签；状态不替代真实业务状态，也不把后代工作的问题算作父级自身阻塞。详情页关键信息中的自身待解决阻塞使用红色左侧竖条，已解决阻塞保留绿色；筛选、数量统计、来源定位和处理权限不变。</p>
     <p>Case中心主搜索支持中文输入法：拼音选字期间保留当前输入框及结果，不刷新；选字确认后再按最终文字搜索。英文、数字输入及清空搜索仍实时更新。本规则解决输入法选字被打断，不把纯拼音字母自动转换成汉字查询。</p>
@@ -5748,23 +6045,28 @@ function showHelp(){
     <p>进行中的Case、subCase和Task由有权限的人员修改Owner，确认后立即生效，保持进行中，不重新接受，不增加待交接状态。只切换当前对象的负责人及其职责权限，不自动修改上级、下级的Owner或状态，不暂停下级，不重置日期、实际开始时间、进度、材料及历史。原Owner仅因原责任身份获得的权限随之取消，其独立拥有的其他职责不受影响。流转记录保留变更前后Owner、操作人、时间和说明；进行中Owner变更不产生系统内交接通知，后续通过飞书卡片通知，通知不作为生效前置条件，本原型未接入飞书。</p>
     <p>“【编辑示例】”包含我负责／我分配两个方向的待接受、已拒绝Case、subCase和Task，可在我的工作中搜索“编辑示例”体验。示例只补充一次，编辑、接受或拒绝后的结果会正常保存，刷新不重置，也不修改原有工作。</p>
     <p>“我负责”与“我分配”的Case页签均提供全部状态、待接受、进行中、已完成、已拒绝、已终止，与Task筛选一致。Case中心保留原四张主指标卡，通过状态下拉框筛选包含待接受和已拒绝的全部真实状态，列表、树结构、甘特图及详情共用同一状态。Case模板中的Task可随创建保存，但Case接受前不能执行；接受后，本人安排且无需接受的Task自动开始，其余Task仍由各自负责人接受。</p>
-    <p>详情页延续原版页头与操作入口。基础信息岛只显示直属上级的一层名称，标注所属Case或所属subCase，顶部完整层级导航保留。Case、subCase和Task的关键信息紧邻基本信息岛下方，评论与自身阻塞共用最多两个置顶位置，桌面左右排列。评论、回复及阻塞卡片直接提供置顶到关键信息／取消置顶，不藏在更多菜单中；满两条必须选择替换项，取消替换不改变已有置顶，替换不删除原记录。新阻塞不自动挤入关键信息，未置顶仍完整显示正文并保留风险标记和完成校验。每个详情页独立保留置顶选择；下级置顶评论向上汇总时只填空位，不覆盖上级已有两条。旧数据首次查看保留原来最多两条的展示，不批量改写历史；首次调整后按明确选择保留，不因新消息、解决时间或重新加载静默换位。已解决阻塞仍可置顶，显示解决说明；下属阻塞不当作父级自身阻塞。来源直达评论抽屉或正文阻塞卡片。背景、交付目标、完成标准、完成结果、交付材料、直属工作分类及负责人确认规则保持不变。</p>
-    <p>Case、subCase和Task详情将评论与阻塞分开。正文阻塞采用单层白底细边框卡片，有阻塞／阻塞已解决与已置顶标识均收进卡片顶部；问题正文突出展示，解决思路、下一步方案及解决后的解决说明纵向分段，不再使用字段表格或嵌套卡片。人员统一称处理人，下方以某人负责处理、创建时间及解决时间的轻量小字呈现，不单列创建人或解决人；默认收起的处理记录保留真实创建人、处理人变更、实际解决人及时间，不混淆处理人与实际操作人。更换处理人、置顶／取消置顶、标记已解决操作均在卡片内直接展示。新增时问题、思路、下一步三项必填，处理人必选且默认当前工作负责人，均不显示红色必填标记，仅提交遗漏时提示。处理人沿用原人员范围及权限，更换时留存记录，不改变Case／Task负责人；处理人可查看工作树并解决自己的阻塞，不因此取得置顶、更换处理人或工作完成权限。旧数据字段不迁移、不改写，未单独记录处理人时仍显示工作负责人，缺少思路显示未填写。不增加尝试结果或方案调整。红绿仅提示阻塞风险及解决状态，解决说明仍必填。评论及回复继续在左侧抽屉展示，两类不互转、不强制关联；两条置顶、替换选择、来源定位、独立草稿、失败回滚、只读限制、完成校验及流转记录不变。</p>
+    <p>详情页延续原版页头与操作入口。基础信息岛只显示直属上级的一层名称，标注所属Case或所属subCase，顶部完整层级导航保留。Case、subCase和Task的关键信息紧邻基本信息岛下方，评论与自身阻塞共用最多两个置顶位置，桌面左右排列。关键信息卡牌的取消置顶统一位于右上角，与左侧类型／状态及作者分栏，不遮挡正文；来源入口保留在底部。评论、回复及阻塞卡片直接提供置顶到关键信息／取消置顶，不藏在更多菜单中；满两条必须选择替换项，取消替换不改变已有置顶，替换不删除原记录。新阻塞不自动挤入关键信息，未置顶仍完整显示正文并保留风险标记和完成校验。每个详情页独立保留置顶选择；下级置顶评论向上汇总时只填空位，不覆盖上级已有两条。旧数据首次查看保留原来最多两条的展示，不批量改写历史；首次调整后按明确选择保留，不因新消息、解决时间或重新加载静默换位。已解决阻塞仍可置顶，显示解决说明；下属阻塞不当作父级自身阻塞。来源直达评论抽屉或正文阻塞卡片。背景、交付目标、完成标准、完成结果、直属工作分类及负责人确认规则保持不变。</p>
+    <p>Case、subCase和Task详情将评论与阻塞分开。阻塞采用第二轮已选01浮层白卡样式：灰蓝色底区内每条阻塞独立白卡，圆角与轻阴影建立边界，卡片间保留15px间距；删除卡片之间、问题下方与时间上方的分隔横线，思路和解决方案用标签对齐及留白分层，完整结论单独放在浅色区域。无阻塞时保留原空状态，不添加空白卡底。突出问题描述、思路、解决方案；右上角先显示阻塞状态，再显示无框、无下划线的置顶／取消置顶按钮，下方加大标记已解决按钮并保留间距。Owner就是处理人，不再设独立处理人或更换入口；未解决阻塞随Owner变更由新Owner接手，当前及上级负责人原有管理权限保留，旧处理人字段不再授予额外可见或解决权限。卡片仅保留创建与解决时间，真实操作人及历史处理人变更集中在流转记录中。新增三项均必填，不显示红色必填标记。解决时先单选有效、部分有效、无效，再填写结论，两项均必填且不默认选择，提交按钮统一为确认。选项采用真实单选语义和自绘彩色勾选：有效绿色、部分有效橙色、无效浅灰，不显示原生黑圈；仅在阻塞已经解除时确认，方案无效但替代措施解除阻塞时在结论说明。解决后卡片完整展示结论与方案效果，关键信息和流转记录同步展示；结论沿用resolution字段存储，效果独立存储为effect。旧记录不改写、不补造效果，已解决旧记录展示原结论及未评估历史标识，历史创建、变更和解决记录在流转记录补充，日期只有日时不补造时分。评论抽屉、两条置顶及替换、来源定位、独立草稿、失败回滚、只读限制与完成校验保持不变。</p>
+    <p>新增subCase与Task从基本信息开始，不再展示新建身份条或上级Case信息卡。名称与负责人同排，各占一半；开始日期与完成日期同排。详情入口自动固定直接上级，表单隐藏传递上级ID；全局入口仍需在基本信息中选择直接上级，归属Project、权限与日期范围校验保持不变。subCase新增、编辑及批量新增不再要求重复填写背景，只填写本层交付目标与完成标准。新增subCase页仅保留基本信息、目标与要求、本层附件，不展示所属Case背景、上级附件列表或替代背景说明。subCase与Task详情的背景区域统一只显示“所属Case背景”标题及完整正文，不再显示查看上级背景、本层背景、来源说明或跳转按钮；subCase从直接上级向上读取最近已有背景，Task仍从所属Case向上读取最近已有背景。根Case原有背景展示及长文展开方式不变；subCase编辑页、批量新增和Task新增页保留背景上下文，但不再列出上级附件。既有subCase背景数据完整保留，不删除、不在保存其他字段时覆盖。根Case仍保留背景输入及必填校验，subCase完成不再要求本层背景，其余目标、标准、Project、负责人、阻塞及完成规则保持不变。详情页下属工作标题不再显示完成数量统计。</p>
+    <p>根Case、subCase及Task详情统一采用附件02方案，每行两个文件，以类型图标、文件名、大小、上传人及时间呈现，支持查看、下载和有权限的移除；默认四份，更多可展开。不再区分参考附件与交付材料，不展示上级附件、不自动混入下属文件。历史两个字段合并读取，仅名称、大小及完整内容相同时合并展示，保留原始文件和已有上传信息；同名不同内容分别保留，缺失上传人及时间明确标注未记录。Task材料快捷入口计数同步使用完整附件列表。Project仍为汇总页，本期不新增独立附件库。支持PPT、Word、Excel、CSV、PDF、文本和图片，单份750KB、每工作合计2MB；历史文件超过新合计限制时不删除，仍可查阅，新增上传需符合限制。文本和图片支持预览，PDF依赖浏览器支持，其他格式提示下载查看。</p>
+    <p>新增、编辑、完成窗口统一使用附件名称，文件进入当前工作的同一个列表。详情页上传即时保存；新增、编辑与完成窗口中的文件是草稿，仅确认后生效，取消不写入。根Case和subCase补齐编辑及完成时的附件入口；Task编辑及完成窗口包含原先两类文件，移除后不会从另一个旧字段重新出现。权限、结束只读、异步读取上下文校验及存储失败回滚保持不变；不会修改历史记录中的原始用语。</p>
+    <p>阻塞内部的字段名称采用纯文字标题，移除背景色块、矩形造型和内边距，不加边框或分隔横线。问题描述、思路使用柔和石板灰蓝，解决方案用低饱和雾蓝稍作强调，统一适度字重和轻微字距。标签列预留完整四字名称的宽度，通过对齐与留白区分正文；正文保持白底、深色和原有层次。该调整仅影响阻塞卡片，不影响结论及效果标识、新增或解决弹窗、评论、流转及业务数据。</p>
     <p>具体工作的超期提示不带图标，显示超期天数；天数按计划完成日期与演示业务日期的日历日期差计算，到期当天不算超期。甘特图已完成工作的历史超期仍按实际完成日期计算。超期通知显示通知当时的超期天数，不随当前日期或后续改期变化；旧通知原始日期无法计算时明确标注天数未记录。筛选项、汇总指标与通知类型不是单条工作的当前超期状态，不添加统一天数；阻塞及业务状态图标保留。</p>
-    <p>Case／subCase／Task仅在当前状态为“已拒绝”时展示拒绝信息卡片。分配人编辑并确认改派给他人后，状态恢复为“待接受”，不再展示旧拒绝卡片；本人接手仍沿用无需再次接受的规则。页面底部“流转记录”是完整追溯入口，默认收起但不截断历史，持续保留创建、每轮拒绝的理由／拒绝人／实际记录时间、编辑、Owner变更及后续接受等记录，不因重新分配而删除、覆盖旧记录；相同拒绝理由也按分配轮次分别保留。拒绝记录有完整时间戳时按北京时间显示到分钟，旧记录仅保留可核实时间，不补造历史时分。创建、接受等普通事件直接展示，不再逐条展开完整快照；负责人变更直接显示变更前后和说明，多字段修改仍可点击“查看修改前后”。原始记录与快照继续保留，在流转记录末尾通过“查看历史快照”按原有责任记录权限查阅，不改变当前工作数据。</p>
-    <p>Case历史列入二期，一期隐藏Case中心入口并暂停历史查询页面；既有Case、历史数据和草稿保留。Case／Task详情中的流转记录、历史快照及已完成、已终止工作的正常查看不受影响。</p>
-    <p>创建、编辑、完成、终止和历史页面统一使用Case／subCase／Task标识。编辑subCase的标题、名称和负责人字段按当前层级显示，所属Project仍继承且只读；编辑页沿用原状态样式。subCase清单显示下级进展及开始、完成日期，单独编辑，保存当前层级不会改动其内容；Task清单仅批量维护当前层级的直属Task。编辑Task按基本信息、任务要求、对接信息和参考附件分区；任务要求只保留交付目标与完成标准。参考附件随保存生效，不与即时上传的交付材料混用。日期冲突明确指出对应工作，不自动重排；日期或负责人变更时才显示理由输入。取消、关闭或切换前检查未保存修改。历史快照只调整展示字段名称，不改写当时的名称、要求和流转记录。</p>
-    <p>Task要求窗口统一维护交付目标、完成标准和参考附件；保存要求先更新草稿，最终随Case或模版保存生效，取消父级编辑会放弃未保存附件。要求列直接展示可打开的文件名，默认两份，更多文件在单元格展开。新增类按钮统一位于对应页面或模块右侧，保存、取消、完成与终止仍保留原操作位置。</p>
+    <p>Case／subCase／Task仅在当前状态为“已拒绝”时展示拒绝信息卡片。分配人编辑并确认改派给他人后，状态恢复为“待接受”，不再展示旧拒绝卡片；本人接手仍沿用无需再次接受的规则。页面底部“流转记录”是完整追溯入口，默认收起但不截断历史，持续保留创建、每轮拒绝的理由／拒绝人／实际记录时间、编辑、Owner变更及后续接受等记录，不因重新分配而删除、覆盖旧记录；相同拒绝理由也按分配轮次分别保留。流转事件、责任变更及历史阻塞创建／处理人变更／解决记录沿用现有展示形式，合并为一份按北京时间从新到旧排列的列表，不再设置独立的历史阻塞、责任记录模块或“查看历史快照”入口。同一天先按实际时间排列，再展示只有日期的记录；相同时刻与未知时间保持原有相对顺序，不补造历史时分。相同操作按明确的事件、责任记录或阻塞引用去重，旧日志仅在操作人、内容及时间可唯一对应时合并，不能确认的独立记录继续保留。创建、接受等普通事件直接展示；负责人变更直接显示变更前后和说明，多字段修改仍可在对应条目点击“查看修改前后”，阻塞解决条目保留效果和完整结论。原始记录与快照数据继续保留，责任记录及其修改明细仍遵守原有查阅权限，不改变当前工作数据。</p>
+    <p>Case历史列入二期，一期隐藏Case中心入口并暂停历史查询页面；既有Case、历史数据和草稿保留。Case／Task详情中的统一流转记录及已完成、已终止工作的正常查看不受影响，原始历史快照数据不删除。</p>
+    <p>创建、编辑、完成、终止和历史页面统一使用Case／subCase／Task标识。编辑subCase的标题、名称和负责人字段按当前层级显示，所属Project仍继承且只读；编辑页沿用原状态样式。subCase清单显示下级进展及开始、完成日期，单独编辑，保存当前层级不会改动其内容；Task清单仅批量维护当前层级的直属Task。编辑Task按基本信息、任务要求、对接信息和附件分区；任务要求只保留交付目标与完成标准。编辑中的附件随确认保存，与详情页使用同一份列表。日期冲突明确指出对应工作，不自动重排；日期或负责人变更时才显示理由输入。取消、关闭或切换前检查未保存修改。历史快照只调整展示字段名称，不改写当时的名称、要求和流转记录。</p>
+    <p>Case／subCase详情页的“直属下级”模块仅展示当前工作的直接下一级，保留subCase与Task上下分表，不混入更深层工作；点击subCase名称逐层查看，完整层级仍通过树结构查看。删除两张表重复的小标题及名称前的类型胶囊，直接以subCase名称、Task名称表头区分。清单向左适度扩展利用留白，右边界不变，模块标题与其他信息区仍保持对齐。两表共用七列宽度：名称26%、负责人10%、下级进展／对接信息18%、开始日期11%、完成日期11%、要求14%、状态10%；表头与单元格统一水平、垂直居中，名称、下级进展、对接信息、要求及附件按钮沿用对应列中心线，状态及阻塞提示居中分行显示。subCase补充开始日期与只读要求入口，Task将对接人和说明合为一列，可点击查看完整内容。要求窗口只读展示对应工作的交付目标和完成标准，遵守查看权限；原Task要求列附件入口保留，窄屏仅在表格内部横向滚动。编辑、模板、历史及其他列表的类型标识不变。</p>
+    <p>Task编辑中的要求窗口统一维护交付目标、完成标准和附件；保存要求先更新草稿，最终随Case或模版保存生效，取消父级编辑会放弃未保存附件。要求列直接展示可打开的文件名，默认两份，更多文件在单元格展开。新增类按钮统一位于对应页面或模块右侧，保存、取消、完成与终止仍保留原操作位置。</p>
     <p>所有Case统一，不需要选择类型。根Case和subCase均可先不拆解，也可同时包含subCase与Task。没有下属工作不代表完成；由当前Owner填写结果或结论，说明满足目标与完成标准后完成。有有效下属工作时，须先完成这些工作并解决阻塞。验证目标可用不可行结论结束；未达成交付目标而放弃应终止，不能用完成掩盖。</p>
     <p>Case中心统一查看Case、subCase与Task。列表的类型按钮互斥且可取消；甘特图不显示或应用类型筛选，进入时保留列表的类型选择，切回列表恢复，甘特图重置全部也不清除该选择。主搜索同时匹配Case／subCase／Task名称或当前Owner姓名，不匹配创建人、分配人、历史Owner、上级名称或上级Owner。筛选面板仅包含Owner、Case范围及自身未解决阻塞，删除面板内工作状态和计划完成日期条件，不保留隐藏的日期限制。Owner与Case范围统一为一体式输入框：左侧输入文字搜索，右侧为28px窄下拉按钮，默认仅显示当前选择，输入或点击箭头后展开候选；每次仅展开一个选择框，选中自动收起，离开选择区或按Esc也可收起。Owner候选覆盖当前可见Project范围内的Case、subCase及Task负责人并去重，Case候选支持名称、层级路径及显示的Project文字搜索；输入仅查找候选，不会自动选择或改变当前结果，无匹配明确提示，收起后恢复显示已选值，可选择全部Owner或全部Case。Owner筛选精确匹配每条工作的当前Owner，不匹配名称里的同名文字，不因父级Owner相同而带出其他Owner的下级。Case范围固定包含所选Case及全部下属工作，选择项显示完整层级路径；不同条件匹配同一条工作并取交集。修改先保留为草稿，应用后生效，取消不改变结果；面板重置仅清空Owner、Case范围及阻塞并保留状态卡、超期、搜索、类型和来源范围，点击应用后生效；清除全部条件会清除状态及超期，但保留搜索、类型和Project来源范围，来源范围可单独清除。外部进行中、已完成、已终止、超期统计卡及条件标签保留，点击状态卡切换为该单一状态，再次点击取消，超期可独立叠加。列表和甘特图共用搜索、Owner、Case范围、状态、超期、阻塞和来源范围，甘特图不受列表类型限制；上级来源节点不计入命中数量，展开收起不影响数量；树结构不使用这些筛选条件，切回后条件仍保留。查看详情返回保留各视图状态。待接受、已拒绝等业务状态及接受／拒绝操作、流转记录保持不变，不单独显示Task分配统计区，不新增Project筛选。</p>
-    <p>创建入口按页面职责收敛：Case中心保留全局“新建”菜单，支持Case、subCase、Task、批量新增下属工作和从模板创建；Case／subCase仅在下属工作区显示“新增下级”，只提供subCase、Task和批量新增。Task详情不提供创建入口，Project保留仅新建本Project顶层Case的快捷入口。普通新建Case不包含Task清单或模板选择；模板创建单独进入，原有带Task的草稿恢复到模板／批量配置流程，保留草稿、配置和派发前确认。</p>
+    <p>创建入口按页面职责收敛：Case中心保留全局“新建”菜单，支持Case、subCase、Task、批量新增下属工作和从模板创建；Case／subCase下属工作区的“新增下级”直接打开统一新增窗口，不再显示类型菜单。窗口不展示顶部标题，保留右上角关闭按钮及无障碍名称；默认一条Task，顶部仅一个“＋新增”按钮，新条目默认Task，每条通过类型下拉选择Task或subCase，支持混合添加同级工作。当前上级自动固定，不展示重复的上级名称、路径或所属Case背景，Case中心发起时仍需选择上级。每条的类型、名称、负责人、开始日期、完成日期及移除按钮紧凑同排，窄屏仅在基本信息行内横向滚动。目标与要求默认收起，保留红色必填标识，漏填时自动展开；添加条目或上传附件不会重置已有条目的展开状态。统一新增窗口取消创建前确认，点击创建或创建N项工作后直接校验并整批保存；保存时禁用提交并防止重复创建，失败不留下部分记录，保留填写和附件以便修正或重试。日期、权限、附件校验、未保存提醒和分配给他人后的接受流程不变。Task详情不提供创建入口，Project保留仅新建本Project顶层Case的快捷入口。普通新建Case不包含Task清单或模板选择；模板创建单独进入，原有带Task的草稿恢复到模板／批量配置流程，保留草稿、配置和派发前确认。</p>
     <p>批量新增在一个上级下混合创建同级subCase与Task，不在弹窗中编辑多层嵌套。全局选择一次上级，详情入口固定当前上级。每行独立填写类型、名称、负责人、实际日期与目标标准；subCase另需背景，Task参考上级背景，对接信息和参考附件可选。创建前显示数量和待接受的subCase与Task，整批校验、一次保存，任一行有错误均不创建，保留填写内容；再次提交仍校验权限和父级日期。取消检查未保存修改，附件随整批保存。</p>
     <p>全局新建subCase或Task在同一表单选择直接上级，可选Case或subCase，不能为空；当前Case范围仅作明确展示的预填。详情内新增自动固定当前上级，无需重复选择。Project继承且只读；切换上级同步显示完整路径、父级日期约束和Task参考背景，不自动改写已填日期。上下级混合包含subCase与直属Task仍然允许，权限与结束分支限制继续校验。</p>
     <p>列表保留名称、负责人、下级进展、Case状态、开始日期、完成日期、所属Project七列。Case类型与混合列表保留原有柔和胶囊、折角展开收起和层级缩进，未命中上级显示完整Case／subCase层级行，不显示灰底来源路径行，也不计入筛选命中数量。仅选择Task类型时按方案01平铺显示全部命中的Task，不单独展示上级Case／subCase行，不受上级折叠影响；名称列表头为Task名称，Task名称统一左对齐，去掉树形缩进、展开占位及Task胶囊，下方显示“来源：”，Case／subCase类型使用原型胶囊、名称在胶囊外，以“/”分隔层级，单行超出省略，悬停查看完整路径。Task平铺仅用于列表的Task类型，其余列的内容、状态和筛选规则不变；Case类型与混合列表保留层级，树结构保持独立，甘特图统一采用完整层级。下级进展分别统计有效直属subCase和Task，无下级或全被排除时统一显示“—”，悬浮提示保留两者区别；已终止subCase、已拒绝或已终止Task不计入有效总数，已拒绝subCase仍计入。有效完成数量照常显示，不混合百分比、不重复累计后代；删除i图标和对应统计说明弹窗入口，不新增替代入口。Case名称打开详情，右侧树结构图标在悬停或聚焦时出现，触屏直接显示。深层结构自动增加名称列空间，横向滚动限制在表格内；窄屏可通过顶部导航按钮访问原有菜单。</p>
     <p>树结构不显示主搜索、筛选、Case／Task类型按钮及状态统计卡，仅保留视图切换、当前Case、横向／纵向、缩放、适应画布、平移和全屏。当前Case采用左侧可输入搜索、右侧28px窄下拉的一体式选择框，候选包含当前可见Project范围及权限内的Case／subCase，支持名称和完整路径搜索；输入仅查找候选，选中后才切换树，候选自动收起，离开或Esc恢复已选文本，无匹配明确提示。首次未选择时提示选择Case；再次进入保留上次选择，从列表树图标或详情进入时直接选中对应Case。树完整展示所选Case及全部可见下级，包含各业务状态的Case、subCase和Task，节点状态、超期与阻塞样式保留；选择subCase时从该节点起展示，不额外展示其上级。树的选择、展开和画布状态独立保存，不清空或改写列表／甘特图的搜索、Owner、类型、Case范围、状态、超期、阻塞和展开条件。列表与甘特图共用展开状态；甘特图保留日／周坐标、Case计划周期、Task计划框、执行时间条、提前／超期段、悬浮信息及状态样式。</p>
     <p>甘特图左侧沿用列表的完整父子层级、22px逐级缩进、竖线与折角、类型胶囊、名称字重和展开箭头；每个分支内先展开subCase及其下级，再展示该父级的直属Task，整个分支保持连续。筛选未命中的上级逐行保留，不压缩为横向来源路径，不计入统计且不绘计划条。名称下方只保留负责人、状态、超期／阻塞和Task时间提示，不显示第N层、直属工作数量或来源路径；去除Task前重复的彩条和大状态图标。名称区按深度留宽，名称过长省略并悬浮查看，左侧与时间条逐行对齐。列表的Task平铺及名称下方来源保持原样。</p>
     <p>甘特图标题后不显示Case／subCase／Task数量，也不提供模块内重复的范围下拉框；范围仍通过上方筛选面板设置。模块右上角提供与树结构一致的全屏／还原图标，点击放大整个甘特图模块，再次点击或按Esc退出；放大后仍可切换日／周、展开收起和查看Task悬浮信息，保留当前筛选与滚动位置。标题为“甘特图”，左侧表头为“名称 / 负责人”。Case与subCase的计划条、提示按实际层级标识，仍表示各自计划周期而非下级Task进度汇总；图例同步说明。Task悬浮卡片的来源路径沿用类型胶囊、名称在外和“/”分隔的样式。甘特图不提供类型按钮，列表的Case类型继续包含各层级subCase。删除甘特图底部小字说明，不新增替代页脚；日／周、业务状态、日期、Task执行条及提前／超期规则不变。</p>
-    <p>同树成员可查看交流；Case负责人向下管理，但不能代替当前Owner完成。已结束工作只读。重要更新仍可汇总至上级，未解决阻塞只在实际发生的节点显示，列表、卡片、详情和阻塞筛选不向父级重复标记；完成校验仍检查有效下属交付和未解决阻塞，不放宽业务约束。Task详情直接上传交付材料，上传即保存并保留记录，无需审核；参考附件与交付材料分开。subCase移动及归属变更列入二期。</p>
+    <p>同树成员可查看交流；Case负责人向下管理，但不能代替当前Owner完成。已结束工作只读。重要更新仍可汇总至上级，未解决阻塞只在实际发生的节点显示，列表、卡片、详情和阻塞筛选不向父级重复标记；完成校验仍检查有效下属交付和未解决阻塞，不放宽业务约束。工作详情直接上传附件，上传即保存并保留记录，无需审核。subCase移动及归属变更列入二期。</p>
     <p>保留原版陈昊演示账号与固定业务日期。数据仅保存于当前浏览器；独立存储不覆盖原版或上一版记录。下载仅包含程序，不包含业务数据及附件。</p>
     <button class="danger" onclick="resetDemo()">恢复初始演示数据</button></div>`,'关闭',closeModal);
 }
