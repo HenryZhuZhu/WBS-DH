@@ -1214,11 +1214,11 @@ body.my-work-view{min-width:0}
 .template-work-row .fields:has(textarea){margin-top:12px}
 .template-reference-files{display:grid;gap:8px;margin-top:8px}
 .template-reference-files .row>:first-child{min-width:0;overflow-wrap:anywhere;white-space:normal;text-align:left}
-#templateLibraryResults .template-library-table{width:720px;min-width:720px;table-layout:fixed;margin:0}
-.template-page #templateLibraryResults .template-library-table th,.template-page #templateLibraryResults .template-library-table td{padding:8px;text-align:left;vertical-align:middle}
-.template-page #templateLibraryResults .template-library-table th:first-child,.template-page #templateLibraryResults .template-library-table td:first-child{padding-left:16px}
-.template-library-table th:nth-child(1){width:280px}.template-library-table th:nth-child(2){width:160px}.template-library-table th:nth-child(3){width:80px}.template-library-table th:nth-child(4){width:120px}.template-library-table th:nth-child(5){width:80px}
-.template-library-table input[type=radio]{display:block;width:16px;height:16px;margin:0}
+#templateLibraryResults .template-library-table{width:640px;min-width:640px;table-layout:fixed;margin:0}
+.template-page #templateLibraryResults .template-library-table th,.template-page #templateLibraryResults .template-library-table td{padding:8px;text-align:center;vertical-align:middle}
+.template-page #templateLibraryResults .template-library-table th:first-child,.template-page #templateLibraryResults .template-library-table td:first-child{padding-left:16px;text-align:left}
+.template-library-table th:nth-child(1){width:280px}.template-library-table th:nth-child(2){width:160px}.template-library-table th:nth-child(3){width:120px}.template-library-table th:nth-child(4){width:80px}
+.template-library-table input[type=radio]{display:block;width:16px;height:16px;margin:0 auto}
 .template-library-table tr.is-selected>td{background:#f2f6ff}
 .template-library-table td:first-child>button.link{display:block;max-width:100%;padding-inline:0;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .information-board-more{grid-column:1/-1}
@@ -1226,7 +1226,6 @@ body.my-work-view{min-width:0}
 .information-board-more-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
 @media(max-width:700px){.information-board-more-list{grid-template-columns:1fr}}
 .template-root-defaults h2,.template-content-panel.is-editing h2{font-size:20px;font-weight:600;line-height:1.5}
-.template-version-picker{display:flex;align-items:center;gap:8px}
 .case-create-batch{border:1px solid var(--line);border-radius:8px;padding:14px;margin-top:16px}.case-create-batch>summary{cursor:pointer;font-weight:550}.case-create-batch[open]>summary{margin-bottom:16px}.nested-create section{margin-top:20px}.nested-parent-context{padding:14px;background:#f8fafc;border:1px solid var(--line);border-radius:8px;margin:12px 0;overflow-wrap:anywhere}.nested-reference-list{display:grid;gap:8px}.nested-reference-list .row{justify-content:space-between}
 .nested-create>section:first-of-type{margin-top:0}.nested-create .nested-basic-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.nested-basic-fields>.field{min-width:0}.nested-basic-fields input,.nested-basic-fields select{width:100%;min-width:0}
 @media(max-width:380px){.nested-basic-fields input[type=date]{font-size:11px;padding:0 4px}}
@@ -1376,6 +1375,20 @@ input[data-full-text]:focus{text-overflow:clip}
 .template-node-added>summary,.template-work-row.template-node-added{animation:template-node-added 2s ease-out}
 @keyframes template-node-added{0%,55%{background:#e8f1ff;box-shadow:inset 3px 0 0 var(--blue)}100%{background:transparent;box-shadow:none}}
 @media(prefers-reduced-motion:reduce){.template-node-added>summary,.template-work-row.template-node-added{animation-timing-function:steps(1,end)}}
+#caseWork .case-work-tree .batch-summary-cell:not(:first-child)>.batch-summary-value>:first-child,.template-content-panel:not(.is-editing) .template-definition-list .batch-summary-cell:not(:first-child)>.batch-summary-value>:first-child{justify-self:center}
+#caseWork .case-work-tree .child-work-status{align-items:center}
+#caseWork .case-work-tree .child-work-progress-pair,.template-content-panel:not(.is-editing) .template-definition-list .child-work-progress-pair{justify-content:center}
+#caseWork .case-work-tree .batch-existing-case>summary{grid-template-columns:minmax(328px,1fr) 96px 150px 90px 110px 110px 80px}
+#caseWork .case-work-tree .batch-summary-cell:nth-child(4)>.batch-summary-label{margin-bottom:8px}
+#caseWork .case-work-tree .batch-summary-cell:nth-child(4)>.batch-summary-value{grid-template-rows:minmax(48px,auto);align-items:start}
+#caseWork .case-work-tree .batch-summary-value>.task-requirements-cell,
+.template-content-panel:not(.is-editing) .template-definition-list .batch-summary-value>.task-requirements-cell{justify-content:center;text-align:center}
+.template-content-panel:not(.is-editing) .template-definition-list{width:720px;min-width:720px}
+.template-content-panel:not(.is-editing) .template-definition-list .batch-existing-case>summary{grid-template-columns:minmax(0,1fr) 136px 100px;padding-right:40px}
+.template-content-name>.template-type-text{font-size:13px;font-weight:400;color:var(--ink)}
+.detail-sheet-header:has(.case-overview-fields)>.detail-header-summary{width:calc(100% - 212px);margin-left:48px;margin-right:0}
+@media(max-width:1100px){.detail-sheet-header:has(.case-overview-fields)>.detail-header-summary{margin-left:16px}}
+@media(max-width:900px){.detail-sheet-header:has(.case-overview-fields)>.detail-header-summary{width:100%;margin-left:0}.detail-header-summary>.case-overview-fields{margin-left:0;margin-right:0}}
 </style>
 </head>
 <body>
@@ -2144,8 +2157,9 @@ function validateCaseCreation(state,values,audit=true,flow=null,actor=CURRENT_US
   requireOwnerOnlyData(values);
   const template=values.templateId?state.templates.find(item=>item.id===values.templateId):null;
   check(!values.templateId||template,'请选择有效的 Case 模版');
-  const version=template?(values.templateVersion===undefined?latestVersion(template):template.versions.find(item=>item.version===values.templateVersion)):null;
-  check(!template||version,'模版版本不存在');check(template||values.templateVersion==null,'空白创建不能指定模版版本');
+  const version=template?latestVersion(template):null;
+  check(!template||values.templateVersion===undefined||values.templateVersion===version.version||flow!==null&&Number.isInteger(values.templateVersion)&&values.templateVersion>0&&values.templateVersion<version.version,'模版内容已更新，请重新打开模版');
+  check(template||values.templateVersion==null,'空白创建不能指定模版来源修订号');
   check(!version?.nodes||flow!==null,'请从Case模版库配置完整工作结构后创建');
   const definitions=flow===null?(template?version.tasks:[]):flow;check(Array.isArray(definitions),'Task清单格式无效');if(definitions.length)validateDefinitions(definitions,audit);
   check(typeof values.name==='string'&&values.name.trim()&&values.name.trim().length<=80,'请填写80字以内的 Case名称');
@@ -2175,7 +2189,7 @@ function caseCreationWarnings(values,tasks){
   const outside=tasks.filter(task=>validDate(task.start)&&validDate(task.due)&&(task.start<values.start||task.due>values.due));
   return outside.length?[outside.length+'项Task日期超出Case日期范围：'+outside.map(task=>task.name).join('、')+'。请调整日期。']:[];
 }
-function caseTemplateLabel(instance){return instance?.templateId?'v'+instance.templateVersion:'空白创建';}
+function caseTemplateLabel(instance){return instance?.templateId?'使用模版创建':'空白创建';}
 function caseDraftRecords(state,actor){return (state.caseDrafts||[]).filter(draft=>draft.owner===actor).sort((first,second)=>String(second.updatedAt||'').localeCompare(String(first.updatedAt||'')));}
 function ownCaseDraft(state,id,actor){
   const draft=(state.caseDrafts||[]).find(item=>item.id===id);
@@ -2242,7 +2256,7 @@ function instantiate(state,values,audit=true,flow=null,actor=CURRENT_USER) {
   const {template,version,definitions,project,plans}=validateCaseCreation(state,values,audit,flow,actor);
   const referenceSource=caseReferenceSource(values.referenceSource);
   if(referenceSource){const source=findCase(state,referenceSource.caseId);check(!source||visibleTo(state,actor,'case',source),'无权使用参考 Case 来源');}
-  const instance={owner:values.owner,start:values.start,due:values.due,...(referenceSource?{referenceSource}:{}),createdBy:actor,initialOwner:values.owner,project:project?.id||'',id:values.id||makeId('case'),name:values.name.trim(),background:String(values.background||'').trim(),goal:values.goal.trim(),completionStandard:String(values.completionStandard||'').trim(),category:template?.category,templateId:template?.id||'',templateVersion:version?.version??null,status:'active',history:[]};
+  const instance={owner:values.owner,start:values.start,due:values.due,...(referenceSource?{referenceSource}:{}),createdBy:actor,initialOwner:values.owner,project:project?.id||'',id:values.id||makeId('case'),name:values.name.trim(),background:String(values.background||'').trim(),goal:values.goal.trim(),completionStandard:String(values.completionStandard||'').trim(),category:template?.category,templateId:template?.id||'',templateVersion:values.templateVersion??version?.version??null,status:'active',history:[]};
   const mapping=Object.fromEntries(definitions.map(task=>[task.id,makeId('task')]));
   state.cases.push(instance);
   dispatchCase(state,instance,actor);
@@ -2527,7 +2541,7 @@ function scanNotifications(state,manual=true){
 }
 function publishTemplate(state,id,tasks,actor) {
   requirePermission(state,actor,'template');validateDefinitions(tasks);const template=state.templates.find(item=>item.id===id);check(template,'模版不存在');
-  const version=latestVersion(template).version+1;template.versions.push({version,date:state.today,tasks:clone(tasks)});logEvent(state,null,'发布 '+templateCaseName(template)+' v'+version,actor);return version;
+  const version=latestVersion(template).version+1;template.versions.splice(-1,1,{version,date:state.today,tasks:clone(tasks)});logEvent(state,null,'更新公共模版 '+templateCaseName(template),actor);return version;
 }
 function templateNodeEntries(nodes){
   check(Array.isArray(nodes),'模版工作结构无效');
@@ -2601,17 +2615,17 @@ function saveStructureTemplate(state,id,values,nodes,actor,expectedVersion=null)
   requirePermission(state,actor,'template');
   const content=templateStructureVersion(nodes,values.defaults),template=id?state.templates.find(item=>item.id===id):null;
   check(!id||template,'模版不存在');
-  check(!id||latestVersion(template).version===expectedVersion,'模版已发布新版本，请重新打开，避免覆盖新的配置');
+  check(!id||latestVersion(template).version===expectedVersion,'模版内容已更新，请重新打开，避免覆盖新的配置');
   if(template){
     const version=latestVersion(template).version+1;
-    template.versions.push({...content,version,date:state.today});
-    logEvent(state,null,'发布 '+templateCaseName(template)+' v'+version,actor);return template;
+    template.versions.splice(-1,1,{...content,version,date:state.today});
+    logEvent(state,null,'更新公共模版 '+templateCaseName(template),actor);return template;
   }
   const name=String(values.name||'').trim();
   check(name&&name.length<=60,'请填写60字以内的模版名称');
   check(!state.templates.some(item=>templateCaseName(item).toLowerCase()===templateCaseName({name}).toLowerCase()),'Case模版名称已存在');
   const created={id:makeId('tpl'),name,versions:[{...content,version:1,date:state.today}]};
-  state.templates.push(created);logEvent(state,null,'创建公共模版 '+templateCaseName(created)+' v1',actor);return created;
+  state.templates.push(created);logEvent(state,null,'创建公共模版 '+templateCaseName(created),actor);return created;
 }
 function templateStructureCount(nodes){return `subCase ${nodes.filter(node=>node.kind==='case').length} · Task ${nodes.filter(node=>node.kind==='task').length}`;}
 function instantiateTemplateStructure(state,values,nodes,actor){return instantiateCaseStructure(state,values,nodes,actor,true);}
@@ -3965,7 +3979,7 @@ function newTemplateCaseModal(){
   if(!can('caseEdit'))return toast('没有新建权限');
   if(!db.templates.length)return toast('暂无可用 Case 模板，请先在模版库中配置');
   if(!closeModal(false))return false;
-  modal('从模板创建 Case',`<p class="small muted">选择可复用模板，下一步确认当前Case信息和模板Task。普通新建Case不包含下属清单。</p><div class="field"><label for="createTemplateChoice">Case模板${requiredMark()}</label><select id="createTemplateChoice" name="templateId" required><option value="">请选择模板</option>${db.templates.map(item=>`<option value="${escapeHtml(item.id)}">${escapeHtml(templateCaseName(item))} · v${latestVersion(item).version}</option>`).join('')}</select></div>`,'使用模板',data=>{check(data.templateId,'请选择模板');newCaseModal(data.templateId);});
+  modal('从模板创建 Case',`<p class="small muted">选择可复用模板，下一步确认当前Case信息和模板Task。普通新建Case不包含下属清单。</p><div class="field"><label for="createTemplateChoice">Case模板${requiredMark()}</label><select id="createTemplateChoice" name="templateId" required><option value="">请选择模板</option>${db.templates.map(item=>`<option value="${escapeHtml(item.id)}">${escapeHtml(templateCaseName(item))}</option>`).join('')}</select></div>`,'使用模板',data=>{check(data.templateId,'请选择模板');newCaseModal(data.templateId);});
 }
 const caseWorkspaceGraphSize={width:300,estimatedHeight:140,gap:20,levelGap:56,padding:24,heading:40};
 function layoutCaseWorkspaceGraph(model,heights=new Map()){
@@ -5024,8 +5038,8 @@ function newCaseModal(templateId='',templateVersion=null,flowDraft=null,projectO
   const candidate=projectOverride===undefined?caseCreationProject():findProject(db,projectOverride),project=canManageProject(db,candidate,CURRENT_USER)?candidate:null;
   const template=templateId?db.templates.find(item=>item.id===templateId):null;
   if(templateId&&!template&&!savedDraft)return toast('Case 模版不存在');
-  const version=savedDraft?{version:savedDraft.templateVersion,tasks:savedDraft.tasks}:template?(templateVersion===null?latestVersion(template):template.versions.find(item=>item.version===templateVersion)):{version:null,tasks:[]};
-  if(!version)return toast('Case 模版版本不存在');
+  const version=savedDraft?{version:savedDraft.templateVersion,tasks:savedDraft.tasks}:template?latestVersion(template):{version:null,tasks:[]};
+  if(!savedDraft&&template&&templateVersion!==null&&templateVersion!==version.version)return toast('模版内容已更新，请重新打开模版');
   if(equipmentId&&(equipmentCatalogStatus!=='ready'||!equipmentCatalog.some(item=>item.id===equipmentId)))return toast('设备目录未就绪或设备不存在');
   templateTree=!!(savedDraft?.templateTree||templateId||!savedDraft&&(templateTree||version.nodes));
   const initialFields=savedDraft?clone(savedDraft.fields):{name:'',owner:CURRENT_USER,start:templateTree?'':db.today,due:'',project:project?.id||'',background:'',goal:'',completionStandard:'',...(templateTree?templateRootDefaults(version.defaults):{})};
@@ -5265,7 +5279,7 @@ function updateCaseCreationEquipment(id,field,value){
 }
 function refreshCaseTemplateControls(){
   const draft=caseCreationDraft;if(!draft||!draft.batchMode)return;
-  const template=db.templates.find(item=>item.id===draft.templateId),available=!draft.templateId||template?.versions.some(version=>version.version===draft.templateVersion);
+  const template=db.templates.find(item=>item.id===draft.templateId),available=!draft.templateId||!!template;
   document.getElementById('field-templateId').value=draft.templateId;
   const source=draft.referenceSource?findCase(db,draft.referenceSource.caseId):null;
   const value=draft.referenceSource?'legacy-history:'+draft.referenceSource.caseId:draft.templateId?'template:'+draft.templateId:'';
@@ -5274,9 +5288,9 @@ function refreshCaseTemplateControls(){
   if(draft.referenceSource)select.innerHTML+=`<option value="${escapeHtml(value)}" disabled>${source&&visibleTo(db,CURRENT_USER,'case',source)?escapeHtml(source.name):'原 Case 不存在或无权查看'}（旧草稿来源，仅保留现有配置）</option>`;
   if(!draft.referenceSource&&draft.templateId&&!template)select.innerHTML+=`<option value="${escapeHtml(value)}" disabled>原模版已失效（草稿内容保留）</option>`;
   select.value=value;select.title=draft.referenceSource?(source&&visibleTo(db,CURRENT_USER,'case',source)?source.name:'原 Case 不存在或无权查看'):templateCaseName(template)||'空白创建';
-  document.getElementById('caseTemplateVersion').textContent=draft.templateId?'采用版本 v'+draft.templateVersion:'无模版依赖';
+  document.getElementById('caseTemplateVersion').textContent=draft.templateId?'已带入模版内容':'无模版依赖';
   const reference=draft.referenceSource?`<p class="small muted">旧草稿曾参考Case：${escapeHtml(source&&visibleTo(db,CURRENT_USER,'case',source)?source.name:'原 Case 不存在或无权查看')}。${PROTOTYPE_FEATURES.caseHistory?'Case历史现仅用于查询':'Case历史已列入二期，本期暂不开放'}，当前配置继续保留；切换为空白或模版来源后将解除历史来源。${draft.templateId?'来源模版：'+escapeHtml(templateCaseName(template)||'原模版已失效')+'。':''}</p>`:template?'<p class="small muted">使用标准模版配置，请确认本次人员、日期与交付目标。</p>':'';
-  document.getElementById('caseDraftSourceNotice').innerHTML=reference+(available?'':`<p class="small bad">原模版或版本已失效。草稿中的 Task 已保留，创建前请选择有效来源，或保留当前安排改为空白来源。</p><button type="button" class="link" onclick="detachCaseDraftTemplate()">保留当前安排，改为空白来源</button>`);
+  document.getElementById('caseDraftSourceNotice').innerHTML=reference+(available?'':`<p class="small bad">原模版已失效。草稿中的 Task 已保留，创建前请选择有效来源，或保留当前安排改为空白来源。</p><button type="button" class="link" onclick="detachCaseDraftTemplate()">保留当前安排，改为空白来源</button>`);
 }
 function detachCaseDraftTemplate(){
   if(!caseCreationDraft)return;
@@ -5679,7 +5693,7 @@ function confirmTemplatePageExit(){
   if(!confirm('模版有尚未保存的修改，离开将放弃这些修改。确认离开？'))return false;
   closeTaskRequirementEditor(false,true);
   if(templateDetailState.mode==='new'){templateDraft=[newTemplateStructureNode()];templateDetailState.name='';templateDetailState.defaults=templateRootDefaults();const name=document.getElementById('caseTemplateName');if(name)name.value='';templateDetailState.initial=templatePageSnapshot();}
-  else {const version=db.templates.find(item=>item.id===templateDetailState.id)?.versions.find(item=>item.version===templateDetailState.version);if(version)templateDraft=templateVersionNodes(version);templateDetailState.mode='view';}
+  else {const template=db.templates.find(item=>item.id===templateDetailState.id);if(template){const version=latestVersion(template);templateDraft=templateVersionNodes(version);templateDetailState.version=version.version;}templateDetailState.mode='view';}
   render();
   return true;
 }
@@ -5725,7 +5739,7 @@ function renderTemplateStructure(){
   const busy=!!state.filesLoading;
   const toolbar=editable?`<div class="template-structure-toolbar">${state.removed?`<button type="button" class="link" ${busy?'disabled':''} onclick="undoTemplateStructureRemoval()">撤销移除</button>`:''}<button type="button" aria-label="新增根Case直属下级" ${busy?'disabled':''} onclick="addTemplateStructureNode()">${icon('plus')} 新增</button></div>`:'';
   document.getElementById(instance?'templateInstanceToolbar':'templateStructureToolbar').innerHTML=toolbar;
-  if(!instance&&state.mode!=='view'){renderTemplateDefinitionList(editable,busy);syncTemplateStructureActions();return;}
+  if(!instance){renderTemplateDefinitionList(editable,busy);syncTemplateStructureActions();return;}
   const maxDepth=entries.reduce((depth,entry)=>Math.max(depth,entry.depth),0),minimumWidth=(instance?860:720)+maxDepth*18;
   const field=(node,key,label,control,required=false,depth=0)=>`<div class="field${key==='name'?' template-name-field':''}"${key==='name'?` style="--depth:${depth}"`:''}><label for="template-${escapeHtml(node.id)}-${key}">${label}${editable&&required?requiredMark():''}</label>${control}</div>`;
   const input=(node,key,label,type='text',max=80)=>field(node,key,label,`<input id="template-${escapeHtml(node.id)}-${key}" data-${key} aria-label="${label}" type="${type}" value="${escapeHtml(node[key]||'')}" ${type==='text'?`maxlength="${max}"`:''} required>`,true);
@@ -5748,7 +5762,7 @@ function renderTemplateDefinitionList(editable,busy){
   const cell=(label,value)=>`<span class="batch-summary-cell"><span class="batch-summary-label">${label}</span><span class="batch-summary-value">${value}</span></span>`;
   const rowsFor=(parentId='',depth=0,guides=[])=>templateDraft.filter(node=>node.parentId===parentId).map((node,index,nodes)=>{
     const id=escapeHtml(node.id),type=node.kind==='case'?'subCase':'Task',last=index===nodes.length-1,open=!collapsed.has(node.id),children=templateDraft.filter(child=>child.parentId===node.id);
-    const kind=editable?`<select id="template-${id}-kind" data-kind data-id="${id}" aria-label="工作类型" ${busy?'disabled':''} onchange="changeTemplateStructureType(this)"><option value="case" ${node.kind==='case'?'selected':''}>subCase</option><option value="task" ${node.kind==='task'?'selected':''}>Task</option></select>`:`<span class="tag">${type}</span>`;
+    const kind=editable?`<select id="template-${id}-kind" data-kind data-id="${id}" aria-label="工作类型" ${busy?'disabled':''} onchange="changeTemplateStructureType(this)"><option value="case" ${node.kind==='case'?'selected':''}>subCase</option><option value="task" ${node.kind==='task'?'selected':''}>Task</option></select>`:`<span class="template-type-text" data-type="${type}">${type}</span>`;
     const name=editable?`<input id="template-${id}-name" data-name data-full-text aria-label="${type}名称" maxlength="80" required value="${escapeHtml(node.name)}" title="${escapeHtml(node.name)}" ${busy?'disabled':''}>`:`<span class="batch-existing-case-name" title="${escapeHtml(node.name)}">${escapeHtml(node.name)}</span>`;
     const identity=`<div class="template-content-name">${kind}<span class="template-content-name-field">${name}</span></div>${children.length?`<span class="batch-summary-hierarchy">${icon('tree')}多层结构</span>`:''}`;
     const counts=node.kind==='case'?`<div class="child-work-progress-pair" title="直属下级数量"><span>subCase ${children.filter(child=>child.kind==='case').length}</span><span>Task ${children.filter(child=>child.kind==='task').length}</span></div>`:'<span class="small muted">—</span>';
@@ -5757,21 +5771,32 @@ function renderTemplateDefinitionList(editable,busy){
     const add=editable&&node.kind==='case'?`<button class="link template-add-child" type="button" data-id="${id}" ${busy?'disabled':''} aria-label="为${escapeHtml(node.name||'未命名subCase')}新增下级" onclick="event.stopPropagation();event.preventDefault();addTemplateStructureNode(this.dataset.id)">${icon('plus')} 新增下级</button>`:'';
     const remove=editable?`<button class="icon danger template-content-remove" type="button" data-id="${id}" ${busy?'disabled':''} aria-label="移除${escapeHtml(node.name||type)}" onclick="event.stopPropagation();event.preventDefault();removeTemplateStructureNode(this.dataset.id)">${icon('close')}</button>`:'';
     const toggle=children.length?`<button class="workspace-expand template-content-toggle" type="button" data-id="${id}" aria-expanded="${open}" aria-label="${open?'收起':'展开'}${escapeHtml(node.name||type)}下级" onclick="event.stopPropagation();event.preventDefault();toggleTemplateStructureNode(this.dataset.id)"><span class="workspace-chevron" aria-hidden="true"></span></button>`:'';
-    const operation=node.kind==='case'?cell('操作',`<span class="template-content-actions">${add}</span>`):'<span class="batch-summary-cell" aria-hidden="true"></span>';
+    const operation=!editable?'':node.kind==='case'?cell('操作',`<span class="template-content-actions">${add}</span>`):'<span class="batch-summary-cell" aria-hidden="true"></span>';
     const summary=cell('类型',identity)+cell('下级内容',counts)+cell('要求',entry)+operation+remove+toggle+batchCaseGuides(depth,guides,last,open&&children.length>0);
     const requirements=showRequirements?`<section class="batch-case-requirements" aria-label="${escapeHtml(node.name||type)} 要求"><div class="between"><strong>要求</strong><div class="row">${editable?`<button class="link" type="button" data-id="${id}" ${busy?'disabled':''} onclick="openTaskRequirementEditor(this.dataset.id)">编辑要求</button>`:''}<button class="icon" type="button" data-id="${id}" aria-label="关闭要求" onclick="toggleTemplateDefinitionRequirements(this.dataset.id)">${icon('close')}</button></div></div><dl class="delivery-summary">${deliveryTextRow('交付目标',node.goal||'未填写')}${deliveryTextRow('完成标准',node.completionStandard||'未填写')}</dl>${templateStructureReferencesHtml(node,editable,busy)}</section>`:'';
     return `<details class="batch-existing-case" data-template-node="${id}" data-template-branch="${children.length>0}" data-batch-depth="${depth}"${open?' open':''}><summary style="--batch-case-indent:${Math.min(depth*16,96)}px" data-id="${id}" onclick="if(event.target.closest('button,input,select,textarea,a'))return;${children.length?'toggleTemplateStructureNode(this.dataset.id);':''}return false">${summary}</summary>${open?`<div class="batch-existing-case-body">${requirements}${rowsFor(node.id,depth+1,depth?[...guides,!last]:[])}</div>`:''}</details>`;
   }).join('');
-  draftTaskTable().innerHTML=`<div class="batch-existing-list-scroll" tabindex="0" role="group" aria-label="模版内容清单，可横向滚动"><div class="batch-existing-tree template-definition-list">${rowsFor()||empty('暂无下级工作')}</div></div><p class="small muted" role="status">${busy?'正在读取附件，请稍候…':''}</p>`;
+  let content=rowsFor()||empty('暂无下级工作');
+  if(state.mode==='view'){
+    const version=latestVersion(db.templates.find(item=>item.id===state.id));
+    const name=String(version?.defaults?.name||'模版根Case'),children=templateDraft.filter(node=>!node.parentId),open=!state.rootCollapsed;
+    const identity=`<div class="template-content-name"><span class="template-type-text" data-type="Case">Case</span><span class="template-content-name-field"><span class="batch-existing-case-name" title="${escapeHtml(name)}">${escapeHtml(name)}</span></span></div><span class="batch-summary-hierarchy">模版根Case</span>`;
+    const counts=`<div class="child-work-progress-pair" title="直属下级数量"><span>subCase ${children.filter(node=>node.kind==='case').length}</span><span>Task ${children.filter(node=>node.kind==='task').length}</span></div>`;
+    const toggle=children.length?`<button class="workspace-expand template-content-toggle" type="button" aria-expanded="${open}" aria-label="${open?'收起':'展开'}模版根Case下级" onclick="event.stopPropagation();event.preventDefault();toggleTemplateStructureNode('')"><span class="workspace-chevron" aria-hidden="true"></span></button>`:'';
+    const summary=cell('类型',identity)+cell('下级内容',counts)+cell('要求','<span class="muted">上方查看</span>')+toggle+batchCaseGuides(0,[],true,open&&children.length>0);
+    content=`<details class="batch-existing-case" data-template-root data-template-branch="${children.length>0}" data-batch-depth="0"${open?' open':''}><summary style="--batch-case-indent:0px" onclick="if(event.target.closest('button,a'))return;event.preventDefault();${children.length?"toggleTemplateStructureNode('');":''}">${summary}</summary>${open?`<div class="batch-existing-case-body">${rowsFor('',1,[])||empty('暂无下级工作')}</div>`:''}</details>`;
+  }
+  draftTaskTable().innerHTML=`<div class="batch-existing-list-scroll${state.mode==='view'?' table-scroll':''}" tabindex="0" role="group" aria-label="模版内容清单，可横向滚动"><div class="batch-existing-tree template-definition-list">${content}</div></div><p class="small muted" role="status">${busy?'正在读取附件，请稍候…':''}</p>`;
 }
 function toggleTemplateDefinitionRequirements(id){
-  if(caseCreationDraft?.templateTree||ui.page!=='template'||templateDetailState?.mode==='view')return toast('请先进入模版编辑');
+  if(caseCreationDraft?.templateTree||ui.page!=='template'||!templateDetailState)return toast('请先打开模版详情或编辑');
   if(taskRequirementEditorState)return toast('请先保存或取消要求编辑');
   try{
     collectTemplateDraft();const node=templateDraft.find(item=>item.id===id);check(node,'工作已不存在');
     const state=templateStructureState(),show=!(state.requirementsOpen||[]).includes(id);
     setTemplateStructureDisclosure(id,'requirementsOpen',show);
     if(show){
+      state.rootCollapsed=false;
       const byId=new Map(templateDraft.map(item=>[item.id,item]));let current=node;
       while(current){state.collapsed=(state.collapsed||[]).filter(value=>value!==current.id);current=byId.get(current.parentId);}
     }
@@ -5888,7 +5913,9 @@ function changeTemplateStructureType(input){
 function toggleTemplateStructureNode(id){
   if(taskRequirementEditorState)return toast('请先关闭要求窗口');
   collectTemplateDraft();const state=templateStructureState();
-  state.collapsed=(state.collapsed||[]).includes(id)?state.collapsed.filter(value=>value!==id):[...state.collapsed||[],id];renderTemplateStructure();
+  if(!id&&state.mode==='view')state.rootCollapsed=!state.rootCollapsed;
+  else state.collapsed=(state.collapsed||[]).includes(id)?state.collapsed.filter(value=>value!==id):[...state.collapsed||[],id];
+  renderTemplateStructure();
 }
 function removeTemplateStructureNode(id){
   try{
@@ -5910,16 +5937,9 @@ function undoTemplateStructureRemoval(){
     templateNodeEntries(restored);templateDraft=restored;delete state.removed;renderTemplateStructure();
   }catch(error){toast(error.message);}
 }
-function selectTemplateVersion(version){
-  if(caseCreationDraft||templateDetailState?.mode!=='view')return toast('请先关闭当前编辑');
-  const template=db.templates.find(item=>item.id===templateDetailState.id);
-  if(!template?.versions.some(item=>item.version===version))return toast('模版版本不存在');
-  if(taskRequirementEditorState)return toast('请先关闭要求窗口');
-  templateDetailState.version=version;templateDetailState.collapsed=[];render();
-}
 function templateCreationStructureHtml(){
-  const creation=caseCreationDraft,available=!creation.templateId||db.templates.some(template=>template.id===creation.templateId&&template.versions.some(version=>version.version===creation.templateVersion));
-  return `<h3>下级工作结构</h3><input id="field-templateId" name="templateId" type="hidden" value="${escapeHtml(creation.templateId)}">${available?'':'<div class="error" role="alert">原模版或版本已不可用，已保留草稿全部工作及实际日期。</div><button type="button" onclick="detachCaseDraftTemplate()">保留当前内容，解除模版来源</button>'}<div id="templateInstanceToolbar"></div><div class="table-scroll" id="caseDraftTasks"></div><div id="caseScheduleError" class="error" role="alert"></div>`;
+  const creation=caseCreationDraft,available=!creation.templateId||db.templates.some(template=>template.id===creation.templateId);
+  return `<h3>下级工作结构</h3><input id="field-templateId" name="templateId" type="hidden" value="${escapeHtml(creation.templateId)}">${available?'':'<div class="error" role="alert">原模版已不可用，已保留草稿全部工作及实际日期。</div><button type="button" onclick="detachCaseDraftTemplate()">保留当前内容，解除模版来源</button>'}<div id="templateInstanceToolbar"></div><div class="table-scroll" id="caseDraftTasks"></div><div id="caseScheduleError" class="error" role="alert"></div>`;
 }
 function updateTemplateCreationPreview(){
   const creation=caseCreationDraft;if(!creation?.templateTree)return;
@@ -5944,18 +5964,19 @@ function templateLibraryPage(){
   return `<div class="template-page">${pageHead('Case模版库','','','','','',`<button id="library-new-template" ${can('template')?'':'disabled'} onclick="newLibraryTemplate()">${icon('plus')} 新建模版</button><button id="library-use-template" class="primary" disabled onclick="useSelectedLibraryTemplate()">使用所选模版</button>`)}<section class="panel"><div class="toolbar"><input class="search" id="templateLibrarySearch" aria-label="搜索模版名称" placeholder="搜索模版名称…" value="${escapeHtml(templateLibraryState.query)}" oninput="filterTemplateLibrary('query',this.value)"></div><div class="table-scroll" id="templateLibraryResults"></div></section></div>`;
 }
 function templateDetailPage(){
-  const detail=templateDetailState,template=db.templates.find(item=>item.id===detail?.id),version=template?.versions.find(item=>item.version===detail.version);
-  if(!detail||detail.mode!=='new'&&!version)return pageHead('模版不可用','')+empty('模版或版本不存在，请返回模版库');
+  const detail=templateDetailState,template=db.templates.find(item=>item.id===detail?.id),version=template?latestVersion(template):null;
+  if(!detail||detail.mode!=='new'&&!version)return pageHead('模版不可用','')+empty('模版不存在，请返回模版库');
+  if(detail.mode==='view')detail.version=version.version;
   const editing=detail.mode!=='view',allowed=can('template'),title=detail.mode==='new'?'新建模版':templateCaseName(template);
-  const actions=editing?`<button onclick="cancelTemplateEdit()">取消编辑</button><button id="saveTemplateButton" class="primary" ${allowed?'':'disabled'} onclick="saveTemplatePage()">${detail.mode==='new'?'保存模版':'发布新版本'}</button>`:allowed?`<button onclick="editTemplateModal('${template.id}')">编辑</button>`:'';
-  const createAction=editing?'':`<button id="templateSelectVersion" class="primary" ${can('caseEdit')?'':'disabled'} onclick="selectViewedTemplateVersion()">选中此版本 · v${version.version}</button>`;
+  const actions=editing?`<button onclick="cancelTemplateEdit()">取消编辑</button><button id="saveTemplateButton" class="primary" ${allowed?'':'disabled'} onclick="saveTemplatePage()">${detail.mode==='new'?'保存模版':'保存修改'}</button>`:allowed?`<button onclick="editTemplateModal('${template.id}')">编辑</button>`:'';
+  const createAction=editing?'':`<button id="template-use" class="primary" ${can('caseEdit')?'':'disabled'} onclick="useViewedTemplate()">使用此模版</button>`;
   const defaults=editing?detail.defaults||{}:version.defaults||{};
-  return `<div class="template-page">${pageHead(escapeHtml(title),'',actions,'','','',createAction)}${editing&&!allowed?'<div class="notice">当前已无模版编辑权限，请取消编辑。</div>':''}${detail.mode==='new'?`<section class="panel"><div class="panel-body">${templateCreationFields()}</div></section>`:''}${templateRootFieldsHtml(defaults,!editing||!allowed)}<section class="panel template-content-panel${editing?' is-editing':''}"><div class="panel-head task-list-toolbar-row"><h2>内容清单</h2><div id="templateStructureToolbar"></div>${editing?'':`<label class="template-version-picker">版本<select aria-label="查看模版版本" onchange="selectTemplateVersion(Number(this.value))">${[...template.versions].reverse().map(item=>`<option value="${item.version}" ${item.version===detail.version?'selected':''}>v${item.version}${item.version===latestVersion(template).version?'（当前）':''}</option>`).join('')}</select></label>`}</div><div class="panel-body"><div class="table-scroll" id="templateDraftTable"></div></div></section><div id="templatePageError" class="error" role="alert"></div>${template?templateVersionHistory(template):''}</div>`;
+  return `<div class="template-page">${pageHead(escapeHtml(title),'',actions,'','','',createAction)}${editing&&!allowed?'<div class="notice">当前已无模版编辑权限，请取消编辑。</div>':''}${detail.mode==='new'?`<section class="panel"><div class="panel-body">${templateCreationFields()}</div></section>`:''}${templateRootFieldsHtml(defaults,!editing||!allowed)}<section class="panel template-content-panel${editing?' is-editing':''}"><div class="panel-head task-list-toolbar-row"><h2>内容清单</h2><div id="templateStructureToolbar"></div></div><div class="panel-body"><div class="table-scroll" id="templateDraftTable"></div></div></section><div id="templatePageError" class="error" role="alert"></div></div>`;
 }
 function renderTemplatePageFlow(){
   if(caseTaskDraftMode())return;
   const detail=templateDetailState;if(!detail)return;
-  if(detail.mode==='view'){const version=db.templates.find(item=>item.id===detail.id)?.versions.find(item=>item.version===detail.version);if(!version)return;templateDraft=templateVersionNodes(version);}
+  if(detail.mode==='view'){const template=db.templates.find(item=>item.id===detail.id);if(!template)return;const version=latestVersion(template);detail.version=version.version;templateDraft=templateVersionNodes(version);}
   else if(detail.mode==='new')document.getElementById('caseTemplateName').value=detail.name||'';
   renderTemplateStructure();
 }
@@ -5968,7 +5989,7 @@ function saveTemplatePage(){
     detail.saving=true;document.getElementById('saveTemplateButton').disabled=true;
     const template=transact(()=>saveStructureTemplate(db,detail.mode==='new'?'':detail.id,{name:document.getElementById('caseTemplateName')?.value??detail.name,defaults:detail.defaults},templateDraft,CURRENT_USER,detail.version));
     templateEditingId=template.id;templateDetailState={id:template.id,version:latestVersion(template).version,mode:'view',tab:'flow'};
-    render();toast(detail.mode==='new'?'模版已保存 · v1':'新版本已发布，原 Case 保持不变');
+    render();toast(detail.mode==='new'?'模版已保存':'模版修改已保存，已创建的Case保持不变');
   }catch(error){revealTemplateStructureError(error);document.getElementById('templatePageError').textContent=error.message;}
   finally{detail.saving=false;if(templateDetailState===detail)syncTemplateStructureActions();}
 }
@@ -5990,36 +6011,34 @@ function filterTemplateLibrary(field,value){if(!templateLibraryState||field!=='q
 function renderTemplateLibraryRows(){
   const library=templateLibraryState;if(!library)return;
   const templates=db.templates.filter(template=>templateCaseName(template).toLowerCase().includes(library.query.trim().toLowerCase()));
-  if(!templates.some(template=>template.id===library.selectedId&&template.versions.some(version=>version.version===library.selectedVersion))){library.selectedId='';library.selectedVersion=null;}
-  document.getElementById('templateLibraryResults').innerHTML=`<table class="template-library-table" aria-label="Case模版库"><thead><tr><th>模版名称</th><th>工作结构</th><th>当前版本</th><th>更新时间</th><th>选择</th></tr></thead><tbody>${templates.map(template=>{const version=latestVersion(template),selected=library.selectedId===template.id;return `<tr data-template-id="${escapeHtml(template.id)}"${selected?' class="is-selected"':''}><td><button id="library-edit-${escapeHtml(template.id)}" class="link" data-id="${escapeHtml(template.id)}" title="${escapeHtml(templateCaseName(template))}" onclick="openTemplateLibraryItem(this.dataset.id,'view')">${escapeHtml(templateCaseName(template))}</button></td><td>${templateStructureCount(templateVersionNodes(version))}</td><td>v${version.version}</td><td>${escapeHtml(version.date||'未记录')}</td><td><input id="library-select-${escapeHtml(template.id)}" type="radio" name="libraryTemplate" data-id="${escapeHtml(template.id)}" aria-label="选择${escapeHtml(templateCaseName(template))}" ${selected?'checked':''} onchange="selectLibraryTemplate(this.dataset.id,${version.version})"></td></tr>`;}).join('')||'<tr><td colspan="5"><div class="empty">没有符合条件的模版</div></td></tr>'}</tbody></table>`;
+  const selectedTemplate=templates.find(template=>template.id===library.selectedId);
+  if(!selectedTemplate){library.selectedId='';library.selectedVersion=null;}
+  else library.selectedVersion=latestVersion(selectedTemplate).version;
+  document.getElementById('templateLibraryResults').innerHTML=`<table class="template-library-table" aria-label="Case模版库"><thead><tr><th>模版名称</th><th>工作结构</th><th>更新时间</th><th>选择</th></tr></thead><tbody>${templates.map(template=>{const version=latestVersion(template),selected=library.selectedId===template.id;return `<tr data-template-id="${escapeHtml(template.id)}"${selected?' class="is-selected"':''}><td><button id="library-edit-${escapeHtml(template.id)}" class="link" data-id="${escapeHtml(template.id)}" title="${escapeHtml(templateCaseName(template))}" onclick="openTemplateLibraryItem(this.dataset.id,'view')">${escapeHtml(templateCaseName(template))}</button></td><td>${templateStructureCount(templateVersionNodes(version))}</td><td>${escapeHtml(version.date||'未记录')}</td><td><input id="library-select-${escapeHtml(template.id)}" type="radio" name="libraryTemplate" data-id="${escapeHtml(template.id)}" aria-label="选择${escapeHtml(templateCaseName(template))}" ${selected?'checked':''} onchange="selectLibraryTemplate(this.dataset.id)"></td></tr>`;}).join('')||'<tr><td colspan="4"><div class="empty">没有符合条件的模版</div></td></tr>'}</tbody></table>`;
   document.getElementById('templateLibraryResults').scrollTop=library.scroll||0;
   const use=document.getElementById('library-use-template');
   use.disabled=!library.selectedId||!can('caseEdit');
-  use.textContent=library.selectedId?'使用所选模版 · v'+library.selectedVersion:'使用所选模版';
-  use.title=!can('caseEdit')?'没有新建Case权限':library.selectedId?templateCaseName(db.templates.find(item=>item.id===library.selectedId))+' · v'+library.selectedVersion:'请先选择一个模版';
+  use.textContent='使用所选模版';
+  use.title=!can('caseEdit')?'没有新建Case权限':library.selectedId?templateCaseName(selectedTemplate):'请先选择一个模版';
 }
-function selectLibraryTemplate(id,version){
+function selectLibraryTemplate(id){
   const library=templateLibraryState,template=db.templates.find(item=>item.id===id);
-  if(!library||!template?.versions.some(item=>item.version===version))return toast('模版或版本已不可用，请重新选择');
+  if(!library||!template)return toast('模版已不可用，请重新选择');
   if(!templateCaseName(template).toLowerCase().includes(library.query.trim().toLowerCase()))return toast('模版不在当前搜索结果中，请先调整搜索');
-  Object.assign(library,{selectedId:id,selectedVersion:version,scroll:document.getElementById('templateLibraryResults')?.scrollTop||0});renderTemplateLibraryRows();
+  Object.assign(library,{selectedId:id,selectedVersion:latestVersion(template).version,scroll:document.getElementById('templateLibraryResults')?.scrollTop||0});renderTemplateLibraryRows();
   document.getElementById('library-select-'+id)?.focus({preventScroll:true});
 }
 function useSelectedLibraryTemplate(){
   const library=templateLibraryState;if(!library?.selectedId)return toast('请先选择一个模版');
-  return newCaseFromTemplate(library.selectedId,library.selectedVersion);
+  return newCaseFromTemplate(library.selectedId);
 }
-function selectViewedTemplateVersion(){
+function useViewedTemplate(){
   const detail=templateDetailState;
-  if(ui.page!=='template'||detail?.mode!=='view')return toast('请先查看已发布的模版版本');
-  const id=detail.id,version=detail.version,template=db.templates.find(item=>item.id===id);
-  if(!template?.versions.some(item=>item.version===version))return toast('模版或版本已不可用');
-  if(navigationHistory.at(-1)?.state.page==='templates')goBack();else openTemplates();
-  if(!templateCaseName(template).toLowerCase().includes(templateLibraryState.query.trim().toLowerCase())){
-    templateLibraryState.query='';document.getElementById('templateLibrarySearch').value='';
-  }
-  selectLibraryTemplate(id,version);
-  document.getElementById('library-use-template')?.focus({preventScroll:true});
+  if(ui.page!=='template'||detail?.mode!=='view')return toast('请先打开模版详情');
+  const template=db.templates.find(item=>item.id===detail.id);
+  if(!template)return toast('模版已不可用');
+  if(detail.version!==latestVersion(template).version){render();return toast('模版内容已更新，请确认最新内容后再使用');}
+  return newCaseFromTemplate(detail.id);
 }
 function openTemplateLibraryItem(id,mode){
   const template=db.templates.find(item=>item.id===id);if(!template)return toast('模版不存在');
@@ -6027,18 +6046,14 @@ function openTemplateLibraryItem(id,mode){
   rememberPage();closeModal(false);closeDrawer();templateEditingId=id;templateDetailState={id,version:latestVersion(template).version,tab:'flow',mode:'view'};
   ui.page='template';render();resetPageScroll();
 }
-function templateVersionHistory(template){
-  const currentVersion=latestVersion(template).version;
-  return `<details class="panel" id="templateVersionHistory"><summary class="panel-head">版本记录</summary><div class="table-scroll"><table aria-label="模版版本记录"><thead><tr><th>版本</th><th>发布日期</th><th>内容清单</th><th>版本状态</th></tr></thead><tbody>${[...template.versions].reverse().map(version=>`<tr><td>v${version.version}</td><td>${escapeHtml(version.date||'未记录')}</td><td>${templateStructureCount(templateVersionNodes(version))}</td><td><span class="tag template-version-tag ${version.version===currentVersion?'current':'history'}">${auxiliaryIcon(version.version===currentVersion?'check':'clock')}<span>${version.version===currentVersion?'当前版本':'历史版本'}</span></span></td></tr>`).join('')}</tbody></table></div></details>`;
-}
 function editTemplateModal(id,restored=null){
   const template=db.templates.find(item=>item.id===id);if(!template)return toast('模版不存在');
-  const version=restored?template.versions.find(item=>item.version===restored.detail.version):latestVersion(template);if(!version)return toast('模版版本不存在');
+  const version=latestVersion(template);
   if(!can('template'))return toast('无模版配置权限');
   if(!confirmCaseCreationExit(false,()=>editTemplateModal(id,restored))||!confirmTemplatePageExit())return;
   if(ui.page!=='template')rememberPage();closeModal(false);
   templateEditingId=id;templateDraft=restored?clone(restored.tasks):templateVersionNodes(version);
-  templateDetailState={id,version:version.version,tab:'flow',mode:'edit',defaults:clone(restored?.detail.defaults||version.defaults||templateRootDefaults())};
+  templateDetailState={id,version:restored?.detail.version??version.version,tab:'flow',mode:'edit',defaults:clone(restored?.detail.defaults||version.defaults||templateRootDefaults())};
   ui.page='template';render();templateDetailState.initial=templatePageSnapshot();
 }
 function openCaseHistory(restored=null){
@@ -6087,14 +6102,15 @@ function openTemplateHistoryCase(id){
 function restoreTemplateHistory(context){
   openCaseHistory(context.detail);document.getElementById('template-case-'+context.caseId)?.focus({preventScroll:true});
 }
-function newCaseFromTemplate(id,version){
-  if(!id||!Number.isInteger(version))return toast('请选择有效的模版版本');
+function newCaseFromTemplate(id){
+  if(!id)return toast('请选择有效的模版');
   if(caseCreationDraft)return toast('请先保存或关闭当前创建窗口');
   if(!can('caseEdit'))return toast('没有新建权限');
-  const published=db.templates.find(item=>item.id===id)?.versions.find(item=>item.version===version);
-  if(!published)return toast('模版版本不存在');
+  const template=db.templates.find(item=>item.id===id);
+  if(!template)return toast('模版不存在');
+  const current=latestVersion(template);
   if(!confirmTemplatePageExit())return;
-  try{return newCaseModal(id,version,templateVersionNodes(published),undefined,'',null,null,false,true);}
+  try{return newCaseModal(id,current.version,templateVersionNodes(current),undefined,'',null,null,false,true);}
   catch(error){toast('无法使用模版：'+error.message);}
 }
 
@@ -6808,13 +6824,11 @@ function toggleCaseWorkRequirements(button){
   }catch(error){toast(error.message);}
 }
 function nestedCaseSection(item,editing=false){
-  if(!editing)return directContentList(directContentEntries('case',item),caseWorkEmptyText(item));
   const entries=caseWorkEntries(item,editing),view=caseWorkView(item,editing),root=entries[0];
-  if(!editing&&!root.children.length)return `<p class="case-work-empty">${caseWorkEmptyText(item)}</p>`;
   const allowed=editing&&!(caseEditorDraft?.caseId===item.id&&caseEditorDraft.preAcceptance);
   const render=(node,depth,guides,last,current=false)=>{
-    const visualDepth=depth+(editing?0:1);
-    const {kind}=node,work=current?caseWorkCurrent(node.item):node.item,id=escapeHtml(work.id),key=kind+':'+work.id,open=!view.collapsed.includes(work.id);
+    const visualDepth=depth;
+    const {kind}=node,work=current&&editing?caseWorkCurrent(node.item):node.item,id=escapeHtml(work.id),key=kind+':'+work.id,open=!view.collapsed.includes(work.id);
     const inline=editing&&batchWorkDraft?.editorCaseId===item.id;
     const draftCases=inline?caseEditorChildRows(work.id,depth+1,'case'):'',draftTasks=inline?caseEditorChildRows(work.id,depth+1,'task'):'';
     const hasChildren=!!(node.children.length||draftCases||draftTasks),childGuides=visualDepth?[...guides,!last]:[];
@@ -6826,7 +6840,7 @@ function nestedCaseSection(item,editing=false){
     const switchAction=kind==='case'?`switchCaseEditor(this.dataset.workId,${editable})`:`switchTaskEditor(this.dataset.workId,${editable})`;
     const viewAction=kind==='case'?'openCase(this.dataset.workId)':'openTask(this.dataset.workId)';
     const navigate=editing?switchAction:viewAction;
-    const name=current?`<span class="batch-existing-case-name" title="${escapeHtml(work.name)}">${escapeHtml(work.name)}</span>`:`<button class="link batch-existing-case-name" type="button" ${data} title="${escapeHtml(work.name)}" onclick="event.stopPropagation();event.preventDefault();${editing?(kind==='case'?'switchCaseEditor(this.dataset.workId)':'switchTaskEditor(this.dataset.workId)'):viewAction}">${escapeHtml(work.name)}</button>`;
+    const name=current?`<span class="batch-existing-case-name" title="${escapeHtml(work.name)}">${escapeHtml(work.name)}</span>`:`<button class="link batch-existing-case-name" type="button"${editing?'':` id="content-${kind}-${id}"`} ${data} title="${escapeHtml(work.name)}" onclick="event.stopPropagation();event.preventDefault();${editing?(kind==='case'?'switchCaseEditor(this.dataset.workId)':'switchTaskEditor(this.dataset.workId)'):viewAction}">${escapeHtml(work.name)}</button>`;
     let actions=current?'':`<button class="link" type="button" ${data} onclick="event.stopPropagation();event.preventDefault();${navigate}">${editing&&editable?'编辑':'查看'}</button>`;
     if(kind==='case'&&allowed&&can('caseEdit')&&canManageBranch(db,node.item,CURRENT_USER)){
       const add='addCaseEditorChild(this.dataset.workId)';
@@ -6835,12 +6849,14 @@ function nestedCaseSection(item,editing=false){
     const direct=editing&&kind==='task'&&node.parentId===item.id;
     if(direct&&allowed&&canManageBranch(db,item,CURRENT_USER)&&canDeletePendingTask(node.item))actions+=`<button class="icon danger" type="button" ${data} aria-label="删除Task ${escapeHtml(work.name)}" onclick="event.stopPropagation();event.preventDefault();removeDraftTask(this.dataset.workId)">${icon('close')}</button>`;
     const files=workAttachments(node.item),show=view.requirements.includes(key);
-    const requirements=current?'<span class="muted">上方编辑</span>':`<button class="task-requirements-cell" type="button" aria-expanded="${show}" aria-label="${escapeHtml(work.name)} 查看要求" onclick="event.stopPropagation();event.preventDefault();toggleCaseWorkRequirements(this)">查看要求</button>${files.length?`<span class="small muted">附件 ${files.length}</span>`:''}`;
-    const summary=batchSummaryCell(workTypeName(kind,work)+'名称',name+(current?'<span class="batch-summary-hierarchy">当前编辑</span>':''))+batchSummaryCell('负责人',`<span class="batch-existing-case-owner">${escapeHtml(work.owner)}</span>`)+batchSummaryCell('下级进展',kind==='case'?workspaceChildProgress(node.item,true):'<span class="muted">—</span>')+batchSummaryCell('开始日期',`<span class="mono" data-work-start>${escapeHtml(work.start||'待确定')}</span>`)+batchSummaryCell('完成日期',`<span data-work-due>${dateCell(work)}</span>`)+batchSummaryCell('要求',requirements)+batchSummaryCell('状态',badge(node.item))+batchSummaryCell('操作',`<span class="case-work-row-actions">${actions||'<span class="muted">—</span>'}</span>`)+batchCaseGuides(visualDepth,guides,last,hasChildren);
-    const panel=current?'':`<section class="batch-case-requirements"${show?'':' hidden'} aria-label="${escapeHtml(work.name)} 要求"><dl class="delivery-summary">${deliveryTextRow('交付目标',work.goal||'未填写')}${deliveryTextRow('完成标准',work.completionStandard||'未填写')}${kind==='task'?deliveryTextRow('对接人',work.contactPerson||'未填写')+deliveryTextRow('对接说明',work.contactNote||'未填写')+(PROTOTYPE_FEATURES.taskDependencies?deliveryTextRow('前置Task',predecessorIds(work).map(id=>taskPredecessorName(objectRef(db,'task',id))).join('、')||'无'): ''):''}</dl>${files.length?`<h4>附件</h4>${files.map((file,index)=>`<div class="row"><button class="link" type="button" ${data} onclick="openWorkAttachment(this.dataset.workKind,this.dataset.workId,${index})">${escapeHtml(file.name)}</button><button type="button" ${data} onclick="openWorkAttachment(this.dataset.workKind,this.dataset.workId,${index},true)">下载</button></div>`).join('')}`:''}</section>`;
+    const requirements=current&&editing?'<span class="muted">上方编辑</span>':`<button class="task-requirements-cell" type="button" aria-expanded="${show}" aria-label="${escapeHtml(work.name)} 查看要求" onclick="event.stopPropagation();event.preventDefault();toggleCaseWorkRequirements(this)">查看要求</button>${files.length?`<span class="small muted">附件 ${files.length}</span>`:''}`;
+    const status=!editing&&kind==='case'?scopeBlockerStatus(node.item,caseBranchHasBlocker(node.item),'本Case或下属subCase、Task存在有效未解决阻塞，不改变本级业务状态或自身阻塞计数'):badge(node.item);
+    const statusCell=batchSummaryCell('状态',status);
+    const summary=batchSummaryCell(workTypeName(kind,work)+'名称',name+(current?`<span class="batch-summary-hierarchy">${editing?'当前编辑':'当前'+workTypeName(kind,work)}</span>`:''))+batchSummaryCell('负责人',`<span class="batch-existing-case-owner">${escapeHtml(work.owner)}</span>`)+batchSummaryCell('下级进展',kind==='case'?workspaceChildProgress(node.item,true):'<span class="muted">—</span>')+(editing?'':statusCell)+batchSummaryCell('开始日期',`<span class="mono" data-work-start>${escapeHtml(work.start||'待确定')}</span>`)+batchSummaryCell('完成日期',`<span data-work-due>${dateCell(work)}</span>`)+batchSummaryCell('要求',requirements)+(editing?statusCell+batchSummaryCell('操作',`<span class="case-work-row-actions">${actions||'<span class="muted">—</span>'}</span>`):'')+batchCaseGuides(visualDepth,guides,last,hasChildren);
+    const panel=current&&editing?'':`<section class="batch-case-requirements"${show?'':' hidden'} aria-label="${escapeHtml(work.name)} 要求"><dl class="delivery-summary">${deliveryTextRow('交付目标',work.goal||'未填写')}${deliveryTextRow('完成标准',work.completionStandard||'未填写')}${kind==='task'?deliveryTextRow('对接人',work.contactPerson||'未填写')+deliveryTextRow('对接说明',work.contactNote||'未填写')+(PROTOTYPE_FEATURES.taskDependencies?deliveryTextRow('前置Task',predecessorIds(work).map(id=>taskPredecessorName(objectRef(db,'task',id))).join('、')||'无'): ''):''}</dl>${files.length?`<h4>附件</h4>${files.map((file,index)=>`<div class="row"><button class="link" type="button" ${data} onclick="openWorkAttachment(this.dataset.workKind,this.dataset.workId,${index})">${escapeHtml(file.name)}</button><button type="button" ${data} onclick="openWorkAttachment(this.dataset.workKind,this.dataset.workId,${index},true)">下载</button></div>`).join('')}`:''}</section>`;
     return `<details class="batch-existing-case${current?' case-work-current':''}" data-work-node ${data} data-work-depth="${depth}" data-work-children="${hasChildren}"${current?' data-work-current':''}${direct?` data-step="${id}"`:''}${kind==='case'&&!current?` ${editing?'data-editor-child-case':'data-child-case'}="${id}"`:''}${open?' open':''}><summary style="--batch-case-indent:${Math.min(visualDepth*16,96)}px" aria-expanded="${open}" onclick="toggleCaseWorkBranch(this,event)">${summary}</summary><div class="batch-existing-case-body">${panel}${children}</div></details>`;
   };
-  return `<div class="case-work-hierarchy batch-work-existing${editing?' case-create-child-tree':''}" data-work-root="${escapeHtml(item.id)}" data-work-editing="${editing}"><div class="batch-existing-list-scroll" tabindex="0" role="group" aria-label="完整内容清单，可横向滚动"><div class="batch-existing-tree case-work-tree">${editing?render(root,0,[],true,true):root.children.map((node,index)=>render(node,0,[],index===root.children.length-1)).join('')}</div></div></div>`;
+  return `<div class="case-work-hierarchy batch-work-existing${editing?' case-create-child-tree':''}" data-work-root="${escapeHtml(item.id)}" data-work-editing="${editing}"><div class="batch-existing-list-scroll${editing?'':' table-scroll'}" tabindex="0" role="group" aria-label="完整内容清单，可横向滚动"><div class="batch-existing-tree case-work-tree">${render(root,0,[],true,true)}</div></div>${!editing&&!root.children.length?`<p class="case-work-empty">${escapeHtml(caseWorkEmptyText(item))}</p>`:''}</div>`;
 }
 function createNestedBatch(state,parentId,rows,actor){
   check(Array.isArray(rows)&&rows.length,'请至少新增一行下级工作');
@@ -7552,10 +7568,12 @@ function showHelp(){
     <p>进行中的Case、subCase和Task由有权限的人员修改负责人，确认后立即生效，保持进行中，不重新接受，不增加待交接状态。只切换当前对象的负责人及其职责权限，不自动修改上级、下级的负责人或状态，不暂停下级，不重置日期、实际开始时间、进度、材料及历史。原负责人仅因原责任身份获得的权限随之取消，其独立拥有的其他职责不受影响。流转记录保留变更前后负责人、操作人、时间和说明；进行中负责人变更不产生系统内交接通知，后续通过飞书卡片通知，通知不作为生效前置条件，本原型未接入飞书。</p>
     <p>“【编辑示例】”包含我负责／我分配两个方向的待接受、已拒绝Case、subCase和Task，可在Case中心搜索“编辑示例”，或在我的工作中按分类和状态筛选体验。示例只补充一次，编辑、接受或拒绝后的结果会正常保存，刷新不重置，也不修改原有工作。</p>
     <p>“我负责”与“我分配”的Case页签均提供全部状态、待接受、进行中、已完成、已拒绝、已终止，与Task筛选一致。Case中心主指标依次为进行中、已完成、已终止、超期、有阻塞，通过状态下拉框筛选包含待接受和已拒绝的全部真实状态，列表、树结构、甘特图及详情共用同一状态。Case模板中的Task可随创建保存，但Case接受前不能执行；接受后，本人安排且无需接受的Task自动开始，其余Task仍由各自负责人接受。</p>
-    <p>Case模版库复用工作结构与交付要求，支持subCase与Task混合、多层subCase及只有直属Task的旧模版；列表和版本记录统计全部层级。列表单选整个模版，点击名称只查看，不改变选择；右上角“使用所选模版”按已选版本创建，“＋新建模版”维护公共定义。返回保留搜索及选择，搜索隐藏所选模版时清空选择；查看历史版本不会自动更换已选版本，可明确点击“选中此版本”后返回使用。模版详情的工作结构模块和版本记录对应列统一称为“内容清单”，模版库列表列名不变。根Case以展开的“新建Case”模块呈现，名称、背景、交付目标和完成标准在保存或发布前必须填齐，编辑中可以留空。旧版本保留原始内容、不自动补写，编辑后发布新版本时补齐。模版新建与编辑的内容清单沿用详情新增窗口的树形清单、蓝色名称、层级辅助线、展开收起、要求预览及卡片内新增下级形式；只有名称区缩进，其余列跨层对齐。保留类型和名称编辑、直属下级数量、要求、附件、新增下级及“×”移除，不展示实际负责人、日期、执行状态或完成进度；下级内容统计subCase和Task数量。顶部新增和卡片内新增均默认subCase，可切换Task；Task不能添加下级，有下级的subCase不能改为Task。查看要求在当前行下展开，编辑要求仍使用原有浮层，确认只更新草稿，最终随模版保存或发布生效。移除分支需确认并可撤销，错误展开对应分支并定位字段，附件读取中不能新增、移除、切换类型、保存或离开。每项工作发布时须有名称、目标和标准，至少保留一项工作。只读详情保持完整紧凑工作卡片，不提供新增下级或编辑；版本、权限、未保存保护和存储失败回滚不变。模版不保存实际负责人、对接人、日期、Project、设备关联、执行状态、评论或完成材料，也不提供偏移、建议工期或日期推算。</p>
-    <p>使用模版创建Case的原流程不随公共定义编辑布局改变：从基本信息开始，不显示顶部身份胶囊、辅助说明或统一设置负责人，各项工作分别填写人员和实际日期，全部下级直接显示，旧草稿折叠状态不隐藏下级。Task行保留类型、名称、负责人、对接人、对接说明、开始日期、完成日期、目标与要求和常显移除图标；对接字段选填，subCase没有对接字段。要求入口仍位于完成日期右侧，浮层确认仅更新本次创建草稿和参考附件，不修改公共模版。新增根Case直属下级默认subCase，可编辑subCase内新增仍默认Task；有下级的subCase不能改为Task，分支移除须确认且可撤销。重新渲染、增删、暂存及恢复保留要求、附件、对接信息、人员和日期。根Case内容由模版预填并允许修改，人员和日期重新填写，不自动继承或覆盖下级日期；仅校验起止顺序与直属上级范围。创建直接整批校验保存，失败回滚全部记录并保留草稿，错误定位对应字段，要求错误打开浮层。接受限制不变，本人安排的subCase在所有上级就绪后自动开始。发布模版新版本不回写已创建Case或正在填写的草稿，旧草稿实际人员与日期继续保留，草稿不派发工作；普通新建Case、详情新增下级及Case中心入口不变。</p>
+    <p>Case模版库复用工作结构与交付要求，支持subCase与Task混合、多层subCase及只有直属Task的旧模版，列表统计全部层级。列表单选整个模版，点击名称只查看，不改变选择；右上角“使用所选模版”带入当前内容，详情的“使用此模版”直接打开创建配置，不先返回模版库，也不立即创建正式Case。“＋新建模版”维护公共定义。返回保留搜索及选择，搜索隐藏所选模版时清空选择。本期不提供版本选择、版本记录、历史切换或发布功能，新建用“保存模版”，编辑用“保存修改”，并保留内部修订号防止并发覆盖；保存只更新当前内容，不新增历史条目，既有旧记录不清除。模版详情的工作结构模块统一称为“内容清单”。根Case以展开的“新建Case”模块呈现，名称、背景、交付目标和完成标准在保存前必须填齐，编辑中可以留空；旧数据不自动补写，编辑保存时补齐。</p>
+    <p>模版新建与编辑的内容清单沿用详情新增窗口的树形清单、蓝色名称、层级辅助线、展开收起、要求预览及卡片内新增下级形式；只有名称区缩进，其余列跨层对齐。保留类型和名称编辑、直属下级数量、要求、附件、新增下级及“×”移除，不展示实际负责人、日期、执行状态或完成进度；下级内容统计subCase和Task数量。顶部新增和卡片内新增均默认subCase，可切换Task；Task不能添加下级，有下级的subCase不能改为Task。查看要求在当前行下展开，编辑要求使用原有浮层，确认只更新草稿，最终随模版保存生效。移除分支需确认并可撤销，错误展开对应分支并定位字段，附件读取中不能新增、移除、切换类型、保存或离开。每项工作保存时须有名称、目标和标准，至少保留一项工作。</p>
+    <p>模版只读详情以当前定义的根Case为树根，完整展示相同父子关系及排列顺序，默认展开，允许展开收起和只读查看要求及参考附件，不提供输入框、新增、移除或编辑；Task为叶子节点。类型使用无底色、无边框的Case／subCase／Task纯文字，编辑时仍为下拉框。清单720px紧凑靠左，名称与下级内容、要求相邻，不随宽屏拉大列间距；“要求”与“查看要求”实际文字中心同轴，根行“上方查看”也居中，窄屏仅在清单内滚动。旧数据缺少根名称时显示“模版根Case”，不补写历史。模版不保存实际负责人、对接人、日期、Project、设备关联、执行状态、评论或完成材料，也不提供偏移、建议工期或日期推算。</p>
+    <p>使用模版创建Case的原流程不随公共定义编辑布局改变：从基本信息开始，不显示顶部身份胶囊、辅助说明或统一设置负责人，各项工作分别填写人员和实际日期，全部下级直接显示，旧草稿折叠状态不隐藏下级。Task行保留类型、名称、负责人、对接人、对接说明、开始日期、完成日期、目标与要求和常显移除图标；对接字段选填，subCase没有对接字段。要求入口仍位于完成日期右侧，浮层确认仅更新本次创建草稿和参考附件，不修改公共模版。新增根Case直属下级默认subCase，可编辑subCase内新增仍默认Task；有下级的subCase不能改为Task，分支移除须确认且可撤销。重新渲染、增删、暂存及恢复保留要求、附件、对接信息、人员和日期。根Case内容由模版预填并允许修改，人员和日期重新填写，不自动继承或覆盖下级日期；仅校验起止顺序与直属上级范围。创建直接整批校验保存，失败回滚全部记录并保留草稿，错误定位对应字段，要求错误打开浮层。接受限制不变，本人安排的subCase在所有上级就绪后自动开始。修改保存模版不回写已创建Case或正在填写的草稿，旧草稿实际人员与日期继续保留，草稿不派发工作；普通新建Case、详情新增下级及Case中心入口不变。</p>
     <p>模版新建与编辑的内容清单标题与“新建Case”使用相同字号和字重，第一列标题为“类型”。各层类型选择与其余字段共用列位置，仅名称区域缩进并显示层级辅助线。只有已有下级的subCase显示展开箭头，Task及空subCase不显示；Task不显示操作标题和新增入口，但保留列空位，subCase操作只显示“＋新增下级”。每行最右侧独立“×”移除入口保留，分支移除确认和撤销不变。清单内和编辑要求浮层的附件区域不显示文件类型、大小限制、保存说明或“暂无附件”等静态小字；实际文件、上传、查看、移除、读取状态、错误提示和大小校验保留。只读详情与使用模版创建Case的附件展示不变。</p>
-    <p>Case模版库列顺序统一为模版名称、工作结构、当前版本、更新时间、选择；名称位于第一列，选择位于最后一列。点击名称只查看，单选模版后通过右上角使用所选模版创建，版本绑定和返回状态保持不变。</p>
+    <p>Case模版库列顺序统一为模版名称、工作结构、更新时间、选择；640px紧凑清单整体靠左，名称表头及名称文字与搜索框左边框对齐，其余表头与实际文字、单选圆圈同轴居中，单元格内垂直居中。点击名称只查看，单选模版后通过右上角使用所选模版进入创建配置，返回状态保持不变。</p>
     <p>详情页延续原版页头与操作入口。基础信息岛只显示直属上级的一层名称，标注所属Case或所属subCase，顶部完整层级导航保留。Case、subCase和Task的关键信息统一更名为信息看板，仍紧邻基本信息岛下方；置顶数量不限，默认仅展示最新置顶的两条，桌面左右排列，超过两条提供展开全部及收起，展开后按同一顺序显示全部仍置顶的信息。取消置顶后从默认及展开列表同时移除，原评论、回复、阻塞和流转记录不删除；再次置顶按本次实际置顶操作排在最前，同一条不重复。新置顶记录真实置顶时间，旧数据加载时保留原有选择和顺序，不补造历史置顶时间。正文编辑、阻塞解决、评论发布时间或重新加载不重排看板；已解决阻塞保留置顶并显示解决说明，直到主动取消。没有置顶内容时保留暂无置顶信息，只有一两条时不显示展开入口。看板卡片的取消置顶仍位于右上角，来源入口保留在底部，评论、回复及阻塞直接提供置顶到信息看板／取消置顶，不再出现满额替换弹窗。未置顶的新阻塞仍完整显示正文并保留风险标记和完成校验。每个详情页独立保留置顶选择；下级置顶评论沿用原有向上汇总范围，加入上级列表但不删除原有记录，各层级的取消置顶独立生效；下属阻塞不当作父级自身阻塞。来源直达评论抽屉或正文阻塞卡片。刷新后保留完整置顶列表，展开状态在当前页更新及返回时沿用原有详情展开恢复机制。权限、结束只读、保存失败回滚、背景、目标、标准、结果、直属工作分类及负责人确认规则保持不变。</p>
     <p>Case、subCase和Task详情将评论与阻塞分开。阻塞采用第二轮已选01浮层白卡样式：灰蓝色底区内每条阻塞独立白卡，圆角与轻阴影建立边界，卡片间保留15px间距；删除卡片之间、问题下方与时间上方的分隔横线，思路和解决方案用标签对齐及留白分层，完整结论单独放在浅色区域。无阻塞时保留原空状态，不添加空白卡底。突出问题描述、思路、解决方案；右上角先显示阻塞状态，再显示无框、无下划线的置顶／取消置顶按钮，下方加大标记已解决按钮并保留间距。阻塞由当前工作负责人负责处理，不再设独立处理人或更换入口；未解决阻塞随负责人变更由新负责人接手，当前及上级负责人原有管理权限保留，旧处理人字段不再授予额外可见或解决权限。卡片仅保留创建与解决时间，真实操作人及历史处理人变更集中在流转记录中。新增三项均必填，不显示红色必填标记。解决时先单选有效、部分有效、无效，再填写结论，两项均必填且不默认选择，提交按钮统一为确认。选项采用真实单选语义和自绘彩色勾选：有效绿色、部分有效橙色、无效浅灰，不显示原生黑圈；仅在阻塞已经解除时确认，方案无效但替代措施解除阻塞时在结论说明。解决后卡片完整展示结论与方案效果，信息看板和流转记录同步展示；结论沿用resolution字段存储，效果独立存储为effect。旧记录不改写、不补造效果，已解决旧记录展示原结论及未评估历史标识，历史创建、变更和解决记录在流转记录补充，日期只有日时不补造时分。评论抽屉、看板置顶与展开、来源定位、独立草稿、失败回滚、只读限制与完成校验保持不变。</p>
     <p>新增subCase与Task从基本信息开始，不再展示新建身份条或上级Case信息卡。名称与负责人同排，各占一半；开始日期与完成日期同排。详情入口自动固定直接上级，表单隐藏传递上级ID；全局入口仍需在基本信息中选择直接上级，归属Project、权限与日期范围校验保持不变。subCase新增、编辑及批量新增不再要求重复填写背景，只填写本层交付目标与完成标准。新增subCase页仅保留基本信息、目标与要求、本层附件，不展示所属Case背景、上级附件列表或替代背景说明。subCase与Task详情的背景区域统一只显示“所属Case背景”标题及完整正文，不再显示查看上级背景、本层背景、来源说明或跳转按钮；subCase从直接上级向上读取最近已有背景，Task仍从所属Case向上读取最近已有背景。根Case原有背景展示及长文展开方式不变；subCase编辑页、批量新增和Task新增页保留背景上下文，但不再列出上级附件。既有subCase背景数据完整保留，不删除、不在保存其他字段时覆盖。根Case仍保留背景输入及必填校验，subCase完成不再要求本层背景，其余目标、标准、Project、负责人、阻塞及完成规则保持不变。详情页下属工作标题不再显示完成数量统计。</p>
@@ -7566,8 +7584,10 @@ function showHelp(){
     <p>Case／subCase／Task仅在当前状态为“已拒绝”时展示拒绝信息卡片。分配人编辑并确认改派给他人后，状态恢复为“待接受”，不再展示旧拒绝卡片；本人接手仍沿用无需再次接受的规则。页面底部“流转记录”是完整追溯入口，默认收起但不截断历史，持续保留创建、每轮拒绝的理由／拒绝人／实际记录时间、编辑、负责人变更及后续接受等记录，不因重新分配而删除、覆盖旧记录；相同拒绝理由也按分配轮次分别保留。流转事件、责任变更及历史阻塞创建／处理人变更／解决记录沿用现有展示形式，合并为一份按北京时间从新到旧排列的列表，不再设置独立的历史阻塞、责任记录模块或“查看历史快照”入口。同一天先按实际时间排列，再展示只有日期的记录；相同时刻与未知时间保持原有相对顺序，不补造历史时分。相同操作按明确的事件、责任记录或阻塞引用去重，旧日志仅在操作人、内容及时间可唯一对应时合并，不能确认的独立记录继续保留。创建、接受等普通事件直接展示；负责人变更直接显示变更前后和说明，多字段修改仍可在对应条目点击“查看修改前后”，阻塞解决条目保留效果和完整结论。原始记录与快照数据继续保留，责任记录及其修改明细仍遵守原有查阅权限，不改变当前工作数据。</p>
     <p>Case历史列入二期，一期隐藏Case中心入口并暂停历史查询页面；既有Case、历史数据和草稿保留。Case／Task详情中的统一流转记录及已完成、已终止工作的正常查看不受影响，原始历史快照数据不删除。</p>
     <p>创建、编辑、完成、终止和历史页面统一使用Case／subCase／Task标识。编辑subCase的标题、名称和负责人字段按当前层级显示，所属Project仍继承且只读。Case与subCase编辑窗口标题下直接显示名称和负责人，删除重复的正在编辑、类型与状态标识、所属位置完整路径、普通保存提示和基本信息小标题；等待接受、拒绝后重新分配或负责人变更等必要提示移至基本字段下按需显示。编辑页统一使用一个“内容清单”模块，已有subCase与Task都以无边框文字展示，通过最后一列“编辑”单独进入对应编辑页并独立保存；无编辑权限或已结束的工作仅提供“查看”。当前Case确认保存自身修改、行内新增草稿和清单中暂存的Task删除，不批量修改已有下级定义。必填星号只出现在实际编辑表单，名称、负责人、开始日期、完成日期、交付目标和完成标准标清；对接人、对接说明不标必填。编辑Task按基本信息、任务要求和附件分区，对接人、对接说明紧跟负责人，与名称及日期同排；任务要求只保留交付目标与完成标准。编辑中的附件随该工作确认保存，与详情页使用同一份列表。日期冲突明确指出对应工作，不自动重排；日期或负责人变更时才显示理由输入。取消、关闭或切换前检查未保存修改，独立保存的下级修改不随父级取消而撤销。历史快照只调整展示字段名称，不改写当时的名称、要求和流转记录。</p>
-    <p>Project、Case／subCase详情统一采用当前工作信息和“内容清单”。Project只列直属Case，Case／subCase只列直属subCase和Task，各状态均可查看；名称进入对应详情，“查看要求”显示完整目标、完成标准、对接信息和参考附件。新建Project只填写基本信息，目标与交付在新建和编辑时均必填。Project编辑仅向当前负责人开放，内容操作只保留转入Case，不提供新建Case。转入候选为全部未归属顶层Case；仅进行中允许选择，其他状态及日期不合规时显示禁选原因，超期、有阻塞不单独禁止。目标Project必须进行中，Case全部subCase和Task整体随行，下级状态及成果不重置。已归属Case不能转出、清空或跨Project转移，Case编辑页所属Project只读。搜索复用Case中心的名称／负责人、显式搜索、Enter、清空及中文输入法保护，不嵌套表单、不触发Project保存，筛选保留已选项。选择仅暂存，保存时重新校验负责人、Project和Case状态、工作树归属及版本、全部日期；任一失败整批回滚，取消则不生效。保存成功通知Case负责人，记录操作人、时间及目标Project，并刷新统计和相关提醒。新建Case统一在Case中心，可先创建未归属Case，或直接选本人负责的进行中Project。完整递归结构继续在Case中心查看，详情不重复展示递归树。标题操作区保留留白，长清单不单独限制纵向高度，窄屏仅在表格内横向滚动。</p>
-    <p>Case与subCase编辑页保持已确认的完整可见层级、八列摘要、浅灰辅助线及展开收起形式，不随详情页的一层清单调整。仅名称及标签逐层缩进，其他列跨层对齐；深层缩进限制在名称区域内。已有工作的要求继续在本行下方只读展开，保留目标、完成标准、Task对接信息及附件查看和下载，不关闭编辑窗口；展开收起不算修改，并在重绘时保留。编辑清单展示当前节点并标注“当前编辑”，subCase同时说明直属上级；当前名称、负责人和日期摘要随上方表单更新。有权限的Case／subCase行提供“＋新增下级”，新工作归属所在行，Task不提供新增入口。已有下级独立编辑、独立保存，不在父级表单中批量修改已有工作的定义；行内新增草稿随当前编辑页确认保存。直属待接受、从未开始Task仍可暂删，取消放弃未确认删除，深层已有Task在其直属父级编辑页删除；已有前置引用先独立解除。待接受、已拒绝及只读分支不放开原有新增、执行或编辑权限，父级取消不撤销下级独立保存。未保存提示、字段校验、附件、定位、删除和原子回滚规则不变。</p>
+    <p>Project、Case／subCase详情统一采用当前工作信息和“内容清单”。Project仍只列直属Case；Case／subCase详情以当前节点为树根，完整展示自身后代，与编辑页保持相同父子关系、顺序、缩进和连接线，不混入父级或兄弟分支。默认展开，允许展开收起，Task为叶子节点，各状态均可查看；下级名称进入对应详情，“查看要求”在本行下方只读展开完整目标、完成标准、对接信息和参考附件。详情不增加编辑、新增或删除权限，页面级原有入口仍按原权限控制；进展只统计直属有效下级，查看返回保留展开状态。
+    新建Project只填写基本信息，目标与交付在新建和编辑时均必填。Project编辑仅向当前负责人开放，内容操作只保留转入Case，不提供新建Case。转入候选为全部未归属顶层Case；仅进行中允许选择，其他状态及日期不合规时显示禁选原因，超期、有阻塞不单独禁止。目标Project必须进行中，Case全部subCase和Task整体随行，下级状态及成果不重置。已归属Case不能转出、清空或跨Project转移，Case编辑页所属Project只读。
+    搜索复用Case中心的名称／负责人、显式搜索、Enter、清空及中文输入法保护，不嵌套表单、不触发Project保存，筛选保留已选项。选择仅暂存，保存时重新校验负责人、Project和Case状态、工作树归属及版本、全部日期；任一失败整批回滚，取消则不生效。保存成功通知Case负责人，记录操作人、时间及目标Project，并刷新统计和相关提醒。新建Case统一在Case中心，可先创建未归属Case，或直接选本人负责的进行中Project。标题操作区保留留白，长清单不单独限制纵向高度，窄容器仅在清单内横向滚动。</p>
+    <p>Case与subCase编辑页保持已确认的完整可见层级、八列摘要、浅灰辅助线及展开收起形式；详情页复用同一树形层级，列顺序为名称、负责人、下级进展、状态、开始日期、完成日期、要求，不设操作列，点击下级名称查看详情，展开箭头不触发跳转。状态标题与状态框保留8px留白，阻塞标识不挤压标题；要求标题与查看要求的文字同轴居中。仅名称及标签逐层缩进，其他列跨层对齐；深层缩进限制在名称区域内。已有工作的要求继续在本行下方只读展开，保留目标、完成标准、Task对接信息及附件查看和下载，不关闭编辑窗口；展开收起不算修改，并在重绘时保留。编辑清单展示当前节点并标注“当前编辑”，subCase同时说明直属上级；当前名称、负责人和日期摘要随上方表单更新。有权限的Case／subCase行提供“＋新增下级”，新工作归属所在行，Task不提供新增入口。已有下级独立编辑、独立保存，不在父级表单中批量修改已有工作的定义；行内新增草稿随当前编辑页确认保存。直属待接受、从未开始Task仍可暂删，取消放弃未确认删除，深层已有Task在其直属父级编辑页删除；已有前置引用先独立解除。待接受、已拒绝及只读分支不放开原有新增、执行或编辑权限，父级取消不撤销下级独立保存。未保存提示、字段校验、附件、定位、删除和原子回滚规则不变。</p>
     <p>编辑页内容清单右上角及Case／subCase行内的“新增下级”不再打开更深一层新增弹窗。默认Task，在所选分支直属Task末尾新增；切换为subCase后移到该分支最后一个同级subCase之后、直属Task之前，不改变上下级归属。每个直属分支先展示subCase、再展示Task；切换类型后重新滚动并聚焦名称，保留通用字段与参考附件，已有下级的subCase不可切换为Task。subCase新行适当收窄名称显示宽度，类型、名称、负责人、开始日期、完成日期、新增下级和移除按钮保持同一行，下一行仅为“目标与要求”展开入口；附件仍在展开区内，空间不足时在清单内横向滚动，不缩短名称内容。复用已有subCase新增行的字段、目标与要求展开区、参考附件和移除方式；自动展开相关分支，滚动并聚焦新行名称。新增行仅为当前编辑页草稿，随本页“确认”与当前工作修改、允许的Task删除一起校验并保存，失败全部回滚且保留填写，定位对应行和字段。已有下级仍单独确认保存，上级确认不会补存其他页面未保存的编辑。不做父子草稿联动或自动暂存；关闭、取消或切换前如有未保存内容，提示“有未保存的修改”“离开后，本次修改及新增的下级将不会保存。”，仅提供“继续编辑”和“不保存并离开”。继续编辑保留当前填写，明确不保存才执行原离开动作；无修改不提示。日期、权限、分配、待接受与结束只读规则保持不变。</p>
     <p>新增或切换类型后的定位以整条新增行的基本信息及“目标与要求”入口为目标，而非只露出名称输入框；先完成展开与排序，再调整滚动并聚焦名称，上下留出空隙并短暂浅色提示。编辑页新增行宽度不超出清单可视区域，电脑宽度下完整露出操作按钮；窄窗口在行内横向滚动，优先露出名称。已展开的长要求内容不强求全部进入视野。</p>
     <p>subCase编辑页移除所属Case背景和本层背景（历史保留）的展示，仅保留交付目标与完成标准；不删除或清空历史背景数据，详情页的背景展示和顶层Case的背景编辑保持不变。</p>
@@ -7582,7 +7602,7 @@ function showHelp(){
     <p>普通新建Case在基本信息和目标要求下方提供可选内容清单，复用详情新增的同行字段、类型切换、“×”移除、要求和附件功能。初始清单为空，顶部新增默认添加当前Case的直属subCase，可切换Task；每张subCase卡片在完成日期后同一行提供“＋新增下级”，名称输入区适当缩短，默认subCase并可继续递归添加，Task不显示新增入口且保留原字段布局。有下级才显示展开箭头，名称区域通过缩进和轻量辅助线表达层级，其余字段不逐层缩窄；不展示已有工作分支。已有下级的subCase不能切换Task，移除分支前确认其全部下级范围。新增按钮右侧实时显示“直接新增到当前Case：当前Case名称”，名称未填写时不显示空冒号。每项工作日期独立填写并校验自己的直属上级范围，修改上级日期后同步更新限制但不自动修改下级日期。当前Case、全部层级及附件可一起暂存和恢复，旧平级草稿仍兼容；取消时统一保护，折叠本身不算修改，错误展开对应祖先并定位字段。附件读取期间不能增删分支、切换类型、创建、暂存或关闭。沿用创建前确认，修改字段、层级或附件后须重新确认；最终一次保存Case及全部下级，任一项失败不创建任何工作，也不移除已有草稿。父Case未接受时，下级不能提前开始；本人及他人的接受规则与模版结构创建共用，模版与历史批量流程不改变。</p>
     <p>编辑页进入的新增窗口默认subCase，仍可切换Task；当前Case直接新增在前，已有subCase在后，卡片内仍为已有下级在前、新增行在后。subCase与Task的草稿移除统一为同尺寸“×”图标，仅移除未创建条目。新增保留同行字段与全宽要求，类型、负责人、日期、按钮采用统一尺寸，名称和对接说明允许伸缩；窄屏只在行内横向滚动，不拆分成多组或添加空控件。已有subCase复用详情清单的可见工作树，默认展开其全部层级的subCase与Task，移除“多层结构”提示，使用名称列缩进及浅灰连接线直接表达归属；最后一个同级节点不拖尾，深层缩进仍有上限。仅有下级或新增行的subCase显示收起／展开标记，Task为叶子且无新增入口。用户手动收起后，填写、查看要求及上传附件不会重置其他分支状态。已有行展示蓝色名称、负责人、下级进展（Task为“—”）、开始日期、完成日期及超期提示、要求入口、状态和操作，沿用详情清单格式。查看要求在当前卡片内展开只读目标、完成标准及附件，Task另含对接信息与启用时的前置Task，不关闭新增窗口，不丢失填写，也不增加独立基本信息面板。只读分支可查看但不提供新增按钮，不可见分支及其后代不展示；每条新工作归属所在卡片的直接上级，不编辑原有工作信息。全局批量入口仍默认Task、选择一次直接上级并混合添加同级工作，不展示分支卡片或改变原布局。每行独立填写实际日期与目标标准，对接信息和附件可选；不新增subCase背景输入。创建N项只统计新工作，整批校验、一次保存，任一行有错误均不创建，保留填写和附件并展开新增位置；再次提交逐条校验分支权限和直接上级日期。展开或查看要求不算未保存修改；取消新增不会改变已有工作，附件随整批保存。</p>
     <p>新增窗口的已有subCase采用统一宽度的树形清单：只有第一列“subCase名称”标签、名称、展开箭头与层级提示随层级缩进，标签与本行名称使用相同缩进；负责人、下级进展、日期、要求、状态及操作始终共用同一套垂直列线，不再逐层缩窄卡片或叠加边框。标签下的名称区域沿用Case中心的浅灰竖线与短横连接线，区分父子和同级关系，最后一个可见同级节点的连接线在名称行结束；展开显示下层连接，收起不保留下层线。辅助线与“＋／－”标记留出间隔，不覆盖标记、标签或展开的要求及新增表单，不改变其他列的位置。每行字段标签水平对齐，主要内容、要求按钮、状态及操作在同一内容行居中对齐，多层结构与超期提示显示在其下方。深层缩进限制在第一列内，超过现有缩进上限的层级使用压缩虚线，不占用后续列；长名称省略并通过悬停查看完整名称，真实层级与展开关系保留，整个已有清单使用一个横向滚动区域。查看要求与新增表单仍在对应行下方展开，不影响其他清单行的列位置。顶部新增按钮右侧合并显示“直接新增到当前Case：当前Case名称”，长名称省略并可悬停查看完整名称。新建Case的空内容清单不增加层级线，原字段、权限、草稿、附件与保存逻辑不变。</p>
-    <p>Case／subCase详情内容清单的直属subCase与Task统一使用1px浅灰竖线和短横线连接，当前Case作为隐含父节点；编辑清单保留当前编辑节点及其下级连接。Task是叶子节点，不显示展开标记或向下延伸线，最后一个同级节点的竖线在名称中线处结束，深层连接仍限制在名称列并沿用压缩规则。详情及编辑清单的所有“操作”标题统一位于操作列中心，下方的单按钮及“编辑／查看＋新增下级”双按钮组均居中于标题下方，不因层级或权限左右错位。编辑清单中允许删除的待接受Task，其“编辑”按钮本身保持在列中心，与其他Task的“编辑／查看”垂直对齐，“×”以8px间隔附加在右侧，不参与居中计算；两个按钮保持同行且点击范围不变。“编辑／查看”和“＋新增下级”保持同行，按钮之间间隔8px，加号与文字间隔2px；标题不再对准双按钮之间的间隙。操作列预留足够宽度，窄屏在清单内横向滚动，不换行或覆盖相邻列。权限、跳转、新增、删除及未保存保护不变。</p>
+    <p>Case／subCase详情内容清单以当前节点为可见树根，完整后代统一使用1px浅灰竖线和短横线连接；编辑清单保留当前编辑节点及其下级连接。Task是叶子节点，不显示展开标记或向下延伸线，最后一个同级节点的竖线在名称中线处结束，深层连接仍限制在名称列并沿用压缩规则。只读详情不设操作列，腾出的空间优先给名称；编辑清单的操作标题与按钮组仍同轴居中，不因层级或权限左右错位。编辑清单中允许删除的待接受Task，其编辑按钮保持列中心，“×”以8px间隔附加在右侧，不参与居中计算；编辑／查看和新增下级保持同行，操作列保留足够宽度，窄屏仅在清单内横向滚动，不换行或覆盖相邻列。权限、跳转、新增、删除及未保存保护不变。</p>
     <p>全局新建subCase或Task在同一表单选择直接上级，可选Case或subCase，不能为空；当前Case范围仅作明确展示的预填。详情内新增自动固定当前上级，无需重复选择。Project继承且只读；切换上级同步显示完整路径、父级日期约束和Task参考背景，不自动改写已填日期。上下级混合包含subCase与直属Task仍然允许，权限与结束分支限制继续校验。</p>
     <p>Case中心列表统一保留名称、负责人、下级进展、Case状态、开始日期、完成日期、所属Project七列，沿用柔和胶囊、折角展开收起和层级缩进。未命中上级显示完整Case／subCase层级行，不显示灰底来源路径行，也不计入命中数量；搜索Task仍保留必要的上级行，不因旧类型状态进入纯Task平铺或改变列宽。树结构保持独立，甘特图继续采用完整层级及原来源信息。Task行下级进展显示“—”；Case下级进展分别统计有效直属subCase和Task，无下级或全被排除时统一显示“—”，悬浮提示保留两者区别；已终止subCase、已拒绝或已终止Task不计入有效总数，已拒绝subCase仍计入。有效完成数量照常显示，不混合百分比、不重复累计后代；删除i图标和对应统计说明弹窗入口，不新增替代入口。Case名称打开详情，右侧树结构图标在悬停或聚焦时出现，触屏直接显示。深层结构自动增加名称列空间，横向滚动限制在表格内；窄屏可通过顶部导航按钮访问原有菜单。详情清单的Task对接信息通过“目标与要求”查看，模版工作结构不变。</p>
     <p>树结构不显示主搜索、筛选、Case／Task类型按钮及状态统计卡，仅保留视图切换、当前Case、横向／纵向、缩放、适应画布、平移和全屏。当前Case采用输入框、关键词清除、搜索图标及28px窄下拉的一体式选择框，候选包含当前可见Project范围及权限内的Case／subCase，支持名称和完整路径搜索。输入只暂存关键词，点击搜索或按Enter后才查找候选，中文输入法确认候选的Enter不触发检索；下拉箭头用于浏览全部可见候选，不应用尚未提交的关键词。搜索不自动选中，即使只有一条结果也需选择后才切换树；清除关键词不清除当前树的选择，候选自动收起、离开或Esc恢复已选文本，无匹配明确提示。首次未选择时提示选择Case；再次进入保留上次选择，从列表树图标或Task详情进入时直接选中对应Case。Case／subCase详情移除右上角树结构按钮，保留层级面包屑和列表中的树结构入口。我的工作筛选组从左侧与卡片左边框对齐，排序保留右侧位置，窄屏换行仍从左侧对齐。树完整展示所选Case及全部可见下级，包含各业务状态的Case、subCase和Task，节点状态、超期与阻塞样式保留；选择subCase时从该节点起展示，不额外展示其上级。树的选择、展开和画布状态独立保存，不清空或改写列表／甘特图的搜索、负责人、类型、Case范围、状态、超期、阻塞和展开条件。列表与甘特图共用展开状态；甘特图保留日／周坐标、Case计划周期、Task计划框、执行时间条、提前／超期段、悬浮信息及状态样式。</p>
